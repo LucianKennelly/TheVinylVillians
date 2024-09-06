@@ -1,0 +1,149 @@
+[gd_scene load_steps=18 format=3 uid="uid://cvefu1l77vj3a"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_lbno2"]
+[ext_resource type="Script" path="res://world.gd" id="1_s5duy"]
+[ext_resource type="Texture2D" uid="uid://c03qx5g2f2d6h" path="res://art/pixilart-sprite-idle.png" id="3_ikqia"]
+[ext_resource type="Texture2D" uid="uid://dxt7plm76w4cq" path="res://art/pixil-frame-0 (12).png" id="4_8nstu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lxw"]
+size = Vector2(49, 132)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bcuic"]
+size = Vector2(64.5854, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o4hc3"]
+atlas = ExtResource("3_ikqia")
+region = Rect2(0, 0, 100, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y4irq"]
+atlas = ExtResource("3_ikqia")
+region = Rect2(100, 0, 100, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ejvy"]
+atlas = ExtResource("3_ikqia")
+region = Rect2(200, 0, 100, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7yw0"]
+atlas = ExtResource("3_ikqia")
+region = Rect2(300, 0, 100, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tkq1a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o4hc3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y4irq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ejvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7yw0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 3.0
+}]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_b0v3n"]
+a = Vector2(11.9235, 14)
+b = Vector2(-328.889, 257)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_sci2w"]
+a = Vector2(336.837, 273)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ykhio"]
+a = Vector2(493.83, 513)
+b = Vector2(-2.98086, 15)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_ag3rl"]
+a = Vector2(-209.654, 281)
+b = Vector2(288.15, -193)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5u4iv"]
+size = Vector2(49.7448, 256)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pwkyu"]
+size = Vector2(161.03, 85)
+
+[node name="World" type="Node2D"]
+scale = Vector2(1.00642, 1)
+script = ExtResource("1_s5duy")
+
+[node name="player" type="CharacterBody2D" parent="."]
+top_level = true
+collision_layer = 3
+collision_mask = 5
+script = ExtResource("1_lbno2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
+position = Vector2(-4.5, 2)
+shape = SubResource("RectangleShape2D_b2lxw")
+
+[node name="Area2D" type="Area2D" parent="player"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player/Area2D"]
+position = Vector2(31.7959, -1)
+shape = SubResource("RectangleShape2D_bcuic")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
+position = Vector2(1, 0)
+sprite_frames = SubResource("SpriteFrames_tkq1a")
+animation = &"Idle"
+frame_progress = 0.465939
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_left = -1.98724
+offset_top = 3.0
+offset_right = 998.013
+offset_bottom = 1003.0
+texture = ExtResource("4_8nstu")
+expand_mode = 4
+stretch_mode = 2
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(330.876, 241)
+shape = SubResource("SegmentShape2D_b0v3n")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(654.796, 248)
+shape = SubResource("SegmentShape2D_sci2w")
+
+[node name="BottomLeftWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomLeftWall"]
+position = Vector2(2.98086, 484)
+shape = SubResource("SegmentShape2D_ykhio")
+
+[node name="BottomRightWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomRightWall"]
+position = Vector2(706.464, 711)
+shape = SubResource("SegmentShape2D_ag3rl")
+
+[node name="TopLeftWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopLeftWall"]
+position = Vector2(319.946, 128)
+shape = SubResource("RectangleShape2D_5u4iv")
+
+[node name="TopRightWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopRightWall"]
+position = Vector2(676.656, 132)
+shape = SubResource("RectangleShape2D_5u4iv")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2(425.27, 427)
+collision_layer = 3
+collision_mask = 7
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(70.5152, 4.5)
+shape = SubResource("RectangleShape2D_pwkyu")
