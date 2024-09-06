@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cvefu1l77vj3a"]
+[gd_scene load_steps=19 format=3 uid="uid://cvefu1l77vj3a"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_lbno2"]
 [ext_resource type="Script" path="res://world.gd" id="1_s5duy"]
@@ -66,7 +66,10 @@ b = Vector2(288.15, -193)
 size = Vector2(49.7448, 256)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwkyu"]
-size = Vector2(161.03, 59)
+size = Vector2(148.049, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycldr"]
+size = Vector2(302.125, 20)
 
 [node name="World" type="Node2D"]
 scale = Vector2(1.00642, 1)
@@ -139,11 +142,17 @@ shape = SubResource("RectangleShape2D_5u4iv")
 position = Vector2(676.656, 132)
 shape = SubResource("RectangleShape2D_5u4iv")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
+[node name="RecordPlayer" type="StaticBody2D" parent="."]
 position = Vector2(425.27, 427)
 collision_layer = 3
 collision_mask = 7
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(70.5152, 17.5)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RecordPlayer"]
+position = Vector2(68.0628, 23)
 shape = SubResource("RectangleShape2D_pwkyu")
+
+[node name="NextScene" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NextScene"]
+position = Vector2(499.759, -10)
+shape = SubResource("RectangleShape2D_ycldr")
