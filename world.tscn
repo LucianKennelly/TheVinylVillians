@@ -66,7 +66,7 @@ b = Vector2(288.15, -193)
 size = Vector2(49.7448, 256)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pwkyu"]
-size = Vector2(161.03, 85)
+size = Vector2(161.03, 59)
 
 [node name="World" type="Node2D"]
 scale = Vector2(1.00642, 1)
@@ -145,5 +145,5 @@ collision_layer = 3
 collision_mask = 7
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(70.5152, 4.5)
+position = Vector2(70.5152, 17.5)
 shape = SubResource("RectangleShape2D_pwkyu")
