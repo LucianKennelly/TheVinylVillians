@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cvefu1l77vj3a"]
+[gd_scene load_steps=47 format=3 uid="uid://cvefu1l77vj3a"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_lbno2"]
 [ext_resource type="Script" path="res://world.gd" id="1_s5duy"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://caf04xqg4a1gr" path="res://art/Kanye.png" id="6_tj1uc"]
 [ext_resource type="Script" path="res://kanye.gd" id="9_57f14"]
 [ext_resource type="Texture2D" uid="uid://cttmiepaovt2h" path="res://pixilart-sprite (5).png" id="10_6jgvn"]
+[ext_resource type="AudioStream" uid="uid://c8uvnlr5ofhys" path="res://Untitled#54Mix2.mp3" id="12_it0pb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lxw"]
 size = Vector2(32.7895, 122)
@@ -367,5 +368,10 @@ shape = SubResource("RectangleShape2D_cu2bv")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KanyeRoom2"]
 polygon = PackedVector2Array(345.78, 0, 343.793, -247, 4.9681, -513, 497.804, -991, 998.589, -501, 654.796, -247, 650.822, -2, 724.35, -257, 1054.23, -472, 542.517, -1010, 413.346, -1022, -91.4131, -484, 295.105, -114, 326.901, -2, 337.831, 12)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_it0pb")
+volume_db = 9.905
+autoplay = true
 
 [connection signal="body_entered" from="player/PunchBox" to="player/PunchBox" method="_on_body_entered"]
