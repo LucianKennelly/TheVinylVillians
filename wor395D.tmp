@@ -108,10 +108,10 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ln0fn")
 }, {
-"duration": 1.2,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_lutba")
 }, {
-"duration": 1.6,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8cfqq")
 }],
 "loop": true,
@@ -360,7 +360,7 @@ animation = &"Damaged"
 autoplay = "Idle"
 
 [node name="KanyeHitBox" type="CollisionShape2D" parent="Kanye"]
-position = Vector2(-4.96798, 4.00006)
+position = Vector2(-4.96798, 4)
 shape = SubResource("RectangleShape2D_cu2bv")
 
 [node name="KanyeRoom2" type="StaticBody2D" parent="."]

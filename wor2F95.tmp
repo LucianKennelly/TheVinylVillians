@@ -108,10 +108,10 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ln0fn")
 }, {
-"duration": 1.2,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_lutba")
 }, {
-"duration": 1.6,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_8cfqq")
 }],
 "loop": true,
@@ -214,7 +214,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_yupyq")
 }],
-"loop": true,
+"loop": false,
 "name": &"Damaged",
 "speed": 5.0
 }, {
@@ -359,8 +359,9 @@ sprite_frames = SubResource("SpriteFrames_1r1pb")
 animation = &"Damaged"
 autoplay = "Idle"
 
-[node name="KanyeHitBox" type="CollisionShape2D" parent="Kanye"]
-position = Vector2(-4.96798, 4.00006)
+[node name="KanyeHitBox" type="CollisionShape2D" parent="Kanye/Path2D/PathFollow2D"]
+position = Vector2(677.846, -168.59)
+rotation = -2.60383
 shape = SubResource("RectangleShape2D_cu2bv")
 
 [node name="KanyeRoom2" type="StaticBody2D" parent="."]

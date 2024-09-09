@@ -1,12 +1,14 @@
 extends CharacterBody2D
 var can_move = true
+var can_punch = true
 var has_bump =true
 var speed = 250
 var normal_speed = 0.5
-signal bump
+@onready var punch = $PunchBox
 func _physics_process(delta):
 	player_movement(delta)
 func player_movement(delta):
+	#$player.connect("justpunched",justpunched)
 	var collision_info = move_and_collide(velocity * delta * normal_speed)
 	if Input.is_action_pressed("Up"):
 		$AnimatedSprite2D.play("Run")
@@ -26,6 +28,7 @@ func player_movement(delta):
 		velocity.y = 0
 	elif Input.is_action_pressed("Punch"):
 		$AnimatedSprite2D.play("Punch")
+		#punch.attack()
 		velocity.y = 0
 		velocity.x = 0
 	else:
@@ -46,3 +49,5 @@ func player_movement(delta):
 		$AnimatedSprite2D.flip_h = true
 		
 	move_and_collide(velocity * delta * normal_speed)
+func justpunched() -> void:
+	can_punch = false
