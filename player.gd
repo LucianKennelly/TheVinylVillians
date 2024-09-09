@@ -32,6 +32,7 @@ func player_movement(delta):
 		$AnimatedSprite2D.play("Idle")
 		velocity.y = 0
 		velocity.x = 0
+		
 	#velocity = velocity.normalized()
 	#if collision_info:
 		#velocity.y = 0
