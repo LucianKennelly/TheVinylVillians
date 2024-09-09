@@ -113,7 +113,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"Punch",
-"speed": 15.0
+"speed": 12.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -216,7 +216,7 @@ shape = SubResource("RectangleShape2D_bcuic")
 position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_tkq1a")
 animation = &"Punch"
-frame_progress = 0.248025
+frame_progress = 0.680383
 
 [node name="MainRoom" type="TextureRect" parent="."]
 show_behind_parent = true
@@ -292,7 +292,7 @@ stretch_mode = 2
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(2.98087, 6)
-offset = Vector2(500, 500)
+offset = Vector2(500, -500)
 
 [node name="Kanye" type="CharacterBody2D" parent="."]
 

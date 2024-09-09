@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dxt7plm76w4cq"
-path="res://.godot/imported/pixil-frame-0 (12).png-618a8df6e7635c062ddf09537f347fb4.ctex"
+uid="uid://caf04xqg4a1gr"
+path="res://.godot/imported/Kanye.png-7d0c8451864b2acf2387d947a885587a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/pixil-frame-0 (12).png"
-dest_files=["res://.godot/imported/pixil-frame-0 (12).png-618a8df6e7635c062ddf09537f347fb4.ctex"]
+source_file="res://art/Kanye.png"
+dest_files=["res://.godot/imported/Kanye.png-7d0c8451864b2acf2387d947a885587a.ctex"]
 
 [params]
 

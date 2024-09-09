@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c03qx5g2f2d6h"
-path="res://.godot/imported/pixilart-sprite-idle.png-5bd4e6d00237254a602591f42e898322.ctex"
+uid="uid://dou6ywwp80v0s"
+path="res://.godot/imported/KanyeRoom.png-ac1534ab918c190626c7531da9ffa7bc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/pixilart-sprite-idle.png"
-dest_files=["res://.godot/imported/pixilart-sprite-idle.png-5bd4e6d00237254a602591f42e898322.ctex"]
+source_file="res://art/KanyeRoom.png"
+dest_files=["res://.godot/imported/KanyeRoom.png-ac1534ab918c190626c7531da9ffa7bc.ctex"]
 
 [params]
 
