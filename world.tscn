@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://cvefu1l77vj3a"]
+[gd_scene load_steps=49 format=3 uid="uid://cvefu1l77vj3a"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_lbno2"]
 [ext_resource type="Script" path="res://world.gd" id="1_s5duy"]
@@ -9,8 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://cn2c2lumkfc47" path="res://art/Run3.png" id="5_l6fee"]
 [ext_resource type="Texture2D" uid="uid://dou6ywwp80v0s" path="res://art/KanyeRoom.png" id="5_r4n1o"]
 [ext_resource type="Texture2D" uid="uid://caf04xqg4a1gr" path="res://art/Kanye.png" id="6_tj1uc"]
+[ext_resource type="Script" path="res://next_scene.gd" id="8_b1ebc"]
 [ext_resource type="Script" path="res://kanye.gd" id="9_57f14"]
 [ext_resource type="Texture2D" uid="uid://cttmiepaovt2h" path="res://pixilart-sprite (5).png" id="10_6jgvn"]
+[ext_resource type="Script" path="res://enemy.gd" id="11_b6eew"]
 [ext_resource type="AudioStream" uid="uid://ba25bgqvbuw7e" path="res://tendrils.mp3" id="12_r5hwj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lxw"]
@@ -244,7 +246,7 @@ collision_priority = 2.0
 script = ExtResource("1_lbno2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
-position = Vector2(-304.048, 82)
+position = Vector2(-20.866, 11)
 shape = SubResource("RectangleShape2D_b2lxw")
 
 [node name="PunchBox" type="Area2D" parent="player"]
@@ -258,7 +260,7 @@ shape = SubResource("RectangleShape2D_bcuic")
 position = Vector2(2.98087, 6)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
-position = Vector2(-297.093, 68)
+position = Vector2(-14.9043, 4)
 sprite_frames = SubResource("SpriteFrames_tkq1a")
 animation = &"Punch"
 frame_progress = 0.248025
@@ -327,6 +329,7 @@ polygon = PackedVector2Array(39.3403, -3.61871, 24.0563, -11.9332, -19.7578, -11
 [node name="NextScene" type="StaticBody2D" parent="."]
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("8_b1ebc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NextScene"]
 z_index = -1
@@ -344,29 +347,6 @@ grow_vertical = 0
 texture = ExtResource("5_r4n1o")
 stretch_mode = 2
 
-[node name="Kanye" type="CharacterBody2D" parent="."]
-script = ExtResource("9_57f14")
-
-[node name="Path2D" type="Path2D" parent="Kanye"]
-curve = SubResource("Curve2D_64d1s")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="Kanye/Path2D"]
-position = Vector2(227.989, -558.865)
-rotation = 2.60383
-progress = 7259.04
-rotates = false
-
-[node name="KanyeAnimate" type="AnimatedSprite2D" parent="Kanye/Path2D/PathFollow2D"]
-position = Vector2(-182.284, -242.455)
-rotation = -2.60383
-sprite_frames = SubResource("SpriteFrames_1r1pb")
-animation = &"Damaged"
-autoplay = "Idle"
-
-[node name="KanyeHitBox" type="CollisionShape2D" parent="Kanye"]
-position = Vector2(515.689, -440)
-shape = SubResource("RectangleShape2D_cu2bv")
-
 [node name="KanyeRoom2" type="StaticBody2D" parent="."]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KanyeRoom2"]
@@ -376,5 +356,34 @@ polygon = PackedVector2Array(345.78, 0, 343.793, -247, 4.9681, -513, 497.804, -9
 stream = ExtResource("12_r5hwj")
 volume_db = 9.905
 autoplay = true
+
+[node name="Enemy" type="Node" parent="."]
+script = ExtResource("11_b6eew")
+
+[node name="Path2D" type="Path2D" parent="Enemy"]
+scale = Vector2(1.00642, 1)
+curve = SubResource("Curve2D_64d1s")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Enemy/Path2D"]
+position = Vector2(227.989, -558.865)
+rotation = 2.60383
+progress = 7259.04
+rotates = false
+
+[node name="Kanye" type="CharacterBody2D" parent="Enemy/Path2D/PathFollow2D"]
+position = Vector2(482.069, -363.206)
+rotation = -2.60383
+script = ExtResource("9_57f14")
+
+[node name="KanyeAnimate" type="AnimatedSprite2D" parent="Enemy/Path2D/PathFollow2D/Kanye"]
+position = Vector2(508.734, -444)
+scale = Vector2(1, 1)
+sprite_frames = SubResource("SpriteFrames_1r1pb")
+animation = &"Damaged"
+autoplay = "Idle"
+
+[node name="KanyeHitBox" type="CollisionShape2D" parent="Enemy/Path2D/PathFollow2D/Kanye"]
+position = Vector2(515.689, -440)
+shape = SubResource("RectangleShape2D_cu2bv")
 
 [connection signal="body_entered" from="player/PunchBox" to="player/PunchBox" method="_on_body_entered"]
