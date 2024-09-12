@@ -244,7 +244,7 @@ collision_priority = 2.0
 script = ExtResource("1_lbno2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player"]
-position = Vector2(-8.44578, 7)
+position = Vector2(-304.048, 82)
 shape = SubResource("RectangleShape2D_b2lxw")
 
 [node name="PunchBox" type="Area2D" parent="player"]
@@ -258,7 +258,7 @@ shape = SubResource("RectangleShape2D_bcuic")
 position = Vector2(2.98087, 6)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
-position = Vector2(1, 0)
+position = Vector2(-297.093, 68)
 sprite_frames = SubResource("SpriteFrames_tkq1a")
 animation = &"Punch"
 frame_progress = 0.248025
@@ -319,8 +319,10 @@ disable_mode = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="RecordPlayer"]
 z_index = -1
 y_sort_enabled = true
+position = Vector2(-1.10929, 14.3756)
+scale = Vector2(0.981419, 1.62367)
 build_mode = 1
-polygon = PackedVector2Array(-37.5, 7.5, 36.5, 7.5, 29, 0, 29, -12, 25, -16, 13.5, -15.5, 14, -5.5, -12, -5.5, -12, -15, -22.5, -15, -26, -13, -26.5, 0.5)
+polygon = PackedVector2Array(39.3403, -3.61871, 24.0563, -11.9332, -19.7578, -11.9332, -37.0797, -3.61871)
 
 [node name="NextScene" type="StaticBody2D" parent="."]
 collision_layer = 2
@@ -349,20 +351,20 @@ script = ExtResource("9_57f14")
 curve = SubResource("Curve2D_64d1s")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Kanye/Path2D"]
-position = Vector2(227.988, -558.863)
+position = Vector2(227.989, -558.865)
 rotation = 2.60383
 progress = 7259.04
 rotates = false
 
 [node name="KanyeAnimate" type="AnimatedSprite2D" parent="Kanye/Path2D/PathFollow2D"]
-position = Vector2(671.531, -167.7)
+position = Vector2(-182.284, -242.455)
 rotation = -2.60383
 sprite_frames = SubResource("SpriteFrames_1r1pb")
 animation = &"Damaged"
 autoplay = "Idle"
 
 [node name="KanyeHitBox" type="CollisionShape2D" parent="Kanye"]
-position = Vector2(-4.96795, 4.00006)
+position = Vector2(515.689, -440)
 shape = SubResource("RectangleShape2D_cu2bv")
 
 [node name="KanyeRoom2" type="StaticBody2D" parent="."]
