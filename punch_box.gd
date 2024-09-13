@@ -9,6 +9,7 @@ func attack():
 
 
 func _on_body_entered(body: Node2D) -> void:
+	
 	if body.has_method("handle_hit"):#and $player/AnimatedSprite2D.play("Punch") == true:
 		justpunched
 		body.handle_hit()
