@@ -1,4 +1,5 @@
 extends Node
+@export var item: InvItem
 @onready var path : PathFollow2D = $Path2D/PathFollow2D
 @export var speed = 100
 # Called when the node enters the scene tree for the first time.

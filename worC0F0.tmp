@@ -1,9 +1,10 @@
-[gd_scene load_steps=53 format=3 uid="uid://cvefu1l77vj3a"]
+[gd_scene load_steps=54 format=3 uid="uid://cvefu1l77vj3a"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_lbno2"]
 [ext_resource type="Script" path="res://world.gd" id="1_s5duy"]
 [ext_resource type="Script" path="res://punch_box.gd" id="3_f7cgm"]
 [ext_resource type="Texture2D" uid="uid://c03qx5g2f2d6h" path="res://art/Idle.png" id="3_ikqia"]
+[ext_resource type="Resource" uid="uid://c1wossfpwvl4e" path="res://inventory/player_inventory.tres" id="3_pdq5y"]
 [ext_resource type="Texture2D" uid="uid://dxt7plm76w4cq" path="res://art/MainRoom.png" id="4_8nstu"]
 [ext_resource type="Texture2D" uid="uid://dxyy7ep88cy6r" path="res://art/Punch.png" id="4_ia2er"]
 [ext_resource type="Texture2D" uid="uid://cn2c2lumkfc47" path="res://art/Run3.png" id="5_l6fee"]
@@ -250,6 +251,7 @@ script = ExtResource("1_s5duy")
 [node name="player" type="CharacterBody2D" parent="."]
 collision_layer = 2
 script = ExtResource("1_lbno2")
+inv = ExtResource("3_pdq5y")
 
 [node name="PlayerHitBox" type="CollisionShape2D" parent="player"]
 shape = SubResource("RectangleShape2D_b2lxw")
