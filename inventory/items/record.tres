@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://b2m0esn562o8j"]
 
 [ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_hngls"]
-[ext_resource type="Texture2D" uid="uid://dcedhjpiyog60" path="res://inventory/download.png" id="2_6lyfo"]
+[ext_resource type="Texture2D" uid="uid://co2kdvibgy7m8" path="res://cursed record.png" id="2_w63es"]
 
 [resource]
 script = ExtResource("1_hngls")
 name = "Record"
-texture = ExtResource("2_6lyfo")
+texture = ExtResource("2_w63es")

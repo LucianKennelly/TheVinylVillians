@@ -1,5 +1,5 @@
 extends CharacterBody2D
-#@export var inv: Inv =  preload("res://inventory/player_inventory.tres")
+@export var inv: Inv =  preload("res://inventory/player_inventory.tres")
 @export var item: InvItem = preload("res://inventory/items/record.tres")
 var player = null
 const SPEED = 600
@@ -27,13 +27,15 @@ func recover():
 func handle_hit():
 	if kanye.animation == "Idle":
 		kanye.play("Damaged")
+		inv.insert(item)
+	#else:
+	#s	kanye.play("Idle")
 	#print("enemy was hit!")
 
 
-func collect(item):
-	pass
-	#inv.insert(item)
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.has_method("player_movement"):
-		player = body
-		player.collect(item)
+	
+	if body.has_method("collect"):
+		print("here")
+		body.collect(item)
+	#kanye.play("Damaged")
