@@ -377,7 +377,6 @@ script = ExtResource("9_57f14")
 
 [node name="KanyeAnimate" type="AnimatedSprite2D" parent="Enemy/Path2D/PathFollow2D/Kanye"]
 position = Vector2(508.734, -444)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_1r1pb")
 animation = &"Damaged"
 autoplay = "Idle"

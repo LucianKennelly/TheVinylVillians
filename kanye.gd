@@ -1,8 +1,5 @@
 extends CharacterBody2D
 
-<<<<<<< Updated upstream
-
-=======
 # Health-related variables
 @export var max_health: int = 100
 var current_health: int = max_health
@@ -10,7 +7,7 @@ var current_health: int = max_health
 #@export var inv: Inv =  preload("res://inventory/player_inventory.tres")
 @export var item: InvItem = preload("res://inventory/items/record.tres")
 var player = null
->>>>>>> Stashed changes
+
 const SPEED = 600
 const JUMP_VELOCITY = -400.0
 
@@ -75,8 +72,6 @@ func handle_hit():
 	if kanye.animation == "Idle":
 		$Path2D/PathFollow2D/KanteKanyeAnimate.play("Damaged")
 	#print("enemy was hit!")
-<<<<<<< Updated upstream
-=======
 
 func collect(item):
 	pass
@@ -87,4 +82,3 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		player = body
 		player.collect(item)
 		take_damage(10)
->>>>>>> Stashed changes
