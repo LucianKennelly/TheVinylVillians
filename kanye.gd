@@ -8,9 +8,6 @@ var current_health: int = max_health
 @export var item: InvItem = preload("res://inventory/items/record.tres")
 var player = null
 
-#@export var inv: Inv =  preload("res://inventory/player_inventory.tres")
-@export var item: InvItem = preload("res://inventory/items/record.tres")
-var player = null
 const SPEED = 600
 const JUMP_VELOCITY = -400.0
 
@@ -76,10 +73,6 @@ func handle_hit():
 		kanye.play("Damaged")
 	#print("enemy was hit!")
 
-func collect(item):
-	pass
-	#inv.insert(item)
-	
 func collect(item):
 	pass
 	#inv.insert(item)
