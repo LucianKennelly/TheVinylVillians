@@ -12,6 +12,7 @@ func close():
 	visible = false
 	is_open = false
 func open():
+	update_slots()
 	self.visible = true
 	is_open = true
 func update_slots():

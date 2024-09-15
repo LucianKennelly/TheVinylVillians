@@ -20,7 +20,6 @@ func _physics_process(delta: float) -> void:
 	#	positive = -10
 	#velocity.x = delta * SPEED * positive
 	#velocity.y = delta * SPEED * positive
-
 	move_and_slide()
 func recover():
 	kanye.play("Idle")
@@ -34,6 +33,7 @@ func collect(item):
 	pass
 	#inv.insert(item)
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	print("working")
 	if body.has_method("player_movement"):
 		player = body
 		player.collect(item)
