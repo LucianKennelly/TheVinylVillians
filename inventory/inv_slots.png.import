@@ -2,17 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bstgouxv354a6"
-uid="uid://dn4a3bvr0co1t"
-path="res://.godot/imported/Kanye-Craft-Item.png-431edb55c77a52510452b69769153256.ctex"
+uid="uid://d8101t4kur6"
+path="res://.godot/imported/inv_slots.png-694ef5ea388211b38925eee524867ce7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://art/Kanye-Craft-Item.png"
-dest_files=["res://.godot/imported/Kanye-Craft-Item.png-431edb55c77a52510452b69769153256.ctex"]
+source_file="res://inventory/inv_slots.png"
+dest_files=["res://.godot/imported/inv_slots.png-694ef5ea388211b38925eee524867ce7.ctex"]
 
 [params]
 
