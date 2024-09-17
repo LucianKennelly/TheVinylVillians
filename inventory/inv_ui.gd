@@ -8,10 +8,19 @@ func _ready() -> void:
 	inv.update.connect(update_slots)
 	update_slots()
 	close()
+func has_record(record: InvItem):
+	for i in range(min(inv.items.size(), slots.size())):
+		if slots[i].equals(record):
+			print("works")
+			return true
+		else:
+			return false
+	
 func close():
 	visible = false
 	is_open = false
 func open():
+	update_slots()
 	self.visible = true
 	is_open = true
 func update_slots():
@@ -26,3 +35,11 @@ func _process(delta: float) -> void:
 			close()
 		else:
 			open()
+
+
+func _on_inv_ui_slot_mouse_entered() -> void:
+	pass # Replace with function body.
+
+
+func _on_inv_ui_slot_2_mouse_entered() -> void:
+	pass # Replace with function body.
