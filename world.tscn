@@ -19,7 +19,7 @@
 [ext_resource type="Script" path="res://record_player_2.gd" id="15_80l2a"]
 [ext_resource type="Script" path="res://interaction/interaction_area/interaction_area.gd" id="15_cx0ya"]
 [ext_resource type="Texture2D" uid="uid://bf2oejpf2qrtx" path="res://art/Kanye-Death.png" id="15_rgfxo"]
-[ext_resource type="PackedScene" uid="uid://cu7smiwbn6b4i" path="res://Menu.tscn" id="20_nhoy5"]
+[ext_resource type="PackedScene" path="res://Menu.tscn" id="20_nhoy5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lxw"]
 size = Vector2(56.6364, 148)
