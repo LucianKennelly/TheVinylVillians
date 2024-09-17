@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://cvefu1l77vj3a"]
+[gd_scene load_steps=67 format=3 uid="uid://cvefu1l77vj3a"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_lbno2"]
 [ext_resource type="Script" path="res://world.gd" id="1_s5duy"]
@@ -19,7 +19,8 @@
 [ext_resource type="Script" path="res://record_player_2.gd" id="15_80l2a"]
 [ext_resource type="Script" path="res://interaction/interaction_area/interaction_area.gd" id="15_cx0ya"]
 [ext_resource type="Texture2D" uid="uid://bf2oejpf2qrtx" path="res://art/Kanye-Death.png" id="15_rgfxo"]
-[ext_resource type="PackedScene" uid="uid://cu7smiwbn6b4i" path="res://Menu.tscn" id="20_nhoy5"]
+[ext_resource type="PackedScene" uid="uid://dllh5x1gpkl1k" path="res://kanye_room.tscn" id="16_vu7tr"]
+[ext_resource type="PackedScene" path="res://Menu.tscn" id="20_nhoy5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lxw"]
 size = Vector2(56.6364, 148)
@@ -457,31 +458,33 @@ grow_vertical = 0
 texture = ExtResource("5_r4n1o")
 stretch_mode = 2
 
-[node name="KanyeRoomBorder" type="StaticBody2D" parent="."]
+[node name="KanyeRoomScene" parent="." instance=ExtResource("16_vu7tr")]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KanyeRoomBorder"]
+[node name="KanyeRoomBorder" type="StaticBody2D" parent="KanyeRoomScene"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="KanyeRoomScene/KanyeRoomBorder"]
 polygon = PackedVector2Array(345.78, 0, 343.793, -247, 4.9681, -513, 497.804, -991, 998.589, -501, 654.796, -247, 650.822, -2, 724.35, -257, 1054.23, -472, 542.517, -1010, 413.346, -1022, -91.4131, -484, 295.105, -114, 326.901, -2, 337.831, 12)
 
-[node name="Enemy" type="Node2D" parent="."]
+[node name="Enemy" type="Node2D" parent="KanyeRoomScene"]
 script = ExtResource("11_b6eew")
 
-[node name="Path2D" type="Path2D" parent="Enemy"]
+[node name="Path2D" type="Path2D" parent="KanyeRoomScene/Enemy"]
 scale = Vector2(1.00642, 1)
 curve = SubResource("Curve2D_64d1s")
 
-[node name="PathFollow2D" type="PathFollow2D" parent="Enemy/Path2D"]
+[node name="PathFollow2D" type="PathFollow2D" parent="KanyeRoomScene/Enemy/Path2D"]
 position = Vector2(227.989, -558.865)
 rotation = 2.60383
 progress = 7259.04
 rotates = false
 
-[node name="Kanye" type="CharacterBody2D" parent="Enemy/Path2D/PathFollow2D"]
+[node name="Kanye" type="CharacterBody2D" parent="KanyeRoomScene/Enemy/Path2D/PathFollow2D"]
 position = Vector2(482.069, -363.206)
 rotation = -2.60383
 collision_mask = 2
 script = ExtResource("9_57f14")
 
-[node name="KanyeAnimate" type="AnimatedSprite2D" parent="Enemy/Path2D/PathFollow2D/Kanye"]
+[node name="KanyeAnimate" type="AnimatedSprite2D" parent="KanyeRoomScene/Enemy/Path2D/PathFollow2D/Kanye"]
 position = Vector2(508.734, -444)
 sprite_frames = SubResource("SpriteFrames_1r1pb")
 animation = &"Death"
@@ -489,19 +492,20 @@ autoplay = "Idle"
 frame = 5
 frame_progress = 1.0
 
-[node name="Area2D" type="Area2D" parent="Enemy/Path2D/PathFollow2D/Kanye"]
+[node name="Area2D" type="Area2D" parent="KanyeRoomScene/Enemy/Path2D/PathFollow2D/Kanye"]
 collision_mask = 2
 
-[node name="KanyeHitBox" type="CollisionShape2D" parent="Enemy/Path2D/PathFollow2D/Kanye/Area2D"]
+[node name="KanyeHitBox" type="CollisionShape2D" parent="KanyeRoomScene/Enemy/Path2D/PathFollow2D/Kanye/Area2D"]
 position = Vector2(508.45, -441)
 shape = SubResource("RectangleShape2D_cu2bv")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Path2D/PathFollow2D/Kanye"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KanyeRoomScene/Enemy/Path2D/PathFollow2D/Kanye"]
 position = Vector2(507.956, -477)
 shape = SubResource("RectangleShape2D_61be5")
+
+[node name="Node2D" parent="." instance=ExtResource("16_vu7tr")]
 
 [connection signal="justpunched" from="player" to="player/PunchBox" method="_on_player_justpunched"]
 [connection signal="body_entered" from="player/PunchBox" to="player/PunchBox" method="_on_body_entered"]
 [connection signal="body_entered" from="player/Area2D" to="player" method="_on_area_2d_body_entered"]
-[connection signal="kanyedeath" from="Enemy/Path2D/PathFollow2D/Kanye" to="player" method="_on_kanye_kanyedeath"]
-[connection signal="body_entered" from="Enemy/Path2D/PathFollow2D/Kanye/Area2D" to="Enemy/Path2D/PathFollow2D/Kanye" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="KanyeRoomScene/Enemy/Path2D/PathFollow2D/Kanye/Area2D" to="KanyeRoomScene/Enemy/Path2D/PathFollow2D/Kanye" method="_on_area_2d_body_entered"]
