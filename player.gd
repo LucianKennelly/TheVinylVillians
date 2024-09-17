@@ -4,13 +4,36 @@ var can_punch = true
 var has_bump =true
 var speed = 250
 var normal_speed = 0.5
+signal justpunched
+@export var max_health: int = 10
+var current_health: int = max_health
+@export var kanyerecord: InvItem = preload("res://inventory/items/record.tres")
 @export var inv: Inv = preload("res://inventory/player_inventory.tres")
 @onready var punch = $PunchBox
+func take_damage(amount: int) -> void:
+	current_health -= amount
+	if current_health <= 0:
+		die()
+	else:
+		print("Health: ", current_health)
+
+func heal(amount: int) -> void:
+	current_health += amount
+	if current_health > max_health:
+		current_health = max_health
+	print("Health: ", current_health)
+	
+func die() -> void:
+	print("Player is dead!")
+	$AnimatedSprite2D.play("Death")
+	#await get_tree().create_timer(2.0).timeout
+	#$AnimatedSprite2D.play("Death")
+	#queue_free()
+
 func _physics_process(delta):
 	player_movement(delta)
 func player_movement(delta):
 	
-	connect("justpunched",justpunched)
 	#$player.connect("justpunched",justpunched)
 	var collision_info = move_and_collide(velocity * delta * normal_speed)
 	if Input.is_action_pressed("Up"):
@@ -30,6 +53,7 @@ func player_movement(delta):
 		velocity.x = speed
 		velocity.y = 0
 	elif Input.is_action_pressed("Punch") and can_punch:
+		justpunched.emit()
 		$AnimatedSprite2D.play("Punch")
 		#punch.attack()
 		velocity.y = 0
@@ -55,16 +79,30 @@ func player_movement(delta):
 		get_node("PunchBox").scale.x = 0.5
 		get_node("PlayerHitBox").scale.x = -1
 	move_and_collide(velocity * delta * normal_speed)
-func justpunched() -> void:
-	if $AnimatedSprite2D.animation == "punch":
-		can_punch = false
-	else:
-		can_punch = true
+#f#unc justpunched() -> void:
+	#if $AnimatedSprite2D.animation == "punch":
+	#	can_punch = false
+	#else:
+	#	can_punch = true
 
 func _ready():
 	pass
-	#sprite.flip_h = true if interaction_area.get_overlapping_bodies()[0].global_position.x < global_position.x else await DialogManager.dialog_finished
-func _on_punch_box_justpunched() -> void:
-	pass # Replace with function body.
 func collect(item):
 	inv.insert(item)
+
+
+func _on_kanye_kanyedeath() -> void:
+	heal(max_health-current_health)
+	collect(kanyerecord)
+
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.has_method("handle_hit"):
+		print("hit")
+		take_damage(10)
+
+
+func _on_area_2d_2_body_entered(body: Node2D) -> void:
+	if body.has_method("handle_hit"):
+		print("hit")
+		take_damage(10)

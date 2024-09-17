@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://cvefu1l77vj3a"]
+[gd_scene load_steps=60 format=3 uid="uid://cvefu1l77vj3a"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_lbno2"]
 [ext_resource type="Script" path="res://world.gd" id="1_s5duy"]
@@ -6,7 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://c03qx5g2f2d6h" path="res://art/Idle.png" id="3_ikqia"]
 [ext_resource type="Texture2D" uid="uid://dxt7plm76w4cq" path="res://art/MainRoom.png" id="4_8nstu"]
 [ext_resource type="Texture2D" uid="uid://dxyy7ep88cy6r" path="res://art/Punch.png" id="4_ia2er"]
-[ext_resource type="Texture2D" uid="uid://cs2cbond1hqh1" path="res://art/Death.png" id="4_nalme"]
 [ext_resource type="Texture2D" uid="uid://cn2c2lumkfc47" path="res://art/Run3.png" id="5_l6fee"]
 [ext_resource type="Texture2D" uid="uid://dou6ywwp80v0s" path="res://art/KanyeRoom.png" id="5_r4n1o"]
 [ext_resource type="Texture2D" uid="uid://caf04xqg4a1gr" path="res://art/Kanye.png" id="6_tj1uc"]
@@ -19,29 +18,12 @@
 [ext_resource type="Script" path="res://record_player_2.gd" id="15_80l2a"]
 [ext_resource type="Script" path="res://interaction/interaction_area/interaction_area.gd" id="15_cx0ya"]
 [ext_resource type="Texture2D" uid="uid://bf2oejpf2qrtx" path="res://art/Kanye-Death.png" id="15_rgfxo"]
-[ext_resource type="PackedScene" uid="uid://cu7smiwbn6b4i" path="res://Menu.tscn" id="20_nhoy5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lxw"]
-size = Vector2(56.6364, 148)
+size = Vector2(32.7895, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bcuic"]
 size = Vector2(57.63, 31)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_e32xv"]
-atlas = ExtResource("4_nalme")
-region = Rect2(0, 0, 200, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jserj"]
-atlas = ExtResource("4_nalme")
-region = Rect2(200, 0, 200, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_olc8x"]
-atlas = ExtResource("4_nalme")
-region = Rect2(400, 0, 200, 200)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jrl37"]
-atlas = ExtResource("4_nalme")
-region = Rect2(600, 0, 200, 200)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o4hc3"]
 atlas = ExtResource("3_ikqia")
@@ -109,23 +91,6 @@ region = Rect2(700, 0, 100, 200)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tkq1a"]
 animations = [{
-"frames": [{
-"duration": 1.2,
-"texture": SubResource("AtlasTexture_e32xv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jserj")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_olc8x")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jrl37")
-}],
-"loop": true,
-"name": &"Death",
-"speed": 4.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_o4hc3")
@@ -323,7 +288,7 @@ animations = [{
 size = Vector2(57.2623, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_61be5"]
-size = Vector2(30.6057, 48.0001)
+size = Vector2(37.5168, 105)
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -335,7 +300,6 @@ collision_layer = 2
 script = ExtResource("1_lbno2")
 
 [node name="PlayerHitBox" type="CollisionShape2D" parent="player"]
-scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_b2lxw")
 
 [node name="PunchBox" type="Area2D" parent="player"]
@@ -353,18 +317,10 @@ position = Vector2(2.98087, 6)
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="player"]
 position = Vector2(5.96173, -1)
 sprite_frames = SubResource("SpriteFrames_tkq1a")
-animation = &"Death"
-frame = 2
-frame_progress = 0.165879
+animation = &"Punch"
+frame_progress = 0.248025
 
 [node name="Inv_UI" parent="player" instance=ExtResource("8_kk1wc")]
-
-[node name="Area2D" type="Area2D" parent="player"]
-collision_layer = 2
-
-[node name="PlayerHitBox" type="CollisionShape2D" parent="player/Area2D"]
-position = Vector2(0.49681, -2)
-shape = SubResource("RectangleShape2D_b2lxw")
 
 [node name="MainRoom" type="TextureRect" parent="."]
 show_behind_parent = true
@@ -460,6 +416,8 @@ position = Vector2(482.069, -363.206)
 rotation = -2.60383
 collision_mask = 2
 script = ExtResource("9_57f14")
+max_health = null
+item = null
 
 [node name="KanyeAnimate" type="AnimatedSprite2D" parent="Enemy/Path2D/PathFollow2D/Kanye"]
 position = Vector2(508.734, -444)
@@ -470,14 +428,13 @@ frame = 5
 frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="Enemy/Path2D/PathFollow2D/Kanye"]
-collision_mask = 2
 
 [node name="KanyeHitBox" type="CollisionShape2D" parent="Enemy/Path2D/PathFollow2D/Kanye/Area2D"]
 position = Vector2(508.45, -441)
 shape = SubResource("RectangleShape2D_cu2bv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Path2D/PathFollow2D/Kanye"]
-position = Vector2(507.956, -477)
+position = Vector2(509.437, -448.5)
 shape = SubResource("RectangleShape2D_61be5")
 
 [node name="Record Player" type="StaticBody2D" parent="."]
@@ -498,10 +455,6 @@ scale = Vector2(1.95032, 3.24734)
 build_mode = 1
 polygon = PackedVector2Array(39.3403, -3.61871, 24.0563, -11.9332, -19.7578, -11.9332, -37.0797, -3.61871)
 
-[node name="Menu" parent="." instance=ExtResource("20_nhoy5")]
-
 [connection signal="justpunched" from="player" to="player/PunchBox" method="_on_player_justpunched"]
 [connection signal="body_entered" from="player/PunchBox" to="player/PunchBox" method="_on_body_entered"]
-[connection signal="body_entered" from="player/Area2D" to="player" method="_on_area_2d_body_entered"]
-[connection signal="kanyedeath" from="Enemy/Path2D/PathFollow2D/Kanye" to="player" method="_on_kanye_kanyedeath"]
 [connection signal="body_entered" from="Enemy/Path2D/PathFollow2D/Kanye/Area2D" to="Enemy/Path2D/PathFollow2D/Kanye" method="_on_area_2d_body_entered"]

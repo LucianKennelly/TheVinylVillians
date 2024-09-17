@@ -27,6 +27,7 @@ offset_bottom = 200.0
 region_rect = Rect2(3.57936, -0.730078, 104.511, 104.192)
 
 [node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+custom_minimum_size = Vector2(84, 40)
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
@@ -55,3 +56,6 @@ layout_mode = 2
 
 [node name="inv_UI_slot8" parent="NinePatchRect/GridContainer" instance=ExtResource("2_c6u1s")]
 layout_mode = 2
+
+[connection signal="mouse_entered" from="NinePatchRect/GridContainer/inv_UI_slot" to="." method="_on_inv_ui_slot_mouse_entered"]
+[connection signal="mouse_entered" from="NinePatchRect/GridContainer/inv_UI_slot2" to="." method="_on_inv_ui_slot_2_mouse_entered"]

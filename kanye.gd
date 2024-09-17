@@ -1,12 +1,11 @@
 extends CharacterBody2D
 
 # Health-related variables
-@export var max_health: int = 100
+@export var max_health: int = 10
 var current_health: int = max_health
-
+signal kanyedeath
 #@export var inv: Inv =  preload("res://inventory/player_inventory.tres")
-@export var item: InvItem = preload("res://inventory/items/record.tres")
-var player = null
+@export var player = preload("res://player.gd")
 
 const SPEED = 600
 const JUMP_VELOCITY = -400.0
@@ -16,7 +15,8 @@ const JUMP_VELOCITY = -400.0
 @onready var speed = 100
 
 func _ready():
-	test_health_system()
+	pass
+	#test_health_system()
 
 func _process(delta: float) -> void:
 	pass
@@ -51,8 +51,12 @@ func heal(amount: int) -> void:
 	print("Health: ", current_health)
 	
 func die() -> void:
-	print("Player is dead!")
+	print("Kanye is dead!")
 	kanye.play("Death")
+	await get_tree().create_timer(1.0).timeout
+	kanyedeath.emit()
+	#player.collect(item)
+	queue_free()
 
 # Test damage and healing
 func test_health_system() -> void:
@@ -71,6 +75,9 @@ func recover():
 func handle_hit():
 	if kanye.animation == "Idle":
 		kanye.play("Damaged")
+	take_damage(10)
+	await get_tree().create_timer(1.0).timeout
+	recover()
 	#print("enemy was hit!")
 
 func collect(item):
@@ -79,6 +86,7 @@ func collect(item):
   
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("player_movement"):
-		player = body
-		player.collect(item)
-		take_damage(10)
+		print("here")
+		#player = body
+		#player.collect(item)
+		#take_damage(10)
