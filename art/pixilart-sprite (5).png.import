@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://co2kdvibgy7m8"
-path="res://.godot/imported/cursed record.png-4e8f47f4251ceaff7468801092797897.ctex"
+uid="uid://cttmiepaovt2h"
+path="res://.godot/imported/pixilart-sprite (5).png-6d3be7b46116ceb5558770791c85a4af.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://cursed record.png"
-dest_files=["res://.godot/imported/cursed record.png-4e8f47f4251ceaff7468801092797897.ctex"]
+source_file="res://art/pixilart-sprite (5).png"
+dest_files=["res://.godot/imported/pixilart-sprite (5).png-6d3be7b46116ceb5558770791c85a4af.ctex"]
 
 [params]
 

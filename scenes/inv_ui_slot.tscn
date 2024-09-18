@@ -1,17 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://yirbjtltsotg"]
 
-[ext_resource type="Texture2D" uid="uid://d8101t4kur6" path="res://inventory/inv_slots.png" id="1_gux6a"]
-[ext_resource type="Script" path="res://inventory/inv_ui_slot.gd" id="1_oc62d"]
+[ext_resource type="Script" path="res://scripts/inv_ui_slot.gd" id="1_mun16"]
+[ext_resource type="Texture2D" uid="uid://d8101t4kur6" path="res://inventory/inv_slots.png" id="2_1dvyb"]
 
 [node name="inv_UI_slot" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(18, 18)
 offset_right = 18.0
 offset_bottom = 18.0
-script = ExtResource("1_oc62d")
+script = ExtResource("1_mun16")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_gux6a")
+texture = ExtResource("2_1dvyb")
 centered = false
 
 [node name="CenterContainer" type="CenterContainer" parent="."]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cu7smiwbn6b4i"]
 
-[ext_resource type="Script" path="res://Menu.gd" id="1_vuguh"]
+[ext_resource type="Script" path="res://scripts/Menu.gd" id="1_vuguh"]
 [ext_resource type="FontFile" uid="uid://d08swaa6swalf" path="res://fonts/LaFemmeMakita.otf" id="2_qgldb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_elrfv"]
