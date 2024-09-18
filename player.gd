@@ -4,8 +4,9 @@ var can_punch = true
 var has_bump =true
 var speed = 250
 var normal_speed = 0.5
+signal playerdeath
 signal justpunched
-@export var max_health: int = 10
+@export var max_health: int = 100
 var current_health: int = max_health
 @export var kanyerecord: InvItem = preload("res://inventory/items/record.tres")
 @export var inv: Inv = preload("res://inventory/player_inventory.tres")
@@ -26,7 +27,9 @@ func heal(amount: int) -> void:
 func die() -> void:
 	print("Player is dead!")
 	$AnimatedSprite2D.play("Death")
-	#await get_tree().create_timer(2.0).timeout
+	#wait get_tree().create_timer(.0).timeout
+	playerdeath.emit()
+	get_tree().paused = true
 	#$AnimatedSprite2D.play("Death")
 	#queue_free()
 
@@ -94,15 +97,3 @@ func collect(item):
 func _on_kanye_kanyedeath() -> void:
 	heal(max_health-current_health)
 	collect(kanyerecord)
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.has_method("handle_hit"):
-		print("hit")
-		take_damage(10)
-
-
-func _on_area_2d_2_body_entered(body: Node2D) -> void:
-	if body.has_method("handle_hit"):
-		print("hit")
-		take_damage(10)

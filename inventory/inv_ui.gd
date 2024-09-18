@@ -1,4 +1,5 @@
 extends Control
+@onready var record: InvItem = preload("res://inventory/items/record.tres")
 @onready var inv: Inv = preload("res://inventory/player_inventory.tres")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 
@@ -38,8 +39,5 @@ func _process(delta: float) -> void:
 
 
 func _on_inv_ui_slot_mouse_entered() -> void:
-	pass # Replace with function body.
-
-
-func _on_inv_ui_slot_2_mouse_entered() -> void:
-	pass # Replace with function body.
+	if Input.is_action_just_pressed("Play"):
+		pass

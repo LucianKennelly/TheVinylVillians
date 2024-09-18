@@ -24,3 +24,9 @@ func changecamera() -> void:
 
 func _on_interact():
 	Record_Player.start_dialog(global_position, lines, interact_sound)
+
+
+func _on_player_playerdeath() -> void:
+	pass
+	#await get_tree().create_timer(5.0).timeout
+	#get_tree().paused= true

@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 # Health-related variables
-@export var max_health: int = 10
+@export var max_health: int = 100
 var current_health: int = max_health
 signal kanyedeath
 #@export var inv: Inv =  preload("res://inventory/player_inventory.tres")
@@ -86,7 +86,7 @@ func collect(item):
   
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("player_movement"):
-		print("here")
+		body.take_damage(10)
 		#player = body
 		#player.collect(item)
 		#take_damage(10)
