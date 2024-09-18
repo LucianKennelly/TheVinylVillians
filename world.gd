@@ -4,7 +4,7 @@ const lines: Array[String] = [
 	"[E]"
 ]
 @onready var Record_Player: InteractionArea = $Record_Player/interaction_area
-@onready var interact_sound = preload("res://WeirdSong(forlobby).mp3")
+@onready var interact_sound = preload("res://soundtrack/WeirdSong(forlobby).mp3")
 @onready var playersprite = $player/AnimatedSprite2D
 @onready var Kanye = $Enemy/Path2D/PathFollow2D/Kanye/KanyeAnimate
 # Called when the node enters the scene tree for the first time.
@@ -12,7 +12,7 @@ func _ready():
 	$player.position = Vector2(500, 500)
 	$player/AnimatedSprite2D.play("Idle")
 	Kanye.play("default")
-	$AudioStreamPlayer2D.play
+	$Lobby1.play
 	#Record_Player.interact = Callable(self, "_on_interact")
 	#$Kanye.position = Vector2(500, -500)
 # Called every frame. 'delta' is the elapsed time since the previous frame.

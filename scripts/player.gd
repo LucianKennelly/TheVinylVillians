@@ -10,6 +10,7 @@ var current_health: int = max_health
 @onready var kanyerecord: InvItem = load("res://inventory/items/record.tres")
 @export var inv: Inv = preload("res://inventory/player_inventory.tres")
 @onready var punch = $PunchBox
+signal play
 func take_damage(amount: int) -> void:
 	current_health -= amount
 	if current_health <= 0:
@@ -112,3 +113,7 @@ func _on_enemy_kanyedeath() -> void:
 	print("here")
 	heal(max_health-current_health)
 	collect(kanyerecord)
+
+
+func _on_inv_ui_play() -> void:
+	play.emit()

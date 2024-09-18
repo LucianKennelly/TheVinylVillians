@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dmm4opwafc5uq"]
+
+[ext_resource type="PackedScene" uid="uid://cqq4scm2wikir" path="res://scenes/inv_ui.tscn" id="1_33myw"]
+
+[node name="Inv_UI" instance=ExtResource("1_33myw")]

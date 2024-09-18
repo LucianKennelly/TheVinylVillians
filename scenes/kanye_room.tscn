@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dllh5x1gpkl1k"]
+[gd_scene load_steps=7 format=3 uid="uid://dllh5x1gpkl1k"]
 
 [ext_resource type="PackedScene" uid="uid://djmushfoxrp6j" path="res://scenes/enemy.tscn" id="1_4jfpu"]
 [ext_resource type="Script" path="res://scripts/kanye_room.gd" id="1_ikgm5"]
 [ext_resource type="PackedScene" uid="uid://bg2c3nnupserd" path="res://scenes/player.tscn" id="3_nmo75"]
 [ext_resource type="PackedScene" uid="uid://ddibmx8l3ml02" path="res://scenes/scene_transition.tscn" id="4_28wvf"]
 [ext_resource type="Texture2D" uid="uid://dou6ywwp80v0s" path="res://art/KanyeRoom.png" id="6_efn41"]
+[ext_resource type="AudioStream" uid="uid://drhwajjypjv00" path="res://soundtrack/Ultralight.mp3" id="6_x20s5"]
 
 [node name="KanyeRoom" type="Node2D"]
 position = Vector2(0, 1000)
@@ -39,6 +40,10 @@ position = Vector2(500, -100)
 [node name="SceneTransition" parent="." instance=ExtResource("4_28wvf")]
 collision_layer = 0
 collision_mask = 8
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_x20s5")
+autoplay = true
 
 [connection signal="kanyedeath" from="Enemy" to="player" method="_on_enemy_kanyedeath"]
 [connection signal="body_entered" from="SceneTransition" to="." method="_on_scene_transition_body_entered"]

@@ -213,4 +213,5 @@ shape = SubResource("RectangleShape2D_2nnkt")
 
 [connection signal="justpunched" from="." to="PunchBox" method="_on_player_justpunched"]
 [connection signal="body_entered" from="PunchBox" to="PunchBox" method="_on_body_entered"]
+[connection signal="play" from="Inv_UI" to="." method="_on_inv_ui_play"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

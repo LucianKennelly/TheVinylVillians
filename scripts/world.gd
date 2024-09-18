@@ -9,6 +9,7 @@ const lines: Array[String] = [
 @onready var player = $Menu/NinePatchRect/GridContainer/RecordRoom/player
 @onready var playersprite = $Menu/NinePatchRect/player/RecordRoom/AnimatedSprite2D
 @onready var Kanye = $KanyeRoom/Enemy/Path2D/PathFollow2D/Kanye/KanyeAnimate
+@onready var Lobby1 = $Lobby1
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -16,7 +17,7 @@ func _ready():
 	#player.position = Vector2(500, 500)
 	#playersprite.play("Idle")
 #	Kanye.play("default")
-	$AudioStreamPlayer2D.play
+	Lobby1.play
 	#Record_Player.interact = Callable(self, "_on_interact")
 	#$Kanye.position = Vector2(500, -500)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
