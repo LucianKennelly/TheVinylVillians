@@ -21,7 +21,7 @@ func heal(amount: int) -> void:
 	current_health += amount
 	if current_health > max_health:
 		current_health = max_health
-	print("Health: ", current_health)
+	print("Player Health: ", current_health)
 	
 func die() -> void:
 	can_move= false
@@ -99,7 +99,6 @@ func collect(item):
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("handle_hit"):
-		print("hit")
 		take_damage(10)
 
 
