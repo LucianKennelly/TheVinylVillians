@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
 # Health-related variables
-@export var max_health: int = 10
+@export var max_health: int = 100
 var current_health: int = max_health
 signal kanyedeath
 #@export var inv: Inv =  preload("res://inventory/player_inventory.tres")
-@export var player = preload("res://player.gd")
-
+var player = null
+@export var kanye_record = preload("res://inventory/items/record.tres")
 const SPEED = 600
 const JUMP_VELOCITY = -400.0
 
@@ -55,7 +55,6 @@ func die() -> void:
 	kanye.play("Death")
 	await get_tree().create_timer(1.0).timeout
 	kanyedeath.emit()
-	#player.collect(item)
 	queue_free()
 
 # Test damage and healing
@@ -86,7 +85,8 @@ func collect(item):
   
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("player_movement"):
-		print("here")
+		player =body
+		#print("here")
 		#player = body
 		#player.collect(item)
 		#take_damage(10)

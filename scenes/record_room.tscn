@@ -1,0 +1,104 @@
+[gd_scene load_steps=12 format=3 uid="uid://b80ybpwgbrhi6"]
+
+[ext_resource type="Script" path="res://scripts/record_room.gd" id="1_cxcv0"]
+[ext_resource type="Texture2D" uid="uid://dxt7plm76w4cq" path="res://art/MainRoom.png" id="2_12k60"]
+[ext_resource type="Script" path="res://scripts/record_player_2.gd" id="3_sri7i"]
+[ext_resource type="Script" path="res://interaction/interaction_area/interaction_area.gd" id="4_einfk"]
+[ext_resource type="PackedScene" uid="uid://ddibmx8l3ml02" path="res://scenes/scene_transition.tscn" id="5_ojlid"]
+[ext_resource type="PackedScene" uid="uid://bg2c3nnupserd" path="res://scenes/player.tscn" id="6_vwvpw"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_s34fp"]
+a = Vector2(11.9235, 14)
+b = Vector2(-328.889, 257)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_3kixo"]
+a = Vector2(336.837, 273)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_el2sb"]
+a = Vector2(493.83, 513)
+b = Vector2(-2.98086, 15)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8gsxj"]
+a = Vector2(-209.654, 281)
+b = Vector2(288.15, -193)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vt1ds"]
+size = Vector2(57.646, 256)
+
+[node name="RecordRoom" type="Node2D"]
+script = ExtResource("1_cxcv0")
+
+[node name="MainRoom" type="TextureRect" parent="."]
+show_behind_parent = true
+offset_left = -1.98724
+offset_top = 3.0
+offset_right = 998.013
+offset_bottom = 1003.0
+texture = ExtResource("2_12k60")
+expand_mode = 4
+stretch_mode = 2
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2(330.876, 241)
+shape = SubResource("SegmentShape2D_s34fp")
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2(654.796, 248)
+shape = SubResource("SegmentShape2D_3kixo")
+
+[node name="BottomLeftWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomLeftWall"]
+position = Vector2(2.98086, 484)
+shape = SubResource("SegmentShape2D_el2sb")
+
+[node name="BottomRightWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BottomRightWall"]
+position = Vector2(706.464, 711)
+shape = SubResource("SegmentShape2D_8gsxj")
+
+[node name="TopLeftWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopLeftWall"]
+position = Vector2(321.925, 128)
+shape = SubResource("RectangleShape2D_vt1ds")
+
+[node name="TopRightWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopRightWall"]
+position = Vector2(674.685, 132)
+shape = SubResource("RectangleShape2D_vt1ds")
+
+[node name="Record Player" type="StaticBody2D" parent="."]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("3_sri7i")
+
+[node name="interaction_area" type="Area2D" parent="Record Player"]
+script = ExtResource("4_einfk")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Record Player/interaction_area"]
+position = Vector2(491.626, 485.751)
+scale = Vector2(1.95032, 3.24734)
+build_mode = 1
+polygon = PackedVector2Array(39.3403, -3.61871, 24.0563, -11.9332, -19.7578, -11.9332, -37.0797, -3.61871)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Record Player"]
+position = Vector2(491.626, 485.751)
+scale = Vector2(1.95032, 3.24734)
+build_mode = 1
+polygon = PackedVector2Array(39.3403, -3.61871, 24.0563, -11.9332, -19.7578, -11.9332, -37.0797, -3.61871)
+
+[node name="SceneTransition" parent="." instance=ExtResource("5_ojlid")]
+collision_layer = 0
+collision_mask = 8
+
+[node name="player" parent="." instance=ExtResource("6_vwvpw")]
+position = Vector2(500, 100)
+
+[connection signal="body_entered" from="SceneTransition" to="." method="_on_scene_transition_body_entered"]

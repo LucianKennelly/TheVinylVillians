@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddibmx8l3ml02"]
+
+[ext_resource type="Script" path="res://interaction/interaction_area/interaction_area.gd" id="1_7s8d5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xaxyp"]
+size = Vector2(302.125, 83)
+
+[node name="SceneTransition" type="Area2D"]
+script = ExtResource("1_7s8d5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+z_index = -1
+y_sort_enabled = true
+position = Vector2(499.759, 4.5)
+shape = SubResource("RectangleShape2D_xaxyp")

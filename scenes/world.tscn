@@ -1,0 +1,48 @@
+[gd_scene load_steps=7 format=3 uid="uid://cvefu1l77vj3a"]
+
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_u8bha"]
+[ext_resource type="PackedScene" uid="uid://b80ybpwgbrhi6" path="res://scenes/record_room.tscn" id="2_cb5ld"]
+[ext_resource type="AudioStream" uid="uid://ba25bgqvbuw7e" path="res://soundtrack/tendrils.mp3" id="3_cjhxo"]
+[ext_resource type="PackedScene" uid="uid://dllh5x1gpkl1k" path="res://scenes/kanye_room.tscn" id="4_jr2cv"]
+[ext_resource type="PackedScene" uid="uid://cu7smiwbn6b4i" path="res://scenes/Menu.tscn" id="5_6rjax"]
+[ext_resource type="PackedScene" uid="uid://ddibmx8l3ml02" path="res://scenes/scene_transition.tscn" id="6_dfbk4"]
+
+[node name="World" type="Node2D"]
+y_sort_enabled = true
+scale = Vector2(1.00642, 1)
+script = ExtResource("1_u8bha")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_cjhxo")
+volume_db = 9.905
+autoplay = true
+
+[node name="SceneTransition" parent="." instance=ExtResource("6_dfbk4")]
+collision_layer = 8
+collision_mask = 8
+
+[node name="Menu" parent="." instance=ExtResource("5_6rjax")]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Menu"]
+custom_minimum_size = Vector2(1000, 1000)
+layout_mode = 2
+offset_left = 1000.0
+offset_right = 2000.0
+offset_bottom = 1000.0
+region_rect = Rect2(1000, 1000, 1000, 1000)
+
+[node name="GridContainer" type="GridContainer" parent="Menu/NinePatchRect"]
+custom_minimum_size = Vector2(10000, 10000)
+layout_mode = 0
+offset_right = 10000.0
+offset_bottom = 10000.0
+columns = 4
+
+[node name="RecordRoom" parent="Menu/NinePatchRect/GridContainer" instance=ExtResource("2_cb5ld")]
+z_index = -1
+y_sort_enabled = true
+
+[node name="KanyeRoom" parent="Menu/NinePatchRect/GridContainer" instance=ExtResource("4_jr2cv")]
+position = Vector2(0, 0)
+
+[connection signal="body_entered" from="SceneTransition" to="." method="_on_scene_transition_body_entered"]
