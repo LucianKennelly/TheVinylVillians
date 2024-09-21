@@ -146,7 +146,7 @@ script = ExtResource("2_ggaot")
 [node name="KanyeAnimate" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/Kanye"]
 position = Vector2(508.734, -444)
 sprite_frames = SubResource("SpriteFrames_wmrx3")
-animation = &"Death"
+animation = &"Damaged"
 autoplay = "Idle"
 
 [node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D/Kanye"]

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnp5cet887ahe"]
+
+[ext_resource type="Texture2D" uid="uid://0gxpgiqa471k" path="res://art/Kanye-Armor-Beam.png" id="1_wsoim"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gpjnq"]
+size = Vector2(156, 35)
+
+[node name="UltraBeamLeft" type="Area2D"]
+collision_layer = 6
+collision_mask = 5
+
+[node name="UltraBeamLeftSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_wsoim")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-32, -3.5)
+shape = SubResource("RectangleShape2D_gpjnq")
