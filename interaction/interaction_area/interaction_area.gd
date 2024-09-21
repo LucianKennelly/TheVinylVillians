@@ -28,6 +28,6 @@ func _on_body_exited(body: Node2D) -> void:
 
 func _on_player_recordplayerinsert() -> void:
 	#if player_inventory.has_record(kanye_record):
-		print("here")
+		#print("here")
 		record_inventory.insert(kanye_record)
 	#record_inventory.update_slots()

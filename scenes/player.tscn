@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c2dqbihdkktk" path="res://scenes/ultra_beam_right.tscn" id="10_dosjl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2nnkt"]
-size = Vector2(470, 1310)
+size = Vector2(330, 886.667)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i5a7r"]
 size = Vector2(75, 31)
@@ -190,7 +190,7 @@ script = ExtResource("1_xyubf")
 
 [node name="PlayerHitBox" type="CollisionShape2D" parent="."]
 position = Vector2(3.5, -1.5)
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.15, 0.15)
 shape = SubResource("RectangleShape2D_2nnkt")
 
 [node name="PunchBox" type="Area2D" parent="."]
@@ -215,13 +215,6 @@ offset_top = 102.0
 offset_right = 67.0
 offset_bottom = 142.0
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 14
-collision_mask = 5
-
-[node name="PlayerHitBox" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_2nnkt")
-
 [node name="UltraBeamLeft" parent="." instance=ExtResource("8_exe6p")]
 position = Vector2(-67, -8)
 script = ExtResource("9_eorqw")
@@ -237,7 +230,6 @@ script = ExtResource("9_c54xq")
 [connection signal="body_exited" from="PunchBox" to="PunchBox" method="_on_body_exited"]
 [connection signal="firstcraft" from="Inv_UI" to="." method="_on_inv_ui_firstcraft"]
 [connection signal="play" from="Inv_UI" to="." method="_on_inv_ui_play"]
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="UltraBeamLeft" to="UltraBeamLeft" method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="UltraBeamRight" to="UltraBeamRight" method="_on_body_entered"]

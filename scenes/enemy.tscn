@@ -130,9 +130,8 @@ scale = Vector2(1.00642, 1)
 curve = SubResource("Curve2D_kfqlt")
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
-position = Vector2(227.989, -558.865)
+position = Vector2(490.849, -488)
 rotation = 2.60383
-progress = 7259.04
 rotates = false
 
 [node name="Kanye" type="CharacterBody2D" parent="Path2D/PathFollow2D"]

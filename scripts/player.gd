@@ -43,10 +43,14 @@ func die() -> void:
 	#queue_free()
 
 func _physics_process(delta):
+	#if has_armor:
+	#	$Timer.start(1)
 	player_movement(delta)
 	
 
 func player_movement(delta):
+	if inv.has_record(kanyeclothes):
+		has_armor = true
 	if can_move:
 		#$player.connect("justpunched",justpunched)
 		var collision_info = move_and_collide(velocity * delta * normal_speed)
@@ -113,10 +117,11 @@ func _ready():
 
 
 func _on_timer_timeout() -> void:
-	print("ultra")
-	beamLeft()
-	beamRight()
-	$Timer.start(10)
+	if has_armor:
+		print("ultra")
+		beamRight()
+		beamLeft()
+	$Timer.start(2.5)
 
 func beamRight():
 	var bullet = $UltraBeamRight
@@ -139,11 +144,11 @@ func collect(item):
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("handle_hit"):
-		take_damage(10)
+		body.take_damage(10)
 
 
 func _on_enemy_kanyedeath() -> void:
-	print("here")
+	#print("here")
 	heal(max_health-current_health)
 	collect(kanyerecord)
 
@@ -156,4 +161,5 @@ func _on_inv_ui_firstcraft() -> void:
 	if inv.has_record(kanyerecord):
 		inv.delete(kanyerecord)
 		inv.insert(kanyeclothes)
+		print("kanye armor equipped")
 		recordplayerinsert.emit()
