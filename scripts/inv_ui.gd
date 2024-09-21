@@ -1,5 +1,6 @@
 extends Control
 @onready var record: InvItem = preload("res://inventory/items/kanye_record.tres")
+@onready var record_inv: Inv = preload("res://inventory/record_player_inventory.tres")
 @onready var inv: Inv = preload("res://inventory/player_inventory.tres")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 signal play
