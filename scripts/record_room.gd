@@ -23,4 +23,4 @@ func _on_scene_transition_body_entered(body: Node2D) -> void:
 func _on_player_play() -> void:
 	#print("here")
 	$Lobby1.stop()
-	$SecretDisk.play()
+	$KanyeDisk.play()

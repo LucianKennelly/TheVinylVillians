@@ -7,10 +7,14 @@ var normal_speed = 0.5
 signal justpunched
 @export var max_health: int = 100
 var current_health: int = max_health
-@onready var kanyerecord: InvItem = load("res://inventory/items/record.tres")
+@onready var kanyeclothes: InvItem = load("res://inventory/items/kanye_clothes.tres")
+@onready var kanyerecord: InvItem = load("res://inventory/items/kanye_record.tres")
 @export var inv: Inv = preload("res://inventory/player_inventory.tres")
 @onready var punch = $PunchBox
+#@onready var punchboxcoord = $PunchBox/PunchHitBox.get_shape().x
 signal play
+signal recordplayerinsert
+signal directionchanged
 func take_damage(amount: int) -> void:
 	current_health -= amount
 	if current_health <= 0:
@@ -76,13 +80,18 @@ func player_movement(delta):
 				#emit_signal("bump")
 				#has_bump = false
 		if velocity.x > 0:
+			#this.scale.x = -1
 			get_node("AnimatedSprite2D").flip_h = false
-			get_node("PunchBox").scale.x = -1.5
-			get_node("PlayerHitBox").scale.x = 1
+			#punchboxcoord = punchboxcoord*-1
+			directionchanged.emit()
+			get_node("PunchBox").scale.x = 1
 		elif velocity.x < 0:
+			pass
+			#this.scale.x = -1
 			$AnimatedSprite2D.flip_h = true
-			get_node("PunchBox").scale.x = 0.5
-			get_node("PlayerHitBox").scale.x = -1
+			get_node("PunchBox").scale.x = -0.5
+			#punchboxcoord = punchboxcoord*-1
+			directionchanged.emit()
 		move_and_collide(velocity * delta * normal_speed)
 	#f#unc justpunched() -> void:
 		#if $AnimatedSprite2D.animation == "punch":
@@ -94,7 +103,7 @@ func _ready():
 	pass
 func collect(item):
 	inv.insert(item)
-
+	#inv.insert(kanyeclothes)
 
 
 
@@ -117,3 +126,10 @@ func _on_enemy_kanyedeath() -> void:
 
 func _on_inv_ui_play() -> void:
 	play.emit()
+
+
+func _on_inv_ui_firstcraft() -> void:
+	if inv.has_record(kanyerecord):
+		inv.delete(kanyerecord)
+		inv.insert(kanyeclothes)
+		recordplayerinsert.emit()
