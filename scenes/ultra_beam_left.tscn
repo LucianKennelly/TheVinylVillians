@@ -1,17 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://bnp5cet887ahe"]
 
-[ext_resource type="Texture2D" uid="uid://c7aoxomwd1y24" path="res://art/laserRed01.png" id="1_c3gx1"]
+[ext_resource type="Texture2D" uid="uid://0gxpgiqa471k" path="res://art/Kanye-Armor-Beam.png" id="1_wsoim"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gpjnq"]
-size = Vector2(20, 56)
+size = Vector2(156, 35)
 
 [node name="UltraBeamLeft" type="Area2D"]
 collision_layer = 6
 collision_mask = 5
 
 [node name="UltraBeamLeftSprite" type="Sprite2D" parent="."]
-rotation = 1.5708
-texture = ExtResource("1_c3gx1")
+texture = ExtResource("1_wsoim")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-32, -3.5)
 shape = SubResource("RectangleShape2D_gpjnq")

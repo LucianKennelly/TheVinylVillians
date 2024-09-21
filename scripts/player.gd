@@ -11,6 +11,7 @@ var current_health: int = max_health
 @onready var kanyerecord: InvItem = load("res://inventory/items/kanye_record.tres")
 @export var inv: Inv = preload("res://inventory/player_inventory.tres")
 var bullet_scene = preload("res://scenes/ultra_beam_left.tscn")
+var has_armor = false
 
 @onready var punch = $PunchBox
 #@onready var punchboxcoord = $PunchBox/PunchHitBox.get_shape().x
@@ -115,7 +116,7 @@ func _on_timer_timeout() -> void:
 	print("ultra")
 	beamLeft()
 	beamRight()
-	$Timer.start(1)
+	$Timer.start(10)
 
 func beamRight():
 	var bullet = $UltraBeamRight
