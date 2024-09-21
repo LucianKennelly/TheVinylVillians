@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://dxyy7ep88cy6r" path="res://art/Punch.png" id="5_i5q1n"]
 [ext_resource type="Texture2D" uid="uid://cn2c2lumkfc47" path="res://art/Run3.png" id="6_wcoyr"]
 [ext_resource type="PackedScene" uid="uid://cqq4scm2wikir" path="res://scenes/inv_ui.tscn" id="7_axh8y"]
-[ext_resource type="PackedScene" uid="uid://bnp5cet887ahe" path="res://scenes/ultra_beam_left.tscn" id="8_exe6p"]
+[ext_resource type="PackedScene" uid="uid://bnp5cet887ahe" path="res://scenes/ultrabeamLeft.tscn" id="8_exe6p"]
 [ext_resource type="Script" path="res://scenes/ultra_beam_right.gd" id="9_c54xq"]
-[ext_resource type="Script" path="res://scenes/ultra_beam_left.gd" id="9_eorqw"]
+[ext_resource type="Script" path="res://scenes/ultrabeamLeft.gd" id="9_m3ipy"]
 [ext_resource type="PackedScene" uid="uid://c2dqbihdkktk" path="res://scenes/ultra_beam_right.tscn" id="10_dosjl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2nnkt"]
@@ -186,6 +186,8 @@ position = Vector2(500, 500)
 collision_layer = 14
 collision_mask = 13
 script = ExtResource("1_xyubf")
+max_health = null
+inv = null
 
 [node name="PlayerHitBox" type="CollisionShape2D" parent="."]
 scale = Vector2(0.1, 0.1)
@@ -217,7 +219,7 @@ collision_mask = 5
 shape = SubResource("RectangleShape2D_2nnkt")
 
 [node name="UltraBeamLeft" parent="." instance=ExtResource("8_exe6p")]
-script = ExtResource("9_eorqw")
+script = ExtResource("9_m3ipy")
 
 [node name="Timer" type="Timer" parent="."]
 
@@ -228,6 +230,4 @@ script = ExtResource("9_c54xq")
 [connection signal="body_entered" from="PunchBox" to="PunchBox" method="_on_body_entered"]
 [connection signal="play" from="Inv_UI" to="." method="_on_inv_ui_play"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="UltraBeamLeft" to="UltraBeamLeft" method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="UltraBeamRight" to="UltraBeamRight" method="_on_body_entered"]
