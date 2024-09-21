@@ -74,6 +74,7 @@ func recover():
 func handle_hit():
 	if kanye.animation == "Idle":
 		kanye.play("Damaged")
+	print("Kanye Health: ",current_health)
 	take_damage(10)
 	await get_tree().create_timer(1.0).timeout
 	recover()

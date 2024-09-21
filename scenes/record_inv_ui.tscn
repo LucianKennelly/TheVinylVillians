@@ -1,5 +1,60 @@
-[gd_scene load_steps=2 format=3 uid="uid://dmm4opwafc5uq"]
+[gd_scene load_steps=3 format=3 uid="uid://dmm4opwafc5uq"]
 
-[ext_resource type="PackedScene" uid="uid://cqq4scm2wikir" path="res://scenes/inv_ui.tscn" id="1_33myw"]
+[ext_resource type="Script" path="res://scripts/inv_ui.gd" id="1_3d80d"]
+[ext_resource type="PackedScene" uid="uid://yirbjtltsotg" path="res://scenes/inv_ui_slot.tscn" id="2_srneb"]
 
-[node name="Inv_UI" instance=ExtResource("1_33myw")]
+[node name="Inv_UI" type="Control"]
+custom_minimum_size = Vector2(85, 40)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -42.5
+offset_top = -20.0
+offset_right = 42.5
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+script = ExtResource("1_3d80d")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 200.0
+region_rect = Rect2(3.57936, -0.730078, 104.511, 104.192)
+
+[node name="GridContainer" type="GridContainer" parent="NinePatchRect"]
+custom_minimum_size = Vector2(84, 40)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 4
+
+[node name="inv_UI_slot" parent="NinePatchRect/GridContainer" instance=ExtResource("2_srneb")]
+layout_mode = 2
+
+[node name="inv_UI_slot2" parent="NinePatchRect/GridContainer" instance=ExtResource("2_srneb")]
+layout_mode = 2
+
+[node name="inv_UI_slot3" parent="NinePatchRect/GridContainer" instance=ExtResource("2_srneb")]
+layout_mode = 2
+
+[node name="inv_UI_slot4" parent="NinePatchRect/GridContainer" instance=ExtResource("2_srneb")]
+layout_mode = 2
+
+[node name="inv_UI_slot5" parent="NinePatchRect/GridContainer" instance=ExtResource("2_srneb")]
+layout_mode = 2
+
+[node name="inv_UI_slot6" parent="NinePatchRect/GridContainer" instance=ExtResource("2_srneb")]
+layout_mode = 2
+
+[node name="inv_UI_slot7" parent="NinePatchRect/GridContainer" instance=ExtResource("2_srneb")]
+layout_mode = 2
+
+[node name="inv_UI_slot8" parent="NinePatchRect/GridContainer" instance=ExtResource("2_srneb")]
+layout_mode = 2
+
+[connection signal="mouse_entered" from="NinePatchRect/GridContainer/inv_UI_slot" to="." method="_on_inv_ui_slot_mouse_entered"]

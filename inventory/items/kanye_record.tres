@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=3 format=3 uid="uid://cjfh2y0ahhy4c"]
+
+[ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_jpsmn"]
+[ext_resource type="Texture2D" uid="uid://dxhjl46mxkp3n" path="res://art/Kanye-Vinyl-resized(2).png" id="2_eowyr"]
+
+[resource]
+script = ExtResource("1_jpsmn")
+name = ""
+texture = ExtResource("2_eowyr")

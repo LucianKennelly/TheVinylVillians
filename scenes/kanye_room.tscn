@@ -35,7 +35,7 @@ texture = ExtResource("6_efn41")
 stretch_mode = 2
 
 [node name="player" parent="." instance=ExtResource("3_nmo75")]
-position = Vector2(500, -100)
+position = Vector2(500, -163)
 
 [node name="SceneTransition" parent="." instance=ExtResource("4_28wvf")]
 collision_layer = 0
