@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bnp5cet887ahe"]
+
+[ext_resource type="Script" path="res://scenes/ultrabeam.gd" id="1_x2hjk"]
+[ext_resource type="Texture2D" uid="uid://c7aoxomwd1y24" path="res://art/laserRed01.png" id="2_82mho"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gpjnq"]
+size = Vector2(20, 56)
+
+[node name="UltraBeam" type="Area2D"]
+collision_layer = 6
+collision_mask = 5
+script = ExtResource("1_x2hjk")
+
+[node name="UltraBeamSprite" type="Sprite2D" parent="."]
+texture = ExtResource("2_82mho")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gpjnq")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_ultra_beam_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

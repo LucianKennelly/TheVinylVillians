@@ -10,6 +10,9 @@ var current_health: int = max_health
 @onready var kanyeclothes: InvItem = load("res://inventory/items/kanye_clothes.tres")
 @onready var kanyerecord: InvItem = load("res://inventory/items/kanye_record.tres")
 @export var inv: Inv = preload("res://inventory/player_inventory.tres")
+var bullet_scene = preload("res://scenes/ultra_beam_left.tscn")
+var has_armor = false
+
 @onready var punch = $PunchBox
 #@onready var punchboxcoord = $PunchBox/PunchHitBox.get_shape().x
 signal play
@@ -41,6 +44,8 @@ func die() -> void:
 
 func _physics_process(delta):
 	player_movement(delta)
+	
+
 func player_movement(delta):
 	if can_move:
 		#$player.connect("justpunched",justpunched)
@@ -67,6 +72,7 @@ func player_movement(delta):
 			#punch.attack()
 			velocity.y = 0
 			velocity.x = 0
+			
 		else:
 			$AnimatedSprite2D.play("Idle")
 			velocity.y = 0
@@ -99,8 +105,32 @@ func player_movement(delta):
 		#else:
 		#	can_punch = true
 
+
+
 func _ready():
-	pass
+	print("ready")
+	$Timer.start(1)
+
+
+func _on_timer_timeout() -> void:
+	print("ultra")
+	beamLeft()
+	beamRight()
+	$Timer.start(10)
+
+func beamRight():
+	var bullet = $UltraBeamRight
+	bullet.global_position = global_position
+	#print(global_position)
+	get_tree().get_root().add_child(bullet)
+	
+func beamLeft():
+	var bullet = $UltraBeamLeft
+	bullet.global_position = global_position
+	#print(global_position)
+	get_tree().get_root().add_child(bullet)
+		
+	
 func collect(item):
 	inv.insert(item)
 	#inv.insert(kanyeclothes)
@@ -109,12 +139,6 @@ func collect(item):
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("handle_hit"):
-		take_damage(10)
-
-
-func _on_area_2d_2_body_entered(body: Node2D) -> void:
-	if body.has_method("handle_hit"):
-		print("hit")
 		take_damage(10)
 
 

@@ -28,6 +28,10 @@ window/size/viewport_width=1000
 window/size/viewport_height=1000
 window/size/initial_position_type=0
 
+[dotnet]
+
+project/assembly_name="VinylVillians"
+
 [input]
 
 Up={
