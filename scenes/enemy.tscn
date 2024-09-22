@@ -1,10 +1,13 @@
-[gd_scene load_steps=22 format=3 uid="uid://djmushfoxrp6j"]
+[gd_scene load_steps=25 format=3 uid="uid://djmushfoxrp6j"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_nq57a"]
 [ext_resource type="Script" path="res://scripts/kanye.gd" id="2_ggaot"]
 [ext_resource type="Texture2D" uid="uid://cttmiepaovt2h" path="res://art/pixilart-sprite (5).png" id="3_pbpxx"]
 [ext_resource type="Texture2D" uid="uid://bf2oejpf2qrtx" path="res://art/Kanye-Death.png" id="4_v7omq"]
 [ext_resource type="Texture2D" uid="uid://caf04xqg4a1gr" path="res://art/Kanye.png" id="5_04ibh"]
+[ext_resource type="Texture2D" uid="uid://cbtfjcmfcmfdm" path="res://Hearts/PNG/health_bar/health_bar_border.png" id="6_teshl"]
+[ext_resource type="Texture2D" uid="uid://bihxwke43ymhp" path="res://Hearts/PNG/health_bar/kanye_health_bar.png" id="7_r1qry"]
+[ext_resource type="Script" path="res://scenes/kanyeHealthBar.gd" id="8_3yqjx"]
 
 [sub_resource type="Curve2D" id="Curve2D_kfqlt"]
 _data = {
@@ -145,7 +148,7 @@ script = ExtResource("2_ggaot")
 [node name="KanyeAnimate" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/Kanye"]
 position = Vector2(508.734, -444)
 sprite_frames = SubResource("SpriteFrames_wmrx3")
-animation = &"Death"
+animation = &"Idle"
 autoplay = "Idle"
 
 [node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D/Kanye"]
@@ -155,9 +158,28 @@ collision_mask = 2
 position = Vector2(503.269, -478)
 shape = SubResource("RectangleShape2D_sfqaa")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Path2D/PathFollow2D/Kanye/Area2D"]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Kanye"]
 position = Vector2(507.74, -447)
 shape = SubResource("RectangleShape2D_pkdd2")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Path2D/PathFollow2D/Kanye" node_paths=PackedStringArray("kanye")]
+offset_left = 420.301
+offset_top = -360.0
+offset_right = 603.301
+offset_bottom = -306.0
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_top = 4
+stretch_margin_right = 4
+stretch_margin_bottom = 4
+texture_under = ExtResource("6_teshl")
+texture_over = ExtResource("6_teshl")
+texture_progress = ExtResource("7_r1qry")
+script = ExtResource("8_3yqjx")
+kanye = NodePath("..")
 
 [connection signal="kanyedeath" from="Path2D/PathFollow2D/Kanye" to="." method="_on_kanye_kanyedeath"]
 [connection signal="body_entered" from="Path2D/PathFollow2D/Kanye/Area2D" to="Path2D/PathFollow2D/Kanye" method="_on_area_2d_body_entered"]

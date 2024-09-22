@@ -1,4 +1,7 @@
 extends CharacterBody2D
+class_name Player
+signal healthChanged
+
 var can_move = true
 var can_punch = true
 var has_bump =true
@@ -13,6 +16,7 @@ var current_health: int = max_health
 signal play
 func take_damage(amount: int) -> void:
 	current_health -= amount
+	healthChanged.emit()
 	if current_health <= 0:
 		die()
 	else:
@@ -20,6 +24,7 @@ func take_damage(amount: int) -> void:
 
 func heal(amount: int) -> void:
 	current_health += amount
+	healthChanged.emit()
 	if current_health > max_health:
 		current_health = max_health
 	print("Player Health: ", current_health)

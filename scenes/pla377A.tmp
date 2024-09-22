@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bg2c3nnupserd"]
+[gd_scene load_steps=32 format=3 uid="uid://bg2c3nnupserd"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_xyubf"]
 [ext_resource type="Script" path="res://scripts/punch_box.gd" id="2_42aut"]
@@ -7,9 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dxyy7ep88cy6r" path="res://art/Punch.png" id="5_i5q1n"]
 [ext_resource type="Texture2D" uid="uid://cn2c2lumkfc47" path="res://art/Run3.png" id="6_wcoyr"]
 [ext_resource type="PackedScene" uid="uid://cqq4scm2wikir" path="res://scenes/inv_ui.tscn" id="7_axh8y"]
-[ext_resource type="Texture2D" uid="uid://cbtfjcmfcmfdm" path="res://Hearts/PNG/health_bar/health_bar_border.png" id="8_8ji8l"]
 [ext_resource type="Script" path="res://scenes/healthBar.gd" id="8_bw3p7"]
-[ext_resource type="Texture2D" uid="uid://cck4lw80c2xhl" path="res://Hearts/PNG/health_bar/health_bar.png" id="10_j4crp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2nnkt"]
 size = Vector2(30.5, 101)
@@ -214,26 +212,18 @@ collision_mask = 5
 [node name="PlayerHitBox" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_2nnkt")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Area2D"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." node_paths=PackedStringArray("player")]
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -88.0
-offset_right = 88.0
-offset_bottom = 65.0
+offset_left = -72.5
+offset_right = 72.5
+offset_bottom = 50.0
 grow_horizontal = 2
 value = 100.0
-nine_patch_stretch = true
-stretch_margin_left = 4
-stretch_margin_top = 4
-stretch_margin_right = 4
-stretch_margin_bottom = 4
-texture_under = ExtResource("8_8ji8l")
-texture_progress = ExtResource("10_j4crp")
 script = ExtResource("8_bw3p7")
-player = NodePath("..")
 
 [connection signal="justpunched" from="." to="PunchBox" method="_on_player_justpunched"]
 [connection signal="body_entered" from="PunchBox" to="PunchBox" method="_on_body_entered"]
