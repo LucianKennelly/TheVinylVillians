@@ -55,7 +55,7 @@ func player_movement(delta):
 	if inv.has_record(kanyeclothes):
 		has_armor = true
 		_on_armor_animated_animation_changed()
-    
+	
 	if can_move:
 		#$player.connect("justpunched",justpunched)
 		var collision_info = move_and_collide(velocity * delta * normal_speed)
@@ -97,11 +97,12 @@ func player_movement(delta):
 		if velocity.x > 0:
 			#this.scale.x = -1
 			get_node("AnimatedSprite2D").flip_h = false
+			get_node("ArmorAnimated").flip_h = false
 			#punchboxcoord = punchboxcoord*-1
 			directionchanged.emit()
 			get_node("PunchBox").scale.x = 1
 		elif velocity.x < 0:
-			pass
+			get_node("ArmorAnimated").flip_h = true
 			#this.scale.x = -1
 			character.flip_h = true
 			get_node("PunchBox").scale.x = -0.5
@@ -129,7 +130,7 @@ func _on_timer_timeout() -> void:
 		print("ultra")
 		beamRight()
 		beamLeft()
-	 $Timer.start(1)
+	$Timer.start(1)
 
 func beamRight():
 	var bullet = $UltraBeamRight

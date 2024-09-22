@@ -36,6 +36,7 @@ stretch_mode = 2
 
 [node name="player" parent="." instance=ExtResource("3_nmo75")]
 position = Vector2(500, -163)
+motion_mode = 0
 
 [node name="SceneTransition" parent="." instance=ExtResource("4_28wvf")]
 collision_layer = 0
