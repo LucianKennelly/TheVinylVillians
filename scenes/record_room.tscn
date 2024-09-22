@@ -97,7 +97,7 @@ scale = Vector2(1.95032, 3.24734)
 build_mode = 1
 polygon = PackedVector2Array(96.0735, 17.0136, 49.4144, -33.1813, -44.929, -31.3336, -69.5404, 18.2454)
 
-[node name="Inv_UI" parent="Record Player/interaction_area" instance=ExtResource("5_1v6jl")]
+[node name="Record_Inv_UI" parent="Record Player/interaction_area" instance=ExtResource("5_1v6jl")]
 offset_left = 326.0
 offset_top = 477.0
 offset_right = 411.0
@@ -127,10 +127,17 @@ volume_db = -8.685
 stream = ExtResource("11_dk33n")
 volume_db = -9.905
 
-[connection signal="body_entered" from="Record Player/interaction_area" to="Record Player/interaction_area/Inv_UI" method="_on_interaction_area_body_entered"]
-[connection signal="body_exited" from="Record Player/interaction_area" to="Record Player/interaction_area/Inv_UI" method="_on_interaction_area_body_exited"]
-[connection signal="firstcraft" from="Record Player/interaction_area/Inv_UI" to="player" method="_on_inv_ui_firstcraft"]
-[connection signal="play" from="Record Player/interaction_area/Inv_UI" to="player" method="_on_inv_ui_play"]
+[node name="SceneTransition2" parent="." instance=ExtResource("5_ojlid")]
+collision_layer = 0
+collision_mask = 2
+
+[connection signal="body_entered" from="Record Player/interaction_area" to="Record Player/interaction_area/Record_Inv_UI" method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="Record Player/interaction_area" to="Record Player/interaction_area/Record_Inv_UI" method="_on_interaction_area_body_exited"]
+[connection signal="firstcraft" from="Record Player/interaction_area/Record_Inv_UI" to="player" method="_on_inv_ui_firstcraft"]
+[connection signal="mouse_entered" from="Record Player/interaction_area/Record_Inv_UI" to="." method="_on_record_inv_ui_mouse_entered"]
+[connection signal="play" from="Record Player/interaction_area/Record_Inv_UI" to="." method="_on_record_inv_ui_play"]
+[connection signal="play" from="Record Player/interaction_area/Record_Inv_UI" to="player" method="_on_inv_ui_play"]
 [connection signal="body_entered" from="SceneTransition" to="." method="_on_scene_transition_body_entered"]
 [connection signal="play" from="player" to="." method="_on_player_play"]
 [connection signal="recordplayerinsert" from="player" to="Record Player/interaction_area" method="_on_player_recordplayerinsert"]
+[connection signal="body_entered" from="SceneTransition2" to="." method="_on_scene_transition_2_body_entered"]

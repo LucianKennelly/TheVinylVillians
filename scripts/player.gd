@@ -47,7 +47,7 @@ func die() -> void:
 
 func _physics_process(delta):
 	#if has_armor:
-		#$Timer.start(1)
+	#	$Timer.start(1)
 	player_movement(delta)
 	
 
@@ -55,6 +55,7 @@ func player_movement(delta):
 	if inv.has_record(kanyeclothes):
 		has_armor = true
 		_on_armor_animated_animation_changed()
+    
 	if can_move:
 		#$player.connect("justpunched",justpunched)
 		var collision_info = move_and_collide(velocity * delta * normal_speed)
@@ -128,7 +129,7 @@ func _on_timer_timeout() -> void:
 		print("ultra")
 		beamRight()
 		beamLeft()
-	$Timer.start(1)
+	 $Timer.start(1)
 
 func beamRight():
 	var bullet = $UltraBeamRight
