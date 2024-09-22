@@ -5,11 +5,25 @@ signal update
 
 @export var items: Array[InvItem]
 func insert(item: InvItem):
-	#var itemslots = items.filter(func(slot): return slot.item == item)
-	#if !itemslots.is_empty():
-	items[0] = item
-	#else:
-		#ar emptyslots = slots.filter(func(slot): return slot.item == null)
-		#if !emptyslots.is_empty():
-		#mptyslots[0].item = item
+	var counter = 0
+	for i in items:
+		if i == null:
+			items[counter] = item
+			print("insert")
+			break
+		counter += 1
 	update.emit()
+func delete(item: InvItem):
+	var counter = 0
+	for i in items:
+		if i == item:
+			items[counter] = null
+		counter += 1
+
+func has_record(record: InvItem):
+	for i in items:
+		if i != null:
+			if i == record:
+				return true
+			else:
+				return false

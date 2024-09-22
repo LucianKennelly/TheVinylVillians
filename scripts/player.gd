@@ -10,10 +10,17 @@ var normal_speed = 0.5
 signal justpunched
 @export var max_health: int = 100
 var current_health: int = max_health
-@onready var kanyerecord: InvItem = load("res://inventory/items/record.tres")
+@onready var kanyeclothes: InvItem = load("res://inventory/items/kanye_clothes.tres")
+@onready var kanyerecord: InvItem = load("res://inventory/items/kanye_record.tres")
 @export var inv: Inv = preload("res://inventory/player_inventory.tres")
+var bullet_scene = preload("res://scenes/ultra_beam_left.tscn")
+var has_armor = false
+
 @onready var punch = $PunchBox
+#@onready var punchboxcoord = $PunchBox/PunchHitBox.get_shape().x
 signal play
+signal recordplayerinsert
+signal directionchanged
 func take_damage(amount: int) -> void:
 	current_health -= amount
 	healthChanged.emit()
@@ -41,8 +48,14 @@ func die() -> void:
 	#queue_free()
 
 func _physics_process(delta):
+	#if has_armor:
+	#	$Timer.start(1)
 	player_movement(delta)
+	
+
 func player_movement(delta):
+	if inv.has_record(kanyeclothes):
+		has_armor = true
 	if can_move:
 		#$player.connect("justpunched",justpunched)
 		var collision_info = move_and_collide(velocity * delta * normal_speed)
@@ -68,6 +81,7 @@ func player_movement(delta):
 			#punch.attack()
 			velocity.y = 0
 			velocity.x = 0
+			
 		else:
 			$AnimatedSprite2D.play("Idle")
 			velocity.y = 0
@@ -81,13 +95,18 @@ func player_movement(delta):
 				#emit_signal("bump")
 				#has_bump = false
 		if velocity.x > 0:
+			#this.scale.x = -1
 			get_node("AnimatedSprite2D").flip_h = false
-			get_node("PunchBox").scale.x = -1.5
-			get_node("PlayerHitBox").scale.x = 1
+			#punchboxcoord = punchboxcoord*-1
+			directionchanged.emit()
+			get_node("PunchBox").scale.x = 1
 		elif velocity.x < 0:
+			pass
+			#this.scale.x = -1
 			$AnimatedSprite2D.flip_h = true
-			get_node("PunchBox").scale.x = 0.5
-			get_node("PlayerHitBox").scale.x = -1
+			get_node("PunchBox").scale.x = -0.5
+			#punchboxcoord = punchboxcoord*-1
+			directionchanged.emit()
 		move_and_collide(velocity * delta * normal_speed)
 	#f#unc justpunched() -> void:
 		#if $AnimatedSprite2D.animation == "punch":
@@ -95,30 +114,57 @@ func player_movement(delta):
 		#else:
 		#	can_punch = true
 
+
+
 func _ready():
-	pass
+	print("ready")
+	$Timer.start(1)
+
+
+func _on_timer_timeout() -> void:
+	if has_armor:
+		print("ultra")
+		beamRight()
+		beamLeft()
+	$Timer.start(2.5)
+
+func beamRight():
+	var bullet = $UltraBeamRight
+	bullet.global_position = global_position
+	#print(global_position)
+	get_tree().get_root().add_child(bullet)
+	
+func beamLeft():
+	var bullet = $UltraBeamLeft
+	bullet.global_position = global_position
+	#print(global_position)
+	get_tree().get_root().add_child(bullet)
+		
+	
 func collect(item):
 	inv.insert(item)
-
+	#inv.insert(kanyeclothes)
 
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("handle_hit"):
-		take_damage(10)
-
-
-func _on_area_2d_2_body_entered(body: Node2D) -> void:
-	if body.has_method("handle_hit"):
-		print("hit")
-		take_damage(10)
+		body.take_damage(10)
 
 
 func _on_enemy_kanyedeath() -> void:
-	print("here")
+	#print("here")
 	heal(max_health-current_health)
 	collect(kanyerecord)
 
 
 func _on_inv_ui_play() -> void:
 	play.emit()
+
+
+func _on_inv_ui_firstcraft() -> void:
+	if inv.has_record(kanyerecord):
+		inv.delete(kanyerecord)
+		inv.insert(kanyeclothes)
+		print("kanye armor equipped")
+		recordplayerinsert.emit()

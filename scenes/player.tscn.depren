@@ -1,8 +1,4 @@
-<<<<<<< HEAD
-[gd_scene load_steps=34 format=3 uid="uid://bg2c3nnupserd"]
-=======
 [gd_scene load_steps=35 format=3 uid="uid://bg2c3nnupserd"]
->>>>>>> 2aa0d4ded91ae530a971432fca879641c90e8fd2
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_xyubf"]
 [ext_resource type="Script" path="res://scripts/punch_box.gd" id="2_42aut"]
@@ -11,22 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://dxyy7ep88cy6r" path="res://art/Punch.png" id="5_i5q1n"]
 [ext_resource type="Texture2D" uid="uid://cn2c2lumkfc47" path="res://art/Run3.png" id="6_wcoyr"]
 [ext_resource type="PackedScene" uid="uid://cqq4scm2wikir" path="res://scenes/inv_ui.tscn" id="7_axh8y"]
-<<<<<<< HEAD
-[ext_resource type="Texture2D" uid="uid://cbtfjcmfcmfdm" path="res://Hearts/PNG/health_bar/health_bar_border.png" id="8_8ji8l"]
-[ext_resource type="Script" path="res://scenes/healthBar.gd" id="8_bw3p7"]
-[ext_resource type="Texture2D" uid="uid://cck4lw80c2xhl" path="res://Hearts/PNG/health_bar/health_bar.png" id="10_j4crp"]
-=======
 [ext_resource type="PackedScene" uid="uid://bnp5cet887ahe" path="res://scenes/ultra_beam_left.tscn" id="8_exe6p"]
 [ext_resource type="Script" path="res://scenes/ultra_beam_right.gd" id="9_c54xq"]
-[ext_resource type="Script" path="res://scenes/ultra_beam_left.gd" id="9_eorqw"]
+[ext_resource type="Script" path="res://scenes/ultrabeamLeft.gd" id="9_m3ipy"]
 [ext_resource type="PackedScene" uid="uid://c2dqbihdkktk" path="res://scenes/ultra_beam_right.tscn" id="10_dosjl"]
->>>>>>> 2aa0d4ded91ae530a971432fca879641c90e8fd2
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2nnkt"]
-size = Vector2(330, 886.667)
+size = Vector2(30.5, 101)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i5a7r"]
-size = Vector2(75, 31)
+size = Vector2(57.63, 31)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e32xv"]
 atlas = ExtResource("3_ssno0")
@@ -195,72 +185,47 @@ animations = [{
 position = Vector2(500, 500)
 collision_layer = 14
 collision_mask = 13
-motion_mode = 1
 script = ExtResource("1_xyubf")
 
 [node name="PlayerHitBox" type="CollisionShape2D" parent="."]
-position = Vector2(3.5, -1.5)
-scale = Vector2(0.15, 0.15)
+scale = Vector2(0.1, 0.1)
 shape = SubResource("RectangleShape2D_2nnkt")
 
 [node name="PunchBox" type="Area2D" parent="."]
+visible = false
 position = Vector2(-10, -10)
 collision_layer = 6
 collision_mask = 5
 script = ExtResource("2_42aut")
 
 [node name="PunchHitBox" type="CollisionShape2D" parent="PunchBox"]
-position = Vector2(28.5, 0)
+position = Vector2(-14.8405, 0)
 shape = SubResource("RectangleShape2D_i5a7r")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(5.96173, -1)
 sprite_frames = SubResource("SpriteFrames_xwxsi")
-animation = &"Idle"
-autoplay = "Idle"
+animation = &"Punch"
 
 [node name="Inv_UI" parent="." instance=ExtResource("7_axh8y")]
-offset_left = -18.0
-offset_top = 102.0
-offset_right = 67.0
-offset_bottom = 142.0
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 14
+collision_mask = 5
+
+[node name="PlayerHitBox" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_2nnkt")
 
 [node name="UltraBeamLeft" parent="." instance=ExtResource("8_exe6p")]
-position = Vector2(-67, -8)
-script = ExtResource("9_eorqw")
+script = ExtResource("9_m3ipy")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="UltraBeamRight" parent="." instance=ExtResource("10_dosjl")]
-position = Vector2(136, -7)
 script = ExtResource("9_c54xq")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="Area2D"]
-
-[node name="TextureProgressBar" type="TextureProgressBar" parent="." node_paths=PackedStringArray("player")]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -88.0
-offset_right = 88.0
-offset_bottom = 65.0
-grow_horizontal = 2
-value = 100.0
-nine_patch_stretch = true
-stretch_margin_left = 4
-stretch_margin_top = 4
-stretch_margin_right = 4
-stretch_margin_bottom = 4
-texture_under = ExtResource("8_8ji8l")
-texture_progress = ExtResource("10_j4crp")
-script = ExtResource("8_bw3p7")
-player = NodePath("..")
 
 [connection signal="justpunched" from="." to="PunchBox" method="_on_player_justpunched"]
 [connection signal="body_entered" from="PunchBox" to="PunchBox" method="_on_body_entered"]
-[connection signal="body_exited" from="PunchBox" to="PunchBox" method="_on_body_exited"]
-[connection signal="firstcraft" from="Inv_UI" to="." method="_on_inv_ui_firstcraft"]
 [connection signal="play" from="Inv_UI" to="." method="_on_inv_ui_play"]
-[connection signal="body_entered" from="UltraBeamLeft" to="UltraBeamLeft" method="_on_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-[connection signal="body_entered" from="UltraBeamRight" to="UltraBeamRight" method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b80ybpwgbrhi6"]
+[gd_scene load_steps=18 format=3 uid="uid://b80ybpwgbrhi6"]
 
 [ext_resource type="Script" path="res://scripts/record_room.gd" id="1_cxcv0"]
 [ext_resource type="Texture2D" uid="uid://dxt7plm76w4cq" path="res://art/MainRoom.png" id="2_12k60"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bg2c3nnupserd" path="res://scenes/player.tscn" id="6_vwvpw"]
 [ext_resource type="AudioStream" uid="uid://c8uvnlr5ofhys" path="res://soundtrack/WeirdSong(forlobby).mp3" id="7_mluc8"]
 [ext_resource type="Resource" uid="uid://df7gq8rgomfrq" path="res://inventory/record_player_inventory.tres" id="7_yjgku"]
+[ext_resource type="Resource" uid="uid://cjfh2y0ahhy4c" path="res://inventory/items/kanye_record.tres" id="9_10mqe"]
 [ext_resource type="AudioStream" uid="uid://drhwajjypjv00" path="res://soundtrack/Ultralight.mp3" id="11_dk33n"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_s34fp"]
@@ -97,7 +98,7 @@ scale = Vector2(1.95032, 3.24734)
 build_mode = 1
 polygon = PackedVector2Array(96.0735, 17.0136, 49.4144, -33.1813, -44.929, -31.3336, -69.5404, 18.2454)
 
-[node name="Record_Inv_UI" parent="Record Player/interaction_area" instance=ExtResource("5_1v6jl")]
+[node name="Inv_UI" parent="Record Player/interaction_area" instance=ExtResource("5_1v6jl")]
 offset_left = 326.0
 offset_top = 477.0
 offset_right = 411.0
@@ -115,6 +116,10 @@ polygon = PackedVector2Array(39.3403, -3.61871, 26.3413, -18.4, -24.9323, -17.78
 [node name="SceneTransition" parent="." instance=ExtResource("5_ojlid")]
 collision_layer = 0
 collision_mask = 8
+kanye_scene = "res://kanye_room"
+action_name = "interact"
+record_inventory = ExtResource("7_yjgku")
+kanye_record = ExtResource("9_10mqe")
 
 [node name="player" parent="." instance=ExtResource("6_vwvpw")]
 position = Vector2(499, 185)
@@ -127,17 +132,11 @@ volume_db = -8.685
 stream = ExtResource("11_dk33n")
 volume_db = -9.905
 
-[node name="SceneTransition2" parent="." instance=ExtResource("5_ojlid")]
-collision_layer = 0
-collision_mask = 2
-
-[connection signal="body_entered" from="Record Player/interaction_area" to="Record Player/interaction_area/Record_Inv_UI" method="_on_interaction_area_body_entered"]
-[connection signal="body_exited" from="Record Player/interaction_area" to="Record Player/interaction_area/Record_Inv_UI" method="_on_interaction_area_body_exited"]
-[connection signal="firstcraft" from="Record Player/interaction_area/Record_Inv_UI" to="player" method="_on_inv_ui_firstcraft"]
-[connection signal="mouse_entered" from="Record Player/interaction_area/Record_Inv_UI" to="." method="_on_record_inv_ui_mouse_entered"]
-[connection signal="play" from="Record Player/interaction_area/Record_Inv_UI" to="." method="_on_record_inv_ui_play"]
-[connection signal="play" from="Record Player/interaction_area/Record_Inv_UI" to="player" method="_on_inv_ui_play"]
+[connection signal="body_entered" from="Record Player/interaction_area" to="Record Player/interaction_area/Inv_UI" method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="Record Player/interaction_area" to="Record Player/interaction_area/Inv_UI" method="_on_interaction_area_body_exited"]
+[connection signal="firstcraft" from="Record Player/interaction_area/Inv_UI" to="player" method="_on_inv_ui_firstcraft"]
+[connection signal="play" from="Record Player/interaction_area/Inv_UI" to="player" method="_on_inv_ui_play"]
 [connection signal="body_entered" from="SceneTransition" to="." method="_on_scene_transition_body_entered"]
 [connection signal="play" from="player" to="." method="_on_player_play"]
 [connection signal="recordplayerinsert" from="player" to="Record Player/interaction_area" method="_on_player_recordplayerinsert"]
-[connection signal="body_entered" from="SceneTransition2" to="." method="_on_scene_transition_2_body_entered"]
+[connection signal="recordplayerinsert" from="player" to="Record Player/interaction_area/Inv_UI" method="_on_player_recordplayerinsert"]
