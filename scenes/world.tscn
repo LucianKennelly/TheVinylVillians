@@ -43,6 +43,9 @@ columns = 4
 z_index = -1
 y_sort_enabled = true
 
+[node name="KanyeRoom" parent="Menu/NinePatchRect/GridContainer" instance=ExtResource("4_jr2cv")]
+position = Vector2(0, 0)
+
 [node name="Lobby1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_cjhxo")
 volume_db = 24.0

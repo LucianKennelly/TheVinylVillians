@@ -91,4 +91,5 @@ func collect(item):
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("player_movement"):
 		player = body
+		player =body
 		player.take_damage(10)

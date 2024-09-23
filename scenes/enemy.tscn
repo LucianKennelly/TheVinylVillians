@@ -8,6 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://cbtfjcmfcmfdm" path="res://Hearts/PNG/health_bar/health_bar_border.png" id="6_teshl"]
 [ext_resource type="Texture2D" uid="uid://bihxwke43ymhp" path="res://Hearts/PNG/health_bar/kanye_health_bar.png" id="7_r1qry"]
 [ext_resource type="Script" path="res://scenes/kanyeHealthBar.gd" id="8_3yqjx"]
+[ext_resource type="Script" path="res://scenes/kanyeHealthBar.gd" id="6_3f8n6"]
+[ext_resource type="Texture2D" uid="uid://cbtfjcmfcmfdm" path="res://Hearts/PNG/health_bar/health_bar_border.png" id="6_c6prw"]
+[ext_resource type="Texture2D" uid="uid://bihxwke43ymhp" path="res://Hearts/PNG/health_bar/kanye_health_bar.png" id="7_tg54w"]
 
 [sub_resource type="Curve2D" id="Curve2D_kfqlt"]
 _data = {
@@ -169,11 +172,17 @@ shape = SubResource("RectangleShape2D_sfqaa")
 position = Vector2(507.243, -438.5)
 shape = SubResource("RectangleShape2D_pkdd2")
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Path2D/PathFollow2D/Kanye"]
+
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Path2D/PathFollow2D/Kanye" node_paths=PackedStringArray("kanye")]
 offset_left = 420.301
 offset_top = -360.0
 offset_right = 603.301
 offset_bottom = -306.0
+offset_left = 426.712
+offset_top = -363.865
+offset_right = 591.712
+offset_bottom = -316.865
 value = 100.0
 nine_patch_stretch = true
 stretch_margin_left = 4
@@ -184,6 +193,9 @@ texture_under = ExtResource("6_teshl")
 texture_over = ExtResource("6_teshl")
 texture_progress = ExtResource("7_r1qry")
 script = ExtResource("8_3yqjx")
+texture_under = ExtResource("6_c6prw")
+texture_progress = ExtResource("7_tg54w")
+script = ExtResource("6_3f8n6")
 kanye = NodePath("..")
 
 [connection signal="kanyedeath" from="Path2D/PathFollow2D/Kanye" to="." method="_on_kanye_kanyedeath"]

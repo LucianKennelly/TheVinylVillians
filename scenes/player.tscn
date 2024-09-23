@@ -3,6 +3,7 @@
 =======
 [gd_scene load_steps=35 format=3 uid="uid://bg2c3nnupserd"]
 >>>>>>> 2aa0d4ded91ae530a971432fca879641c90e8fd2
+[gd_scene load_steps=38 format=3 uid="uid://bg2c3nnupserd"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_xyubf"]
 [ext_resource type="Script" path="res://scripts/punch_box.gd" id="2_42aut"]
@@ -21,6 +22,9 @@
 [ext_resource type="Script" path="res://scenes/ultra_beam_left.gd" id="9_eorqw"]
 [ext_resource type="PackedScene" uid="uid://c2dqbihdkktk" path="res://scenes/ultra_beam_right.tscn" id="10_dosjl"]
 >>>>>>> 2aa0d4ded91ae530a971432fca879641c90e8fd2
+[ext_resource type="Script" path="res://scenes/playerHealthBar.gd" id="12_1nj3n"]
+[ext_resource type="Texture2D" uid="uid://cbtfjcmfcmfdm" path="res://Hearts/PNG/health_bar/health_bar_border.png" id="12_dkcvh"]
+[ext_resource type="Texture2D" uid="uid://cck4lw80c2xhl" path="res://Hearts/PNG/health_bar/health_bar.png" id="13_v7njm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2nnkt"]
 size = Vector2(330, 886.667)
@@ -236,6 +240,7 @@ position = Vector2(136, -7)
 script = ExtResource("9_c54xq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Area2D"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." node_paths=PackedStringArray("player")]
 anchors_preset = 5
@@ -245,6 +250,10 @@ offset_left = -88.0
 offset_right = 88.0
 offset_bottom = 65.0
 grow_horizontal = 2
+offset_left = -85.0
+offset_top = 70.0
+offset_right = 92.0
+offset_bottom = 127.0
 value = 100.0
 nine_patch_stretch = true
 stretch_margin_left = 4
@@ -254,6 +263,9 @@ stretch_margin_bottom = 4
 texture_under = ExtResource("8_8ji8l")
 texture_progress = ExtResource("10_j4crp")
 script = ExtResource("8_bw3p7")
+texture_under = ExtResource("12_dkcvh")
+texture_progress = ExtResource("13_v7njm")
+script = ExtResource("12_1nj3n")
 player = NodePath("..")
 
 [connection signal="justpunched" from="." to="PunchBox" method="_on_player_justpunched"]
