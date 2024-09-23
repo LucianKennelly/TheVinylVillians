@@ -3,7 +3,7 @@ class_name Kanye
 signal healthChanged
 
 # Health-related variables
-@export var max_health: int = 10
+@export var max_health: int = 100
 var current_health: int = max_health
 signal kanyedeath
 #@export var inv: Inv =  preload("res://inventory/player_inventory.tres")

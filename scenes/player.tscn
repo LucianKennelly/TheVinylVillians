@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://bg2c3nnupserd"]
+[gd_scene load_steps=63 format=3 uid="uid://bg2c3nnupserd"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_xyubf"]
 [ext_resource type="Script" path="res://scripts/punch_box.gd" id="2_42aut"]
@@ -7,14 +7,17 @@
 [ext_resource type="Texture2D" uid="uid://dxyy7ep88cy6r" path="res://art/Punch.png" id="5_i5q1n"]
 [ext_resource type="Texture2D" uid="uid://cn2c2lumkfc47" path="res://art/Run3.png" id="6_wcoyr"]
 [ext_resource type="PackedScene" uid="uid://cqq4scm2wikir" path="res://scenes/inv_ui.tscn" id="7_axh8y"]
-[ext_resource type="PackedScene" path="res://scenes/ultra_beam_left.tscn" id="8_exe6p"]
+[ext_resource type="PackedScene" uid="uid://bnp5cet887ahe" path="res://scenes/ultra_beam_left.tscn" id="8_exe6p"]
 [ext_resource type="Script" path="res://scenes/ultra_beam_right.gd" id="9_c54xq"]
 [ext_resource type="Script" path="res://scenes/ultra_beam_left.gd" id="9_eorqw"]
-[ext_resource type="PackedScene" path="res://scenes/ultra_beam_right.tscn" id="10_dosjl"]
+[ext_resource type="PackedScene" uid="uid://c2dqbihdkktk" path="res://scenes/ultra_beam_right.tscn" id="10_dosjl"]
+[ext_resource type="Texture2D" uid="uid://cbtfjcmfcmfdm" path="res://Hearts/PNG/health_bar/health_bar_border.png" id="12_n3in0"]
 [ext_resource type="Texture2D" uid="uid://wk34ao2ttmb5" path="res://art/Kanye-Armor-Idle.png" id="12_ukbtu"]
+[ext_resource type="Texture2D" uid="uid://cck4lw80c2xhl" path="res://Hearts/PNG/health_bar/health_bar.png" id="13_exw3w"]
 [ext_resource type="Texture2D" uid="uid://ca0yt5vvijo74" path="res://art/Kanye-Armor-Punch.png" id="13_ursxj"]
 [ext_resource type="Texture2D" uid="uid://cvhi4cp532umr" path="res://art/Kanye-Armor-Death.png" id="15_b66dl"]
 [ext_resource type="Texture2D" uid="uid://dbjhssrbgp60i" path="res://art/Kanye-Armor-Run2.png" id="15_h5i40"]
+[ext_resource type="Script" path="res://scenes/player_health.gd" id="16_boqoy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2nnkt"]
 size = Vector2(330, 886.667)
@@ -395,6 +398,20 @@ script = ExtResource("9_c54xq")
 sprite_frames = SubResource("SpriteFrames_apief")
 animation = &"Run"
 
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." node_paths=PackedStringArray("player")]
+offset_left = 63.0
+offset_top = 51.0
+offset_right = 198.0
+offset_bottom = 102.0
+value = 100.0
+texture_under = ExtResource("12_n3in0")
+texture_progress = ExtResource("13_exw3w")
+script = ExtResource("16_boqoy")
+player = NodePath("..")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[connection signal="healthChanged" from="." to="TextureProgressBar" method="_on_player_health_changed"]
 [connection signal="justpunched" from="." to="PunchBox" method="_on_player_justpunched"]
 [connection signal="body_entered" from="PunchBox" to="PunchBox" method="_on_body_entered"]
 [connection signal="body_exited" from="PunchBox" to="PunchBox" method="_on_body_exited"]

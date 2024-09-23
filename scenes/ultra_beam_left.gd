@@ -20,4 +20,3 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_player_shoot() -> void:
 	pass
-
