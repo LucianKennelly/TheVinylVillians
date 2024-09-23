@@ -3,7 +3,7 @@ extends TextureProgressBar
 @export var kanye: Kanye
 
 func _ready():
-	position = Vector2(420, -380)
+	position = Vector2(440, -380)
 	if kanye == null:
 		print ("Kanye is not assigned!")
 		return

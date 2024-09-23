@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-[gd_scene load_steps=34 format=3 uid="uid://bg2c3nnupserd"]
-=======
-[gd_scene load_steps=35 format=3 uid="uid://bg2c3nnupserd"]
->>>>>>> 2aa0d4ded91ae530a971432fca879641c90e8fd2
 [gd_scene load_steps=38 format=3 uid="uid://bg2c3nnupserd"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_xyubf"]
@@ -12,19 +7,13 @@
 [ext_resource type="Texture2D" uid="uid://dxyy7ep88cy6r" path="res://art/Punch.png" id="5_i5q1n"]
 [ext_resource type="Texture2D" uid="uid://cn2c2lumkfc47" path="res://art/Run3.png" id="6_wcoyr"]
 [ext_resource type="PackedScene" uid="uid://cqq4scm2wikir" path="res://scenes/inv_ui.tscn" id="7_axh8y"]
-<<<<<<< HEAD
-[ext_resource type="Texture2D" uid="uid://cbtfjcmfcmfdm" path="res://Hearts/PNG/health_bar/health_bar_border.png" id="8_8ji8l"]
-[ext_resource type="Script" path="res://scenes/healthBar.gd" id="8_bw3p7"]
-[ext_resource type="Texture2D" uid="uid://cck4lw80c2xhl" path="res://Hearts/PNG/health_bar/health_bar.png" id="10_j4crp"]
-=======
 [ext_resource type="PackedScene" uid="uid://bnp5cet887ahe" path="res://scenes/ultra_beam_left.tscn" id="8_exe6p"]
 [ext_resource type="Script" path="res://scenes/ultra_beam_right.gd" id="9_c54xq"]
 [ext_resource type="Script" path="res://scenes/ultra_beam_left.gd" id="9_eorqw"]
 [ext_resource type="PackedScene" uid="uid://c2dqbihdkktk" path="res://scenes/ultra_beam_right.tscn" id="10_dosjl"]
->>>>>>> 2aa0d4ded91ae530a971432fca879641c90e8fd2
-[ext_resource type="Script" path="res://scenes/playerHealthBar.gd" id="12_1nj3n"]
-[ext_resource type="Texture2D" uid="uid://cbtfjcmfcmfdm" path="res://Hearts/PNG/health_bar/health_bar_border.png" id="12_dkcvh"]
-[ext_resource type="Texture2D" uid="uid://cck4lw80c2xhl" path="res://Hearts/PNG/health_bar/health_bar.png" id="13_v7njm"]
+[ext_resource type="Texture2D" uid="uid://cbtfjcmfcmfdm" path="res://Hearts/PNG/health_bar/health_bar_border.png" id="12_n3in0"]
+[ext_resource type="Texture2D" uid="uid://cck4lw80c2xhl" path="res://Hearts/PNG/health_bar/health_bar.png" id="13_exw3w"]
+[ext_resource type="Script" path="res://scenes/playerHealthBar.gd" id="14_kw8xm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2nnkt"]
 size = Vector2(330, 886.667)
@@ -239,33 +228,17 @@ script = ExtResource("9_eorqw")
 position = Vector2(136, -7)
 script = ExtResource("9_c54xq")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="Area2D"]
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." node_paths=PackedStringArray("player")]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -88.0
-offset_right = 88.0
-offset_bottom = 65.0
-grow_horizontal = 2
-offset_left = -85.0
-offset_top = 70.0
-offset_right = 92.0
-offset_bottom = 127.0
+offset_left = -500.0
+offset_top = -500.0
+offset_right = -365.0
+offset_bottom = -449.0
 value = 100.0
-nine_patch_stretch = true
-stretch_margin_left = 4
-stretch_margin_top = 4
-stretch_margin_right = 4
-stretch_margin_bottom = 4
-texture_under = ExtResource("8_8ji8l")
-texture_progress = ExtResource("10_j4crp")
-script = ExtResource("8_bw3p7")
-texture_under = ExtResource("12_dkcvh")
-texture_progress = ExtResource("13_v7njm")
-script = ExtResource("12_1nj3n")
+texture_under = ExtResource("12_n3in0")
+texture_progress = ExtResource("13_exw3w")
+script = ExtResource("14_kw8xm")
 player = NodePath("..")
 
 [connection signal="justpunched" from="." to="PunchBox" method="_on_player_justpunched"]

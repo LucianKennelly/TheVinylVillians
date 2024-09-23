@@ -3,7 +3,7 @@ extends TextureProgressBar
 @export var player: Player
 
 func _ready():
-	position = Vector2(-80, 60)
+	position = Vector2(-60, 60)
 	if player == null:
 		print ("Player is not assigned!")
 		return

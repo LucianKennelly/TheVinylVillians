@@ -9,7 +9,6 @@
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
-position = Vector2(-1, 0)
 scale = Vector2(1.00642, 1)
 script = ExtResource("1_u8bha")
 
@@ -18,11 +17,6 @@ collision_layer = 8
 collision_mask = 8
 
 [node name="Menu" parent="." instance=ExtResource("5_6rjax")]
-offset_left = -3.97448
-offset_right = -3.97448
-
-[node name="KanyeRoom" parent="Menu" instance=ExtResource("4_jr2cv")]
-position = Vector2(1000, 0)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Menu"]
 custom_minimum_size = Vector2(1000, 1000)
