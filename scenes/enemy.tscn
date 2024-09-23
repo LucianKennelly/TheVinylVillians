@@ -1,10 +1,13 @@
-[gd_scene load_steps=22 format=3 uid="uid://djmushfoxrp6j"]
+[gd_scene load_steps=25 format=3 uid="uid://djmushfoxrp6j"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_nq57a"]
 [ext_resource type="Script" path="res://scripts/kanye.gd" id="2_ggaot"]
 [ext_resource type="Texture2D" uid="uid://cttmiepaovt2h" path="res://art/pixilart-sprite (5).png" id="3_pbpxx"]
 [ext_resource type="Texture2D" uid="uid://bf2oejpf2qrtx" path="res://art/Kanye-Death.png" id="4_v7omq"]
 [ext_resource type="Texture2D" uid="uid://caf04xqg4a1gr" path="res://art/Kanye.png" id="5_04ibh"]
+[ext_resource type="Script" path="res://scenes/kanyeHealthBar.gd" id="6_2p7v5"]
+[ext_resource type="Texture2D" uid="uid://cbtfjcmfcmfdm" path="res://Hearts/PNG/health_bar/health_bar_border.png" id="6_5uirw"]
+[ext_resource type="Texture2D" uid="uid://bihxwke43ymhp" path="res://Hearts/PNG/health_bar/kanye_health_bar.png" id="7_qi6f0"]
 
 [sub_resource type="Curve2D" id="Curve2D_kfqlt"]
 _data = {
@@ -159,6 +162,19 @@ shape = SubResource("RectangleShape2D_sfqaa")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Kanye"]
 position = Vector2(507.243, -438.5)
 shape = SubResource("RectangleShape2D_pkdd2")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Path2D/PathFollow2D/Kanye"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Path2D/PathFollow2D/Kanye" node_paths=PackedStringArray("kanye")]
+offset_left = -262.861
+offset_top = -1110.87
+offset_right = -127.861
+offset_bottom = -1059.87
+value = 100.0
+texture_under = ExtResource("6_5uirw")
+texture_progress = ExtResource("7_qi6f0")
+script = ExtResource("6_2p7v5")
+kanye = NodePath("..")
 
 [connection signal="kanyedeath" from="Path2D/PathFollow2D/Kanye" to="." method="_on_kanye_kanyedeath"]
 [connection signal="body_entered" from="Path2D/PathFollow2D/Kanye/Area2D" to="Path2D/PathFollow2D/Kanye" method="_on_area_2d_body_entered"]

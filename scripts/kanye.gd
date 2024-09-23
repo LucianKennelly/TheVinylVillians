@@ -1,4 +1,6 @@
 extends CharacterBody2D
+class_name Kanye
+signal healthChanged
 
 # Health-related variables
 @export var max_health: int = 10
@@ -38,6 +40,7 @@ func _physics_process(delta: float) -> void:
 # Health System
 func take_damage(amount: int) -> void:
 	current_health -= amount
+	healthChanged.emit()
 	if current_health <= 0:
 		die()
 	else:
@@ -46,6 +49,7 @@ func take_damage(amount: int) -> void:
 		
 func heal(amount: int) -> void:
 	current_health += amount
+	healthChanged.emit()
 	if current_health > max_health:
 		current_health = max_health
 	print("Health: ", current_health)
