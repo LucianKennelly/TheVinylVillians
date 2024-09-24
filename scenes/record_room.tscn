@@ -121,7 +121,7 @@ position = Vector2(499, 185)
 
 [node name="Lobby1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_mluc8")
-volume_db = -8.685
+volume_db = -11.628
 
 [node name="UltralightBeam" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("8_bwrgo")

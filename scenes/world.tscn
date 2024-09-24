@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://cvefu1l77vj3a"]
+[gd_scene load_steps=9 format=3 uid="uid://cvefu1l77vj3a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_u8bha"]
 [ext_resource type="PackedScene" uid="uid://b80ybpwgbrhi6" path="res://scenes/record_room.tscn" id="2_cb5ld"]
 [ext_resource type="AudioStream" uid="uid://ba25bgqvbuw7e" path="res://soundtrack/tendrils.mp3" id="3_cjhxo"]
 [ext_resource type="PackedScene" uid="uid://dllh5x1gpkl1k" path="res://scenes/kanye_room.tscn" id="4_jr2cv"]
 [ext_resource type="PackedScene" uid="uid://cu7smiwbn6b4i" path="res://scenes/Menu.tscn" id="5_6rjax"]
+[ext_resource type="PackedScene" uid="uid://bin1b3jtbhrw" path="res://scenes/punk_room.tscn" id="6_aowiq"]
 [ext_resource type="PackedScene" uid="uid://ddibmx8l3ml02" path="res://scenes/scene_transition.tscn" id="6_dfbk4"]
+[ext_resource type="Script" path="res://scenes/punk_room.gd" id="7_xpvfu"]
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -31,7 +33,7 @@ custom_minimum_size = Vector2(10000, 10000)
 layout_mode = 0
 offset_right = 10000.0
 offset_bottom = 10000.0
-columns = 4
+columns = 3
 
 [node name="RecordRoom" parent="Menu/NinePatchRect/GridContainer" instance=ExtResource("2_cb5ld")]
 z_index = -1
@@ -39,6 +41,10 @@ y_sort_enabled = true
 
 [node name="KanyeRoom" parent="Menu/NinePatchRect/GridContainer" instance=ExtResource("4_jr2cv")]
 position = Vector2(0, 0)
+
+[node name="PunkRoom" parent="Menu/NinePatchRect/GridContainer" instance=ExtResource("6_aowiq")]
+position = Vector2(0, 0)
+script = ExtResource("7_xpvfu")
 
 [node name="Lobby1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_cjhxo")

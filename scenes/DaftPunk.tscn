@@ -1,0 +1,58 @@
+[gd_scene load_steps=9 format=3 uid="uid://lcuaedcedx3w"]
+
+[ext_resource type="PackedScene" uid="uid://djmushfoxrp6j" path="res://scenes/enemy.tscn" id="1_d8noi"]
+[ext_resource type="Script" path="res://scripts/daftpunk.gd" id="2_q6pyu"]
+[ext_resource type="Script" path="res://scripts/daft_punk.gd" id="2_rw5tl"]
+[ext_resource type="Texture2D" uid="uid://cgp6kicgwjbcy" path="res://art/images.png" id="3_bxoun"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xkj62"]
+radius = 112.04
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g18dn"]
+atlas = ExtResource("3_bxoun")
+region = Rect2(0, 0, 225, 225)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x4c0d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g18dn")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_skeha"]
+radius = 42.0476
+
+[node name="DaftPunk" instance=ExtResource("1_d8noi")]
+position = Vector2(1120, 1000)
+script = ExtResource("2_rw5tl")
+
+[node name="Path2D2" type="Path2D" parent="." index="1"]
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D2" index="0"]
+position = Vector2(218, 205)
+rotation = -0.378909
+
+[node name="DaftPunk" type="CharacterBody2D" parent="Path2D2/PathFollow2D" index="0"]
+collision_layer = 5
+collision_mask = 6
+script = ExtResource("2_q6pyu")
+
+[node name="Area2D" type="Area2D" parent="Path2D2/PathFollow2D/DaftPunk" index="0"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D2/PathFollow2D/DaftPunk/Area2D" index="0"]
+position = Vector2(514, -514)
+shape = SubResource("CircleShape2D_xkj62")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D2/PathFollow2D/DaftPunk" index="1"]
+position = Vector2(512, -512)
+sprite_frames = SubResource("SpriteFrames_x4c0d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D2/PathFollow2D/DaftPunk" index="2"]
+position = Vector2(513, -513)
+shape = SubResource("CircleShape2D_skeha")
