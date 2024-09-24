@@ -1,8 +1,8 @@
 [gd_scene load_steps=66 format=3 uid="uid://cvefu1l77vj3a"]
 
-[ext_resource type="Script" path="res://player.gd" id="1_lbno2"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_lbno2"]
 [ext_resource type="Script" path="res://world.gd" id="1_s5duy"]
-[ext_resource type="Script" path="res://punch_box.gd" id="3_f7cgm"]
+[ext_resource type="Script" path="res://scripts/punch_box.gd" id="3_f7cgm"]
 [ext_resource type="Texture2D" uid="uid://c03qx5g2f2d6h" path="res://art/Idle.png" id="3_ikqia"]
 [ext_resource type="Texture2D" uid="uid://dxt7plm76w4cq" path="res://art/MainRoom.png" id="4_8nstu"]
 [ext_resource type="Texture2D" uid="uid://dxyy7ep88cy6r" path="res://art/Punch.png" id="4_ia2er"]
@@ -10,16 +10,16 @@
 [ext_resource type="Texture2D" uid="uid://cn2c2lumkfc47" path="res://art/Run3.png" id="5_l6fee"]
 [ext_resource type="Texture2D" uid="uid://dou6ywwp80v0s" path="res://art/KanyeRoom.png" id="5_r4n1o"]
 [ext_resource type="Texture2D" uid="uid://caf04xqg4a1gr" path="res://art/Kanye.png" id="6_tj1uc"]
-[ext_resource type="Script" path="res://next_scene.gd" id="8_b1ebc"]
-[ext_resource type="PackedScene" uid="uid://cqq4scm2wikir" path="res://inventory/inv_ui.tscn" id="8_kk1wc"]
-[ext_resource type="Script" path="res://kanye.gd" id="9_57f14"]
-[ext_resource type="Texture2D" uid="uid://cttmiepaovt2h" path="res://pixilart-sprite (5).png" id="10_6jgvn"]
-[ext_resource type="Script" path="res://enemy.gd" id="11_b6eew"]
-[ext_resource type="AudioStream" uid="uid://ba25bgqvbuw7e" path="res://tendrils.mp3" id="12_r5hwj"]
-[ext_resource type="Script" path="res://record_player_2.gd" id="15_80l2a"]
+[ext_resource type="Script" path="res://scripts/next_scene.gd" id="8_b1ebc"]
+[ext_resource type="PackedScene" uid="uid://cqq4scm2wikir" path="res://Scenes/inv_ui.tscn" id="8_kk1wc"]
+[ext_resource type="Script" path="res://scripts/kanye.gd" id="9_57f14"]
+[ext_resource type="Texture2D" uid="uid://cttmiepaovt2h" path="res://art/pixilart-sprite (5).png" id="10_6jgvn"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="11_b6eew"]
+[ext_resource type="AudioStream" uid="uid://ba25bgqvbuw7e" path="res://soundtrack/tendrils.mp3" id="12_r5hwj"]
+[ext_resource type="Script" path="res://scripts/record_player_2.gd" id="15_80l2a"]
 [ext_resource type="Script" path="res://interaction/interaction_area/interaction_area.gd" id="15_cx0ya"]
 [ext_resource type="Texture2D" uid="uid://bf2oejpf2qrtx" path="res://art/Kanye-Death.png" id="15_rgfxo"]
-[ext_resource type="PackedScene" path="res://Menu.tscn" id="20_nhoy5"]
+[ext_resource type="PackedScene" uid="uid://cu7smiwbn6b4i" path="res://Scenes/Menu.tscn" id="20_nhoy5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lxw"]
 size = Vector2(56.6364, 148)
@@ -496,7 +496,6 @@ position = Vector2(512.399, -451)
 shape = SubResource("RectangleShape2D_61be5")
 
 [connection signal="justpunched" from="player" to="player/PunchBox" method="_on_player_justpunched"]
-[connection signal="playerdeath" from="player" to="." method="_on_player_playerdeath"]
 [connection signal="body_entered" from="player/PunchBox" to="player/PunchBox" method="_on_body_entered"]
 [connection signal="kanyedeath" from="Enemy/Path2D/PathFollow2D/Kanye" to="player" method="_on_kanye_kanyedeath"]
 [connection signal="body_entered" from="Enemy/Path2D/PathFollow2D/Kanye/Area2D" to="Enemy/Path2D/PathFollow2D/Kanye" method="_on_area_2d_body_entered"]
