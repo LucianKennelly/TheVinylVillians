@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://cvefu1l77vj3a"]
+[gd_scene load_steps=64 format=3 uid="uid://cvefu1l77vj3a"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_lbno2"]
 [ext_resource type="Script" path="res://world.gd" id="1_s5duy"]
@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cn2c2lumkfc47" path="res://art/Run3.png" id="5_l6fee"]
 [ext_resource type="Texture2D" uid="uid://dou6ywwp80v0s" path="res://art/KanyeRoom.png" id="5_r4n1o"]
 [ext_resource type="Texture2D" uid="uid://caf04xqg4a1gr" path="res://art/Kanye.png" id="6_tj1uc"]
-[ext_resource type="Script" path="res://scripts/next_scene.gd" id="8_b1ebc"]
 [ext_resource type="PackedScene" uid="uid://cqq4scm2wikir" path="res://Scenes/inv_ui.tscn" id="8_kk1wc"]
 [ext_resource type="Script" path="res://scripts/kanye.gd" id="9_57f14"]
 [ext_resource type="Texture2D" uid="uid://cttmiepaovt2h" path="res://art/pixilart-sprite (5).png" id="10_6jgvn"]
@@ -208,9 +207,6 @@ b = Vector2(288.15, -193)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5u4iv"]
 size = Vector2(57.646, 256)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycldr"]
-size = Vector2(302.125, 83)
-
 [sub_resource type="Curve2D" id="Curve2D_64d1s"]
 _data = {
 "points": PackedVector2Array(0, 0, 0, 0, 490.849, -488, 0, 0, 0, 0, 464.021, -472, 0, 0, 0, 0, 436.2, -505, 0, 0, 0, 0, 427.257, -540, 0, 0, 0, 0, 468.989, -568, 0, 0, 0, 0, 524.632, -580, 0, 0, 0, 0, 559.409, -547, 0, 0, 0, 0, 577.294, -489, 0, 0, 0, 0, 579.281, -424, 0, 0, 0, 0, 538.543, -378, 0, 0, 0, 0, 441.168, -350, 0, 0, 0, 0, 351.742, -365, 0, 0, 0, 0, 284.176, -457, 0, 0, 0, 0, 270.265, -571, 0, 0, 0, 0, 309.016, -640, 0, 0, 0, 0, 432.225, -691, 0, 0, 0, 0, 574.313, -708, 0, 0, 0, 0, 684.605, -687, 0, 0, 0, 0, 753.165, -588, 0, 0, 0, 0, 770.056, -495, 0, 0, 0, 0, 752.171, -412, 0, 0, 0, 0, 697.522, -345, 0, 0, 0, 0, 599.153, -288, 0, 0, 0, 0, 445.142, -240, 0, 0, 0, 0, 327.895, -236, 0, 0, 0, 0, 223.565, -314, 0, 0, 0, 0, 155.998, -406, 0, 0, 0, 0, 140.101, -489, 0, 0, 0, 0, 157.986, -576, 0, 0, 0, 0, 222.571, -645, 0, 0, 0, 0, 285.169, -652, 0, 0, 0, 0, 310.01, -644, 0, 0, 0, 0, 320.94, -643, 0, 0, 0, 0, 401.423, -664, 0, 0, 0, 0, 503.766, -680, 0, 0, 0, 0, 567.358, -688, 0, 0, 0, 0, 628.962, -781, 0, 0, 0, 0, 584.249, -870, 0, 0, 0, 0, 521.651, -913, 0, 0, 0, 0, 456.072, -906, 0, 0, 0, 0, 337.831, -821, 0, 0, 0, 0, 322.927, -755, 0, 0, 0, 0, 441.168, -717, 0, 0, 0, 0, 542.517, -747, 0, 0, 0, 0, 571.332, -811, 0, 0, 0, 0, 504.759, -858, 0, 0, 0, 0, 443.155, -839, 0, 0, 0, 0, 441.168, -804, 0, 0, 0, 0, 480.913, -785, 0, 0, 0, 0, 586.236, -743, 0, 0, 0, 0, 649.828, -722, 0, 0, 0, 0, 698.516, -711, 0, 0, 0, 0, 760.12, -675, 0, 0, 0, 0, 793.903, -579, 0, 0, 0, 0, 799.865, -485, 0, 0, 0, 0, 786.948, -439, 0, 0, 0, 0, 756.146, -366, 0, 0, 0, 0, 694.541, -330, 0, 0, 0, 0, 599.153, -264, 0, 0, 0, 0, 482.9, -222, 0, 0, 0, 0, 375.589, -220, 0, 0, 0, 0, 267.284, -209, 0, 0, 0, 0, 176.865, -273, 0, 0, 0, 0, 121.222, -332, 0, 0, 0, 0, 66.5726, -413, 0, 0, 0, 0, 41.7321, -475, 0, 0, 0, 0, 79.4897, -562, 0, 0, 0, 0, 163.947, -641, 0, 0, 0, 0, 272.252, -694, 0, 0, 0, 0, 411.359, -705, 0, 0, 0, 0, 491.842, -704, 0, 0, 0, 0, 610.083, -690, 0, 0, 0, 0, 675.662, -656, 0, 0, 0, 0, 738.26, -586, 0, 0, 0, 0, 745.216, -517, 0, 0, 0, 0, 738.26, -458, 0, 0, 0, 0, 696.528, -407, 0, 0, 0, 0, 608.096, -366, 0, 0, 0, 0, 469.983, -328, 0, 0, 0, 0, 375.589, -335, 0, 0, 0, 0, 261.322, -383, 0, 0, 0, 0, 231.514, -462, 0, 0, 0, 0, 218.597, -532, 0, 0, 0, 0, 237.475, -586, 0, 0, 0, 0, 381.55, -609, 0, 0, 0, 0, 443.155, -636, 0, 0, 0, 0, 565.37, -654, 0, 0, 0, 0, 638.898, -647, 0, 0, 0, 0, 681.624, -590, 0, 0, 0, 0, 679.637, -530, 0, 0, 0, 0, 620.019, -452, 0, 0, 0, 0, 574.313, -430, 0, 0, 0, 0, 455.078, -390, 0, 0, 0, 0, 375.589, -422, 0, 0, 0, 0, 351.742, -492, 0, 0, 0, 0, 360.684, -551, 0, 0, 0, 0, 404.404, -585, 0, 0, 0, 0, 466.008, -596, 0, 0, 0, 0, 504.759, -579, 0, 0, 0, 0, 531.587, -511, 0, 0, 0, 0, 533.574, -473, 0, 0, 0, 0, 497.804, -468, 0, 0, 0, 0, 491.842, -488)
@@ -404,16 +400,6 @@ shape = SubResource("RectangleShape2D_5u4iv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TopRightWall"]
 position = Vector2(674.685, 132)
 shape = SubResource("RectangleShape2D_5u4iv")
-
-[node name="NextScene" type="StaticBody2D" parent="."]
-collision_layer = 0
-script = ExtResource("8_b1ebc")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="NextScene"]
-z_index = -1
-y_sort_enabled = true
-position = Vector2(499.759, 4.5)
-shape = SubResource("RectangleShape2D_ycldr")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_r5hwj")
