@@ -1,0 +1,190 @@
+[gd_scene load_steps=12 format=3 uid="uid://cy5wgbkl2wooc"]
+
+[ext_resource type="Script" path="res://scripts/Controls.gd" id="1_xq135"]
+[ext_resource type="FontFile" uid="uid://d08swaa6swalf" path="res://fonts/LaFemmeMakita.otf" id="2_t4p3q"]
+[ext_resource type="Texture2D" uid="uid://c8n12um5cqmfg" path="res://art/control_page/Screenshot 2024-09-25 at 3.14.01 PM.png" id="3_jvpm8"]
+[ext_resource type="Texture2D" uid="uid://uoo15q6tp1c3" path="res://art/control_page/Screenshot 2024-09-25 at 3.13.50 PM.png" id="4_rb3ls"]
+[ext_resource type="Texture2D" uid="uid://pkc1dhuv5ckp" path="res://art/control_page/Screenshot 2024-09-25 at 3.14.11 PM.png" id="5_8gmub"]
+[ext_resource type="Texture2D" uid="uid://cwwv8osmnnbx5" path="res://art/control_page/Screenshot 2024-09-25 at 3.14.22 PM.png" id="6_fryvo"]
+[ext_resource type="Texture2D" uid="uid://bu88jrm0n4ln2" path="res://art/control_page/Screenshot 2024-09-25 at 3.15.00 PM.png" id="7_w0l6o"]
+[ext_resource type="Texture2D" uid="uid://bia4flm4r3uq2" path="res://art/control_page/Screenshot 2024-09-25 at 3.14.35 PM.png" id="8_h5w6v"]
+[ext_resource type="Texture2D" uid="uid://dy8yy25g21n37" path="res://art/control_page/Screenshot 2024-09-25 at 3.54.22 PM.png" id="9_lutgc"]
+[ext_resource type="Texture2D" uid="uid://jr8je3gd63pa" path="res://art/control_page/Screenshot 2024-09-25 at 4.10.09 PM.png" id="10_2klcs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i6kc0"]
+bg_color = Color(0.345098, 0.647059, 0.756863, 1)
+
+[node name="Controls" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1001.0
+offset_bottom = 1001.0
+script = ExtResource("1_xq135")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 1000.0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1000.0
+offset_bottom = 1000.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_i6kc0")
+
+[node name="ControlTitle" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -218.0
+offset_top = -376.0
+offset_right = 217.0
+offset_bottom = -276.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.788157, 5.72756e-05, 0.611845, 1)
+theme_override_fonts/font = ExtResource("2_t4p3q")
+theme_override_font_sizes/font_size = 100
+text = "Controls"
+
+[node name="wasd" type="Control" parent="Panel"]
+anchors_preset = 0
+offset_left = 95.0
+offset_top = 255.0
+offset_right = 505.0
+offset_bottom = 523.0
+scale = Vector2(0.61448, 0.61854)
+
+[node name="a" type="TextureRect" parent="Panel/wasd"]
+layout_mode = 0
+offset_left = 48.0
+offset_top = 139.0
+offset_right = 132.0
+offset_bottom = 222.0
+texture = ExtResource("3_jvpm8")
+expand_mode = 1
+
+[node name="w" type="TextureRect" parent="Panel/wasd"]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 38.0
+offset_right = 235.0
+offset_bottom = 121.0
+texture = ExtResource("4_rb3ls")
+expand_mode = 1
+
+[node name="s" type="TextureRect" parent="Panel/wasd"]
+layout_mode = 0
+offset_left = 153.0
+offset_top = 139.0
+offset_right = 237.0
+offset_bottom = 222.0
+texture = ExtResource("5_8gmub")
+expand_mode = 1
+
+[node name="d" type="TextureRect" parent="Panel/wasd"]
+layout_mode = 0
+offset_left = 257.0
+offset_top = 137.0
+offset_right = 341.0
+offset_bottom = 220.0
+texture = ExtResource("6_fryvo")
+expand_mode = 1
+
+[node name="Navigation" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 120.0
+offset_top = 396.0
+offset_right = 313.0
+offset_bottom = 459.0
+theme_override_font_sizes/font_size = 45
+text = "Navigate"
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 181.0
+offset_top = 556.0
+offset_right = 248.0
+offset_bottom = 630.0
+scale = Vector2(0.773486, 0.701778)
+texture = ExtResource("7_w0l6o")
+expand_mode = 1
+
+[node name="Inventory" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 36.0
+offset_top = 606.0
+offset_right = 401.0
+offset_bottom = 669.0
+theme_override_font_sizes/font_size = 45
+text = "Access Inventory"
+
+[node name="TextureRect2" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 177.0
+offset_top = 773.0
+offset_right = 244.0
+offset_bottom = 849.0
+scale = Vector2(0.778111, 0.701909)
+texture = ExtResource("8_h5w6v")
+expand_mode = 1
+
+[node name="MoveItem" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 28.0
+offset_top = 831.0
+offset_right = 433.0
+offset_bottom = 960.0
+theme_override_font_sizes/font_size = 45
+text = "Move Items From
+      Inventory
+"
+
+[node name="RightClick" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 688.0
+offset_top = 303.0
+offset_right = 768.0
+offset_bottom = 376.0
+texture = ExtResource("9_lutgc")
+expand_mode = 1
+
+[node name="Attack" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 651.0
+offset_top = 387.0
+offset_right = 808.0
+offset_bottom = 452.0
+theme_override_font_sizes/font_size = 45
+text = "Attack"
+
+[node name="y" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_left = 699.0
+offset_top = 538.0
+offset_right = 761.0
+offset_bottom = 599.0
+texture = ExtResource("10_2klcs")
+expand_mode = 1
+
+[node name="Attack2" type="Label" parent="Panel"]
+layout_mode = 0
+offset_left = 663.0
+offset_top = 598.0
+offset_right = 803.0
+offset_bottom = 663.0
+theme_override_font_sizes/font_size = 45
+text = "Pause"
+
+[node name="Exit" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 860.0
+offset_top = 57.0
+offset_right = 936.0
+offset_bottom = 133.0
+text = "X"
+
+[connection signal="pressed" from="Panel/Exit" to="." method="_on_exit_pressed"]

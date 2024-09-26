@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://cvefu1l77vj3a"]
+[gd_scene load_steps=65 format=3 uid="uid://cvefu1l77vj3a"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_lbno2"]
 [ext_resource type="Script" path="res://world.gd" id="1_s5duy"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" path="res://interaction/interaction_area/interaction_area.gd" id="15_cx0ya"]
 [ext_resource type="Texture2D" uid="uid://bf2oejpf2qrtx" path="res://art/Kanye-Death.png" id="15_rgfxo"]
 [ext_resource type="PackedScene" uid="uid://cu7smiwbn6b4i" path="res://Scenes/Menu.tscn" id="20_nhoy5"]
+[ext_resource type="PackedScene" uid="uid://qo4srvl71hfy" path="res://Scenes/pause.tscn" id="20_nnh0k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lxw"]
 size = Vector2(56.6364, 148)
@@ -480,6 +481,13 @@ shape = SubResource("RectangleShape2D_cu2bv")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy/Path2D/PathFollow2D/Kanye"]
 position = Vector2(512.399, -451)
 shape = SubResource("RectangleShape2D_61be5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="Pause" parent="." instance=ExtResource("20_nnh0k")]
+offset_left = 4.9681
+offset_right = 4.9681
 
 [connection signal="justpunched" from="player" to="player/PunchBox" method="_on_player_justpunched"]
 [connection signal="body_entered" from="player/PunchBox" to="player/PunchBox" method="_on_body_entered"]

@@ -10,6 +10,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+		#if Input.is_action_just_pressed("Pause"):
+		# change to pause
+		#get_tree().change_scene_to_file("res://Scenes/controls.tscn")
 	pass
 
 
@@ -22,7 +25,7 @@ func _on_scene_transition_body_entered(body: Node2D) -> void:
 
 func _on_player_play() -> void:
 	#print("here")
-	$Lobby1.stop()
+	#$Lobby1.stop()
 	$UltralightBeam.play()
 
 

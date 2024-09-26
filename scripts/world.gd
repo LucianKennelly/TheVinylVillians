@@ -10,9 +10,11 @@ const lines: Array[String] = [
 @onready var playersprite = $Menu/NinePatchRect/player/RecordRoom/AnimatedSprite2D
 @onready var Kanye = $KanyeRoom/Enemy/Path2D/PathFollow2D/Kanye/KanyeAnimate
 @onready var Lobby1 = $Lobby1
+@onready var pause_menu = $Pause
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	print("print")
 	get_tree().change_scene_to_file("res://scenes/Menu.tscn")
 	#player.position = Vector2(500, 500)
 	#playersprite.play("Idle")
@@ -23,6 +25,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	#$NextScene.connect("nextscene",changecamera)
+	
 	pass
 func changecamera() -> void:
 	print("here")
