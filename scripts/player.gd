@@ -8,13 +8,21 @@ var has_bump =true
 var speed = 250
 var normal_speed = 0.5
 signal justpunched
-@export var max_health: int = 100
-var current_health: int = max_health
 @onready var kanyeclothes: InvItem = load("res://inventory/items/kanye_clothes.tres")
 @onready var kanyerecord: InvItem = load("res://inventory/items/kanye_record.tres")
 @export var inv: Inv = preload("res://inventory/player_inventory.tres")
 var bullet_scene = preload("res://scenes/ultra_beam_left.tscn")
 var has_armor = false
+var nux_mode = false
+
+
+#### Player Stats
+var max_health: int = 100
+var current_health: int = max_health
+
+
+
+########
 
 @onready var character = $AnimatedSprite2D
 
@@ -24,6 +32,16 @@ var has_armor = false
 signal play
 signal recordplayerinsert
 signal directionchanged
+	
+func update_current_mode(mode : bool):
+	nux_mode = mode
+	if nux_mode == false:
+		max_health = 100
+		print("normal mode")
+	elif nux_mode == true:
+		max_health = 9999999
+		print("nux mode")
+	
 func take_damage(amount: int) -> void:
 	current_health -= amount
 	healthChanged.emit()
@@ -31,6 +49,14 @@ func take_damage(amount: int) -> void:
 		die()
 	else:
 		print("Health: ", current_health)
+		
+#func take_damage(amount: int, mode : bool) -> void:
+	#current_health -= amount
+	#healthChanged.emit()
+	#if current_health <= 0:
+		#die()
+	#else:
+		#print("Health: ", current_health)
 
 func heal(amount: int) -> void:
 	current_health += amount
@@ -155,12 +181,6 @@ func beamLeft():
 func collect(item):
 	inv.insert(item)
 	#inv.insert(kanyeclothes)
-
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.has_method("handle_hit"):
-		body.take_damage(10)
 
 
 func _on_enemy_kanyedeath() -> void:

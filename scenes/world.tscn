@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cvefu1l77vj3a"]
+[gd_scene load_steps=12 format=3 uid="uid://cvefu1l77vj3a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_u8bha"]
 [ext_resource type="PackedScene" uid="uid://b80ybpwgbrhi6" path="res://scenes/record_room.tscn" id="2_cb5ld"]
@@ -8,6 +8,11 @@
 [ext_resource type="PackedScene" uid="uid://bin1b3jtbhrw" path="res://scenes/punk_room.tscn" id="6_aowiq"]
 [ext_resource type="PackedScene" uid="uid://ddibmx8l3ml02" path="res://scenes/scene_transition.tscn" id="6_dfbk4"]
 [ext_resource type="Script" path="res://scenes/punk_room.gd" id="7_xpvfu"]
+[ext_resource type="PackedScene" uid="uid://cm7ukp2gk00kj" path="res://scenes/FlowerRoom.tscn" id="8_pyyrf"]
+[ext_resource type="Script" path="res://scenes/flower_area_2d.gd" id="9_1l5hk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d0gn3"]
+size = Vector2(430.238, 353)
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -15,6 +20,7 @@ scale = Vector2(1.00642, 1)
 script = ExtResource("1_u8bha")
 
 [node name="SceneTransition" parent="." instance=ExtResource("6_dfbk4")]
+visible = false
 collision_layer = 8
 collision_mask = 8
 
@@ -46,9 +52,21 @@ position = Vector2(0, 0)
 position = Vector2(0, 0)
 script = ExtResource("7_xpvfu")
 
+[node name="FlowerRoom" parent="Menu/NinePatchRect/GridContainer" instance=ExtResource("8_pyyrf")]
+position = Vector2(49.2637, 1003)
+
+[node name="FlowerArea2D" type="Area2D" parent="Menu/NinePatchRect/GridContainer/FlowerRoom"]
+script = ExtResource("9_1l5hk")
+
+[node name="FlowerCollisionShape2D" type="CollisionShape2D" parent="Menu/NinePatchRect/GridContainer/FlowerRoom/FlowerArea2D"]
+position = Vector2(352.239, -123.5)
+shape = SubResource("RectangleShape2D_d0gn3")
+
 [node name="Lobby1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_cjhxo")
 volume_db = 24.0
 autoplay = true
 
 [connection signal="body_entered" from="SceneTransition" to="." method="_on_scene_transition_body_entered"]
+[connection signal="body_entered" from="Menu/NinePatchRect/GridContainer/FlowerRoom/FlowerArea2D" to="Menu/NinePatchRect/GridContainer/FlowerRoom/FlowerArea2D" method="_on_body_entered"]
+[connection signal="body_exited" from="Menu/NinePatchRect/GridContainer/FlowerRoom/FlowerArea2D" to="Menu/NinePatchRect/GridContainer/FlowerRoom/FlowerArea2D" method="_on_body_exited"]
