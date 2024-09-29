@@ -87,15 +87,15 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Quit"
 
-[node name="Nux Mode" type="Button" parent="Panel"]
+[node name="Nux_Mode" type="Button" parent="Panel"]
 layout_mode = 0
 offset_left = 365.0
 offset_top = 603.0
 offset_right = 631.0
 offset_bottom = 659.0
-text = "Nux Mode"
+text = "Nux Mode ( Press M In-Game )"
 
 [connection signal="pressed" from="Panel/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Panel/Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="Panel/Quit" to="." method="_on_quit_pressed"]
-[connection signal="pressed" from="Panel/Nux Mode" to="." method="_on_nux_mode_pressed"]
+[connection signal="pressed" from="Panel/Nux_Mode" to="." method="_on_nux_mode_pressed"]

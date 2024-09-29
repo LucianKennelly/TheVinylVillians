@@ -20,6 +20,7 @@ func _ready():
 	#playersprite.play("Idle")
 #	Kanye.play("default")
 	Lobby1.play
+	
 	#Record_Player.interact = Callable(self, "_on_interact")
 	#$Kanye.position = Vector2(500, -500)
 # Called every frame. 'delta' is the elapsed time since the previous frame.

@@ -2,9 +2,11 @@ extends Node2D
 
 @export var kanye_scene = "res://kanye_room"
 
+var mode = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	
+	var child = get_parent()
 	$Lobby1.play()
 
 

@@ -26,3 +26,7 @@ func _on_nux_mode_pressed() -> void:
 func set_mode():
 	var player = $RecordRoom.get_node("player")
 	player.update_current_mode(nux_mode)
+	player.nux_mode = true
+	
+	var test = $RecordRoom
+	test.mode = true

@@ -13,16 +13,21 @@ signal justpunched
 @export var inv: Inv = preload("res://inventory/player_inventory.tres")
 var bullet_scene = preload("res://scenes/ultra_beam_left.tscn")
 var has_armor = false
-var nux_mode = false
+
 
 
 #### Player Stats
-var max_health: int = 100
+
+
+#set_max_health(1000)
+@export var max_health: int = 100
 var current_health: int = max_health
 
 
 
 ########
+
+var nux_mode = false
 
 @onready var character = $AnimatedSprite2D
 
@@ -32,6 +37,8 @@ var current_health: int = max_health
 signal play
 signal recordplayerinsert
 signal directionchanged
+
+var num_mode = 0
 	
 func update_current_mode(mode : bool):
 	nux_mode = mode
@@ -40,7 +47,22 @@ func update_current_mode(mode : bool):
 		print("normal mode")
 	elif nux_mode == true:
 		max_health = 9999999
+		get_max_health()
+		num_mode += 1
 		print("nux mode")
+		print(num_mode)
+
+func get_max_health():
+	print(max_health)
+	
+func set_max_health(val : int):
+	max_health = val
+
+func get_nux_mode():
+	print(nux_mode)
+	
+func get_num_mode():
+	print(num_mode)
 	
 func take_damage(amount: int) -> void:
 	current_health -= amount
@@ -49,14 +71,7 @@ func take_damage(amount: int) -> void:
 		die()
 	else:
 		print("Health: ", current_health)
-		
-#func take_damage(amount: int, mode : bool) -> void:
-	#current_health -= amount
-	#healthChanged.emit()
-	#if current_health <= 0:
-		#die()
-	#else:
-		#print("Health: ", current_health)
+
 
 func heal(amount: int) -> void:
 	current_health += amount
@@ -112,6 +127,9 @@ func player_movement(delta):
 			#punch.attack()
 			velocity.y = 0
 			velocity.x = 0
+		elif Input.is_action_pressed("Nux"):
+			current_health = 99999
+			has_armor = true
 			
 		else:
 			character.play("Idle")
@@ -149,10 +167,13 @@ func player_movement(delta):
 
 
 func _ready():
-	print("ready")
+	
+	#print("ready")
 	$UltraBeamLeft.hide()
 	$UltraBeamRight.hide()
 	$ArmorAnimated.visible = false
+	
+	
 	$Timer.start(1)
 
 
