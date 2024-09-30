@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://1iawjka1t5n6"
+path="res://.godot/imported/You are my sunshine evil.mp3-c6d2c26fb56128b94fc1ef4cfde7c083.mp3str"
+
+[deps]
+
+source_file="res://soundtrack/You are my sunshine evil.mp3"
+dest_files=["res://.godot/imported/You are my sunshine evil.mp3-c6d2c26fb56128b94fc1ef4cfde7c083.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,10 +1,11 @@
 
 extends Control
-@export var record_inv: Inv = preload("res://inventory/record_player_inventory.tres")
-@export var kanye_record: InvItem = load("res://inventory/items/kanye_record.tres")
+@onready var record_inv: Inv = preload("res://inventory/record_player_inventory.tres")
+@onready var kanye_record: InvItem = preload("res://inventory/items/kanye_record.tres")
 # Called when the node enters the scene tree for the first time.
 @onready var punkrecord: InvItem = preload("res://inventory/items/punk_record.tres")
 @onready var record: InvItem = preload("res://inventory/items/record.tres")
+var can_insert = true
 #@onready var inv: Inv = preload("res://inventory/player_inventory.tres")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 signal play
@@ -56,9 +57,10 @@ func _on_player_recordplayerinsert() -> void:
 
 
 func _on_inv_ui_slot_2_mouse_entered() -> void:
-	if record_inv.has_record(punkrecord):
+	#print("",record_inv.has_record(punkrecord))
+	#if record_inv.has_record(punkrecord):
 	#print("here")
 		secondplay.emit()
-		if Input.is_action_pressed("Play"): #and has_record(kanye_record):
-			print("craft punk sword")
-			secondcraft.emit()
+		#if Input.is_action_pressed("Play"): #and has_record(kanye_record):
+		#	print("craft punk sword")
+		#	secondcraft.emit()

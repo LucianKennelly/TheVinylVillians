@@ -12,16 +12,16 @@ signal justpunched
 var current_health: int = max_health
 @onready var kanyeclothes: InvItem = load("res://inventory/items/kanye_clothes.tres")
 @onready var kanyerecord: InvItem = load("res://inventory/items/kanye_record.tres")
-@export var inv: Inv = preload("res://inventory/player_inventory.tres")
-@export var recrod_inv: Inv = preload("res://inventory/record_player_inventory.tres")
-@export var punkrecord: InvItem = load("res://inventory/items/punk_record.tres")
-@export var punksword: InvItem = load("res://inventory/items/punk_sword.tres")
+@onready var inv: Inv = preload("res://inventory/player_inventory.tres")
+@onready var record_inv: Inv = preload("res://inventory/record_player_inventory.tres")
+@onready var punkrecord: InvItem = load("res://inventory/items/punkrecord.tres")
+@onready var punksword: InvItem = preload("res://inventory/items/punk_sword.tres")
 var bullet_scene = preload("res://scenes/ultra_beam_left.tscn")
 var has_armor = false
 @onready var character2 = $ArmorAnimated
 @onready var playerscene = preload("res://scenes/player.tscn")
 @onready var character = $AnimatedSprite2D
-@export var can_daft = false
+@onready var can_daft
 @onready var punch = $PunchBox
 var UltraBeamLeft
 var UltraBeamRight
@@ -30,6 +30,7 @@ var timer
 signal play2
 signal play
 signal recordplayerinsert
+signal recordplayerinsert2
 signal directionchanged
 func take_damage(amount: int) -> void:
 	current_health -= amount
@@ -124,6 +125,8 @@ func player_movement(delta):
 			#punchboxcoord = punchboxcoord*-1
 			directionchanged.emit()
 		move_and_collide(velocity * delta * normal_speed)
+		if has_sword:
+			get_node("PunchBox").scale.y = 2.5
 	#f#unc justpunched() -> void:
 		#if $AnimatedSprite2D.animation == "punch":
 		#	can_punch = false
@@ -138,6 +141,7 @@ func _ready():
 	timer = get_node("Timer")
 	character2 = get_node("ArmorAnimated")
 	character2.visible =false
+	can_daft = false
 	#
 	#timer.visible = false
 	timer.start(1)
@@ -184,7 +188,10 @@ func _on_enemy_kanyedeath() -> void:
 
 
 func _on_inv_ui_play() -> void:
-	play.emit()
+	#print("",inv.has_record(punkrecord))
+	print("",inv.has_record(punkrecord))
+	if inv.has_record(kanyerecord):
+		play.emit()
 
 
 func _on_inv_ui_firstcraft() -> void:
@@ -224,7 +231,7 @@ func _on_record_inv_ui_secondcraft() -> void:
 
 
 func _on_inv_ui_slot_2_mouse_entered() -> void:
-	if inv.has_record(punkrecord):
+	#if inv.has_record(punkrecord) or record_inv.has_record(punkrecord):
 		play2.emit()
 
 
@@ -233,7 +240,10 @@ func _on_inv_ui_play_2() -> void:
 
 
 func _on_inv_ui_secondcraft() -> void:
-	inv.delete(punkrecord)
-	inv.insert(punksword)
-	has_sword = true
-	print("punk sword crafted")
+	#if inv.has_record(punkrecord):
+	if !has_sword:
+		inv.delete(punkrecord)
+		inv.insert(punksword)
+		has_sword = true
+		print("punk sword crafted")
+		recordplayerinsert2.emit()

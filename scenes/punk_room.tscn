@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://djlv286tdr736"]
+[gd_scene load_steps=21 format=3 uid="uid://djlv286tdr736"]
 
 [ext_resource type="Script" path="res://scripts/punkroom.gd" id="2_4fev6"]
 [ext_resource type="Texture2D" uid="uid://d1tgd1mm4fdmk" path="res://art/pixil-frame-0.png" id="2_jh3ui"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://cbtfjcmfcmfdm" path="res://Hearts/PNG/health_bar/health_bar_border.png" id="8_rsukp"]
 [ext_resource type="Texture2D" uid="uid://bihxwke43ymhp" path="res://Hearts/PNG/health_bar/kanye_health_bar.png" id="9_7cw8t"]
 [ext_resource type="Script" path="res://scenes/daft_punk_health.gd" id="10_ymd2r"]
+[ext_resource type="AudioStream" uid="uid://6tqi6okquqdq" path="res://soundtrack/Stronger.mp3" id="12_kvpef"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_koxdx"]
 radius = 94.0213
@@ -112,7 +113,8 @@ offset_left = -58.9216
 offset_top = 91.1112
 offset_right = 76.0784
 offset_bottom = 142.111
-value = 100.0
+max_value = 500.0
+value = 500.0
 texture_under = ExtResource("8_rsukp")
 texture_progress = ExtResource("9_7cw8t")
 script = ExtResource("10_ymd2r")
@@ -126,7 +128,8 @@ position = Vector2(1, 1002)
 collision_layer = 0
 collision_mask = 2
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="Stronger" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_kvpef")
 
 [connection signal="daftpunkdeath" from="DaftPunk" to="player" method="_on_daft_punk_daftpunkdeath"]
 [connection signal="healthChanged" from="DaftPunk" to="DaftPunk/TextureProgressBar" method="_on_daft_punk_health_changed"]

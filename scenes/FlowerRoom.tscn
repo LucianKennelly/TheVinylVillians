@@ -1,0 +1,72 @@
+[gd_scene load_steps=10 format=3 uid="uid://cm7ukp2gk00kj"]
+
+[ext_resource type="Script" path="res://scripts/FlowerRoom.gd" id="1_1fcvt"]
+[ext_resource type="Script" path="res://scripts/FlowerSceneTransition.gd" id="2_6r6eg"]
+[ext_resource type="Texture2D" uid="uid://csaqk7og5lqyg" path="res://art/Flower_Room_Normal.png" id="2_epeyp"]
+[ext_resource type="PackedScene" uid="uid://bg2c3nnupserd" path="res://scenes/player.tscn" id="3_ok25h"]
+[ext_resource type="Texture2D" uid="uid://jjdfqdgufgci" path="res://art/Flower.png" id="5_o0ax5"]
+[ext_resource type="AudioStream" uid="uid://d1jn41o1amhos" path="res://soundtrack/You are my sunshine.mp3" id="6_afnal"]
+[ext_resource type="AudioStream" uid="uid://1iawjka1t5n6" path="res://soundtrack/You are my sunshine evil.mp3" id="7_awxaw"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_obvlj"]
+vertices = PackedVector2Array(969.938, 126, -1003.98, 126, -1000.01, -1854.02, 958.047, -1857.97)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1010, -1864, 968, -1868, 980, 136, -1014, 136)])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_23tfv"]
+size = Vector2(145, 54)
+
+[node name="FlowerRoom" type="Node2D"]
+script = ExtResource("1_1fcvt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_epeyp")
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+position = Vector2(509, 934)
+scale = Vector2(0.5, 0.5)
+navigation_polygon = SubResource("NavigationPolygon_obvlj")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(417, 998, 419, 361, 457, 362, 458, 999)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(559, 998, 557, 263, 249, 265, 249, 482, 339, 480, 339, 524, 249, 524, 249, 852, 206, 852, 207, 522, 112, 524, 115, 479, 207, 479, 206, 220, 559, 220, 561, 139, 591, 141, 596, 1009, 795, 1008, 798, 711, 833, 711, 833, 1002, 996, 1003, 998, 850, 920, 850, 919, 820, 993, 818, 996, 400, 799, 405, 799, 359, 998, 361, 1001, 108, 1035, 108, 1053, 1035, 563, 1032)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1002, 107, 996, 1, 829, 1, 824, 261, 782, 263, 784, -1, 708, -1, 714, 560, 920, 562, 922, 602, 712, 602, 710, 940, 678, 939, 672, -4, -4, -4, -2, 706, 119, 708, 121, 742, -2, 742, 0, 1003, 456, 1001, 456, 1037, -59, 1041, -59, -71, 1040, -74, 1038, 111)
+
+[node name="player" parent="." instance=ExtResource("3_ok25h")]
+position = Vector2(504, 936)
+scale = Vector2(0.5, 0.5)
+
+[node name="FlowerSceneTransition" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("2_6r6eg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FlowerSceneTransition"]
+position = Vector2(512, 1018)
+shape = SubResource("RectangleShape2D_23tfv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(925, 77)
+texture = ExtResource("5_o0ax5")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="YouAreMySunshine" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_afnal")
+autoplay = true
+
+[node name="YouAreMySunshineDark" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_awxaw")
+
+[connection signal="body_entered" from="FlowerSceneTransition" to="." method="_on_scene_transition_body_entered"]
+[connection signal="body_exited" from="FlowerSceneTransition" to="FlowerSceneTransition" method="_on_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -2,9 +2,10 @@ extends Area2D
 class_name InteractionArea
 @export var kanye_scene = "res://kanye_room"
 @export var action_name : String = "interact"
-@export var player_inventory : Inv = preload("res://inventory/player_inventory.tres")
-@export var record_inventory : Inv = preload("res://inventory/record_player_inventory.tres")
-@export var kanye_record : InvItem = preload("res://inventory/items/kanye_record.tres")
+@onready var player_inventory : Inv = preload("res://inventory/player_inventory.tres")
+@onready var record_inventory : Inv = preload("res://inventory/record_player_inventory.tres")
+@onready var kanye_record : InvItem = preload("res://inventory/items/kanye_record.tres")
+@onready var punk_record : InvItem = preload("res://inventory/items/punk_record.tres")
 # Called when the node enters the scene tree for the first time.
 var interact: Callable = func():
 	pass
@@ -31,3 +32,7 @@ func _on_player_recordplayerinsert() -> void:
 		#print("here")
 		record_inventory.insert(kanye_record)
 	#record_inventory.update_slots()
+
+
+func _on_player_recordplayerinsert_2() -> void:
+	record_inventory.insert(punk_record)

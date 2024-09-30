@@ -14,9 +14,9 @@ func _ready():
 	update()
 
 func update():
-	value = daftpunk.current_health * 100 / daftpunk.max_health
+	value = daftpunk.current_health * 500 / daftpunk.max_health
 
 
 func _on_daft_punk_health_changed() -> void:
 	if daftpunk.max_health != 0:
-		value = clamp(daftpunk.current_health * 100 / daftpunk.max_health, 0, 100)
+		value = clamp(daftpunk.current_health * 500 / daftpunk.max_health, 0, 500)

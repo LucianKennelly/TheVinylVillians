@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d1jn41o1amhos"
+path="res://.godot/imported/You are my sunshine.mp3-536bc6446854ce8bbb4e86bf3eeca398.mp3str"
+
+[deps]
+
+source_file="res://soundtrack/You are my sunshine.mp3"
+dest_files=["res://.godot/imported/You are my sunshine.mp3-536bc6446854ce8bbb4e86bf3eeca398.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

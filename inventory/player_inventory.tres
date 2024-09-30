@@ -1,8 +1,10 @@
-[gd_resource type="Resource" script_class="Inv" load_steps=3 format=3 uid="uid://c1wossfpwvl4e"]
+[gd_resource type="Resource" script_class="Inv" load_steps=5 format=3 uid="uid://c1wossfpwvl4e"]
 
 [ext_resource type="Script" path="res://inventory/inventory_item.gd" id="1_rwsnw"]
+[ext_resource type="Resource" path="res://inventory/items/kanye_record.tres" id="2_rog8w"]
+[ext_resource type="Resource" uid="uid://d1fwd4civmf5r" path="res://inventory/items/punkrecord.tres" id="3_ckn83"]
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="3_uf3yn"]
 
 [resource]
 script = ExtResource("3_uf3yn")
-items = Array[ExtResource("1_rwsnw")]([null, null, null, null, null, null, null, null])
+items = Array[ExtResource("1_rwsnw")]([ExtResource("2_rog8w"), ExtResource("3_ckn83"), null, null, null, null, null, null])

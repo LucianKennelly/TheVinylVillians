@@ -4,7 +4,7 @@ class_name DaftPunk
 signal healthChanged
 
 # Health-related variables
-@export var max_health: int = 100
+@export var max_health: int = 500
 var current_health: int = max_health
 signal daftpunkdeath
 #@export var inv: Inv =  preload("res://inventory/player_inventory.tres")
