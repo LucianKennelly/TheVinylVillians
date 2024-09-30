@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cn2c2lumkfc47" path="res://art/Run3.png" id="5_l6fee"]
 [ext_resource type="Texture2D" uid="uid://dou6ywwp80v0s" path="res://art/KanyeRoom.png" id="5_r4n1o"]
 [ext_resource type="Texture2D" uid="uid://caf04xqg4a1gr" path="res://art/Kanye.png" id="6_tj1uc"]
-[ext_resource type="PackedScene" uid="uid://cqq4scm2wikir" path="res://Scenes/inv_ui.tscn" id="8_kk1wc"]
+[ext_resource type="PackedScene" uid="uid://cqq4scm2wikir" path="res://scenes/inv_ui.tscn" id="8_kk1wc"]
 [ext_resource type="Script" path="res://scripts/kanye.gd" id="9_57f14"]
 [ext_resource type="Texture2D" uid="uid://cttmiepaovt2h" path="res://art/pixilart-sprite (5).png" id="10_6jgvn"]
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="11_b6eew"]
@@ -18,8 +18,8 @@
 [ext_resource type="Script" path="res://scripts/record_player_2.gd" id="15_80l2a"]
 [ext_resource type="Script" path="res://interaction/interaction_area/interaction_area.gd" id="15_cx0ya"]
 [ext_resource type="Texture2D" uid="uid://bf2oejpf2qrtx" path="res://art/Kanye-Death.png" id="15_rgfxo"]
-[ext_resource type="PackedScene" uid="uid://cu7smiwbn6b4i" path="res://Scenes/Menu.tscn" id="20_nhoy5"]
-[ext_resource type="PackedScene" uid="uid://qo4srvl71hfy" path="res://Scenes/pause.tscn" id="20_nnh0k"]
+[ext_resource type="PackedScene" uid="uid://cu7smiwbn6b4i" path="res://scenes/Menu.tscn" id="20_nhoy5"]
+[ext_resource type="PackedScene" uid="uid://qo4srvl71hfy" path="res://scenes/pause.tscn" id="20_nnh0k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2lxw"]
 size = Vector2(56.6364, 148)

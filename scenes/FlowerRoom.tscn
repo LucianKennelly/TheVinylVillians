@@ -23,7 +23,9 @@ texture = ExtResource("1_xi4n8")
 script = ExtResource("2_6r6eg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FlowerSceneTransition"]
+
 position = Vector2(491, 981)
+
 shape = SubResource("RectangleShape2D_23tfv")
 
 [connection signal="body_entered" from="FlowerSceneTransition" to="." method="_on_body_entered"]
