@@ -8,8 +8,6 @@ var has_bump =true
 var speed = 250
 var normal_speed = 0.5
 signal justpunched
-@export var max_health: int = 100
-var current_health: int = max_health
 @onready var kanyeclothes: InvItem = load("res://inventory/items/kanye_clothes.tres")
 @onready var kanyerecord: InvItem = load("res://inventory/items/kanye_record.tres")
 @export var inv: Inv = preload("res://inventory/player_inventory.tres")
@@ -18,8 +16,25 @@ var current_health: int = max_health
 @export var punksword: InvItem = load("res://inventory/items/punk_sword.tres")
 var bullet_scene = preload("res://scenes/ultra_beam_left.tscn")
 var has_armor = false
+
+
+#### Player Stats
+
+
+#set_max_health(1000)
+@export var max_health: int = 100
+var current_health: int = max_health
+
+
+
+########
+
+var nux_mode = false
+
+=======
 @onready var character2 = $ArmorAnimated
 @onready var playerscene = preload("res://scenes/player.tscn")
+
 @onready var character = $AnimatedSprite2D
 @export var can_daft = false
 @onready var punch = $PunchBox
@@ -31,6 +46,33 @@ signal play2
 signal play
 signal recordplayerinsert
 signal directionchanged
+
+var num_mode = 0
+	
+func update_current_mode(mode : bool):
+	nux_mode = mode
+	if nux_mode == false:
+		max_health = 100
+		print("normal mode")
+	elif nux_mode == true:
+		max_health = 9999999
+		get_max_health()
+		num_mode += 1
+		print("nux mode")
+		print(num_mode)
+
+func get_max_health():
+	print(max_health)
+	
+func set_max_health(val : int):
+	max_health = val
+
+func get_nux_mode():
+	print(nux_mode)
+	
+func get_num_mode():
+	print(num_mode)
+	
 func take_damage(amount: int) -> void:
 	current_health -= amount
 	healthChanged.emit()
@@ -38,6 +80,7 @@ func take_damage(amount: int) -> void:
 		die()
 	else:
 		print("Health: ", current_health)
+
 
 func heal(amount: int) -> void:
 	current_health += amount
@@ -96,6 +139,9 @@ func player_movement(delta):
 			#punch.attack()
 			velocity.y = 0
 			velocity.x = 0
+		elif Input.is_action_pressed("Nux"):
+			current_health = 99999
+			has_armor = true
 			
 		else:
 			character.play("Idle")
@@ -133,6 +179,7 @@ func player_movement(delta):
 
 
 func _ready():
+
 	UltraBeamLeft = get_node("UltraBeamLeft")
 	UltraBeamRight = get_node("UltraBeamRight")
 	timer = get_node("Timer")
@@ -141,6 +188,7 @@ func _ready():
 	#
 	#timer.visible = false
 	timer.start(1)
+
 
 
 func _on_timer_timeout() -> void:
@@ -168,12 +216,6 @@ func beamLeft():
 func collect(item):
 	inv.insert(item)
 	#inv.insert(kanyeclothes)
-
-
-
-func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.has_method("handle_hit"):
-		body.take_damage(10)
 
 
 func _on_enemy_kanyedeath() -> void:

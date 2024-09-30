@@ -2,11 +2,16 @@ extends Node2D
 @onready var record_inv = preload("res://inventory/record_player_inventory.tres")
 @onready var punkrecord = preload("res://inventory/items/punk_record.tres")
 @export var kanye_scene = "res://kanye_room"
+
+
+
 var can_punk = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+  var child = get_parent()
 	record_inv = load("res://inventory/record_player_inventory.tres")
 	punkrecord = load("res://inventory/items/punk_record.tres")
+
 	$Lobby1.play()
 
 
