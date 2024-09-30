@@ -1,7 +1,7 @@
 extends CharacterBody2D
 class_name Player
 signal healthChanged
-
+var has_sword = false
 var can_move = true
 var can_punch = true
 var has_bump =true
@@ -13,14 +13,21 @@ var current_health: int = max_health
 @onready var kanyeclothes: InvItem = load("res://inventory/items/kanye_clothes.tres")
 @onready var kanyerecord: InvItem = load("res://inventory/items/kanye_record.tres")
 @export var inv: Inv = preload("res://inventory/player_inventory.tres")
+@export var recrod_inv: Inv = preload("res://inventory/record_player_inventory.tres")
+@export var punkrecord: InvItem = load("res://inventory/items/punk_record.tres")
+@export var punksword: InvItem = load("res://inventory/items/punk_sword.tres")
 var bullet_scene = preload("res://scenes/ultra_beam_left.tscn")
 var has_armor = false
-
+@onready var character2 = $ArmorAnimated
+@onready var playerscene = preload("res://scenes/player.tscn")
 @onready var character = $AnimatedSprite2D
-
+@export var can_daft = false
 @onready var punch = $PunchBox
-
+var UltraBeamLeft
+var UltraBeamRight
+var timer
 #@onready var punchboxcoord = $PunchBox/PunchHitBox.get_shape().x
+signal play2
 signal play
 signal recordplayerinsert
 signal directionchanged
@@ -60,7 +67,7 @@ func player_movement(delta):
 	if inv.has_record(kanyeclothes):
 		has_armor = true
 		_on_armor_animated_animation_changed()
-	
+		
 	if can_move:
 		#$player.connect("justpunched",justpunched)
 		var collision_info = move_and_collide(velocity * delta * normal_speed)
@@ -82,7 +89,10 @@ func player_movement(delta):
 			velocity.y = 0
 		elif Input.is_action_pressed("Punch") and can_punch:
 			justpunched.emit()
-			character.play("Punch")
+			if has_sword:
+				character.play("Sword")
+			else:
+				character.play("Punch")
 			#punch.attack()
 			velocity.y = 0
 			velocity.x = 0
@@ -123,29 +133,32 @@ func player_movement(delta):
 
 
 func _ready():
-	print("ready")
-	$UltraBeamLeft.hide()
-	$UltraBeamRight.hide()
-	$ArmorAnimated.visible = false
-	$Timer.start(1)
+	UltraBeamLeft = get_node("UltraBeamLeft")
+	UltraBeamRight = get_node("UltraBeamRight")
+	timer = get_node("Timer")
+	character2 = get_node("ArmorAnimated")
+	character2.visible =false
+	#
+	#timer.visible = false
+	timer.start(1)
 
 
 func _on_timer_timeout() -> void:
 	if has_armor:
-		print("ultra")
+		#rint("ultra")
 		beamRight()
 		beamLeft()
-	$Timer.start(1)
+	get_node("Timer").start(1)
 
 func beamRight():
-	var bullet = $UltraBeamRight
+	var bullet = get_node("UltraBeamRight")
 	bullet.global_position = global_position
 	bullet.visible = true
 	#print(global_position)
 	get_tree().get_root().add_child(bullet)
 	
 func beamLeft():
-	var bullet = $UltraBeamLeft
+	var bullet = get_node("UltraBeamLeft")
 	bullet.global_position = global_position
 	bullet.visible = true
 	#print(global_position)
@@ -167,6 +180,7 @@ func _on_enemy_kanyedeath() -> void:
 	#print("here")
 	heal(max_health-current_health)
 	collect(kanyerecord)
+	can_daft = true
 
 
 func _on_inv_ui_play() -> void:
@@ -187,6 +201,39 @@ func _on_inv_ui_firstcraft() -> void:
 #
 func _on_armor_animated_animation_changed() -> void:
 	character.visible = false
-	character = $ArmorAnimated
+	character = get_node("ArmorAnimated")
 	character.visible = true
 	
+
+
+func _on_daft_punk_daftpunkdeath() -> void:
+	#print("here")
+	heal(max_health-current_health)
+	collect(punkrecord)
+
+
+func _on_record_inv_ui_secondcraft() -> void:
+	if inv.has_record(punkrecord):
+		inv.delete(punkrecord)
+		inv.insert(punksword)
+		print("punk armor equipped")
+		
+		#_on_armor_animated_animation_changed()
+		#has_armor = true
+		recordplayerinsert.emit()
+
+
+func _on_inv_ui_slot_2_mouse_entered() -> void:
+	if inv.has_record(punkrecord):
+		play2.emit()
+
+
+func _on_inv_ui_play_2() -> void:
+	play2.emit()
+
+
+func _on_inv_ui_secondcraft() -> void:
+	inv.delete(punkrecord)
+	inv.insert(punksword)
+	has_sword = true
+	print("punk sword crafted")

@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0isaw7uebt77"]
+
+[ext_resource type="Texture2D" uid="uid://c7aoxomwd1y24" path="res://art/laserRed01.png" id="1_jaxqa"]
+[ext_resource type="Script" path="res://scripts/beam.gd" id="1_snlyy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4pxp"]
+size = Vector2(13, 54)
+
+[node name="Beam" type="CharacterBody2D"]
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_snlyy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_k4pxp")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 1)
+texture = ExtResource("1_jaxqa")
+
+[node name="BeamTimer" type="Timer" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.5, 2)
+shape = SubResource("RectangleShape2D_k4pxp")
+
+[connection signal="timeout" from="BeamTimer" to="." method="_on_beam_timer_timeout"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
