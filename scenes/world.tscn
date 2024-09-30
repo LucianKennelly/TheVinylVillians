@@ -40,11 +40,29 @@ z_index = -1
 y_sort_enabled = true
 
 [node name="KanyeRoom" parent="Menu/NinePatchRect/GridContainer" instance=ExtResource("4_jr2cv")]
+visible = false
 position = Vector2(0, 0)
 
 [node name="PunkRoom" parent="Menu/NinePatchRect/GridContainer" instance=ExtResource("6_aowiq")]
+<<<<<<< Updated upstream
 script = ExtResource("7_xpvfu")
 
+=======
+visible = false
+position = Vector2(0, 0)
+script = ExtResource("7_xpvfu")
+
+[node name="FlowerRoom" parent="Menu/NinePatchRect/GridContainer" instance=ExtResource("8_pyyrf")]
+position = Vector2(-10.3536, -1005)
+
+[node name="FlowerArea2D" type="Area2D" parent="Menu/NinePatchRect/GridContainer/FlowerRoom"]
+script = ExtResource("9_1l5hk")
+
+[node name="FlowerCollisionShape2D" type="CollisionShape2D" parent="Menu/NinePatchRect/GridContainer/FlowerRoom/FlowerArea2D"]
+position = Vector2(502.772, 1017)
+shape = SubResource("RectangleShape2D_d0gn3")
+
+>>>>>>> Stashed changes
 [node name="Lobby1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_cjhxo")
 volume_db = 24.0
