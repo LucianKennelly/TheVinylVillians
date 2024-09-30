@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://ba25bgqvbuw7e" path="res://soundtrack/tendrils.mp3" id="3_cjhxo"]
 [ext_resource type="PackedScene" uid="uid://dllh5x1gpkl1k" path="res://scenes/kanye_room.tscn" id="4_jr2cv"]
 [ext_resource type="PackedScene" uid="uid://cu7smiwbn6b4i" path="res://scenes/Menu.tscn" id="5_6rjax"]
-[ext_resource type="PackedScene" uid="uid://bin1b3jtbhrw" path="res://scenes/punk_room.tscn" id="6_aowiq"]
+[ext_resource type="PackedScene" uid="uid://djlv286tdr736" path="res://scenes/punk_room.tscn" id="6_aowiq"]
 [ext_resource type="PackedScene" uid="uid://ddibmx8l3ml02" path="res://scenes/scene_transition.tscn" id="6_dfbk4"]
 [ext_resource type="Script" path="res://scenes/punk_room.gd" id="7_xpvfu"]
 [ext_resource type="PackedScene" uid="uid://cm7ukp2gk00kj" path="res://scenes/FlowerRoom.tscn" id="8_pyyrf"]
@@ -49,7 +49,6 @@ y_sort_enabled = true
 position = Vector2(0, 0)
 
 [node name="PunkRoom" parent="Menu/NinePatchRect/GridContainer" instance=ExtResource("6_aowiq")]
-position = Vector2(0, 0)
 script = ExtResource("7_xpvfu")
 
 [node name="FlowerRoom" parent="Menu/NinePatchRect/GridContainer" instance=ExtResource("8_pyyrf")]

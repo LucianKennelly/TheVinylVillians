@@ -7,10 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://dxyy7ep88cy6r" path="res://art/Punch.png" id="5_i5q1n"]
 [ext_resource type="Texture2D" uid="uid://cn2c2lumkfc47" path="res://art/Run3.png" id="6_wcoyr"]
 [ext_resource type="PackedScene" uid="uid://cqq4scm2wikir" path="res://scenes/inv_ui.tscn" id="7_axh8y"]
-[ext_resource type="PackedScene" uid="uid://bnp5cet887ahe" path="res://scenes/ultra_beam_left.tscn" id="8_exe6p"]
+[ext_resource type="PackedScene" uid="uid://chutcmmevn1sc" path="res://scenes/ultra_beam_left.tscn" id="8_exe6p"]
 [ext_resource type="Script" path="res://scenes/ultra_beam_right.gd" id="9_c54xq"]
 [ext_resource type="Script" path="res://scenes/ultra_beam_left.gd" id="9_eorqw"]
-[ext_resource type="PackedScene" uid="uid://c2dqbihdkktk" path="res://scenes/ultra_beam_right.tscn" id="10_dosjl"]
+[ext_resource type="PackedScene" path="res://scenes/ultra_beam_right.tscn" id="10_dosjl"]
 [ext_resource type="Texture2D" uid="uid://cbtfjcmfcmfdm" path="res://Hearts/PNG/health_bar/health_bar_border.png" id="12_n3in0"]
 [ext_resource type="Texture2D" uid="uid://wk34ao2ttmb5" path="res://art/Kanye-Armor-Idle.png" id="12_ukbtu"]
 [ext_resource type="Texture2D" uid="uid://cck4lw80c2xhl" path="res://Hearts/PNG/health_bar/health_bar.png" id="13_exw3w"]
@@ -349,6 +349,11 @@ animations = [{
 "loop": false,
 "name": &"Run",
 "speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"Sword",
+"speed": 5.0
 }]
 
 [node name="player" type="CharacterBody2D"]
@@ -395,8 +400,9 @@ position = Vector2(136, -7)
 script = ExtResource("9_c54xq")
 
 [node name="ArmorAnimated" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, -1)
 sprite_frames = SubResource("SpriteFrames_apief")
-animation = &"Run"
+animation = &"Sword"
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="." node_paths=PackedStringArray("player")]
 offset_left = 63.0
@@ -417,7 +423,12 @@ player = NodePath("..")
 [connection signal="body_exited" from="PunchBox" to="PunchBox" method="_on_body_exited"]
 [connection signal="firstcraft" from="Inv_UI" to="." method="_on_inv_ui_firstcraft"]
 [connection signal="play" from="Inv_UI" to="." method="_on_inv_ui_play"]
+[connection signal="play2" from="Inv_UI" to="." method="_on_inv_ui_play_2"]
+[connection signal="secondcraft" from="Inv_UI" to="." method="_on_inv_ui_secondcraft"]
+[connection signal="mouse_entered" from="Inv_UI/NinePatchRect/GridContainer/inv_UI_slot2" to="." method="_on_inv_ui_slot_2_mouse_entered"]
 [connection signal="body_entered" from="UltraBeamLeft" to="UltraBeamLeft" method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="UltraBeamRight" to="UltraBeamRight" method="_on_body_entered"]
 [connection signal="animation_changed" from="ArmorAnimated" to="." method="_on_armor_animated_animation_changed"]
+
+[editable path="Inv_UI"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bin1b3jtbhrw"]
+
+[ext_resource type="PackedScene" uid="uid://byyqu62d2bhcq" path="res://scenes/daft_punk.tscn" id="1_e853m"]
+[ext_resource type="Texture2D" uid="uid://d1tgd1mm4fdmk" path="res://art/pixil-frame-0.png" id="2_jh3ui"]
+[ext_resource type="PackedScene" uid="uid://bg2c3nnupserd" path="res://scenes/player.tscn" id="3_fcve4"]
+
+[node name="PunkRoom" type="Node2D"]
+
+[node name="DaftPunk" parent="." instance=ExtResource("1_e853m")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(490, -7, -2, 487, -10, 501, 290, 811, 292, 991, 708, 991, 704, 813, 1004, 503, 578, 33, 1030, 495, 738, 811, 730, 1003, 276, 1003, 274, 821, -34, 481, 486, -29, 717, 174)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+z_index = -1
+y_sort_enabled = true
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_jh3ui")
+
+[node name="player" parent="." instance=ExtResource("3_fcve4")]
+position = Vector2(487, 801)
