@@ -51,7 +51,7 @@ func heal(amount: int) -> void:
 func die() -> void:
 	print("Daft Punk is dead!")
 	$AnimatedSprite2D.play("death")
-	await get_tree().create_timer(10.0).timeout
+	await get_tree().create_timer(3.0).timeout
 	#player.has_sword = true
 	daftpunkdeath.emit()
 	queue_free()
