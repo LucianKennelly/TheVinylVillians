@@ -162,6 +162,7 @@ stream = ExtResource("11_gwbs6")
 
 [node name="Bach" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_hjfak")
+volume_db = 10.895
 
 [node name="BachRoom" type="Area2D" parent="."]
 collision_layer = 0
