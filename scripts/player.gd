@@ -58,7 +58,7 @@ func die() -> void:
 	#player_movement().paused = true
 	await get_tree().create_timer(4.0).timeout
 	gameover.emit()
-	#get_tree().change_scene_to_file("res://scenes/gameover.tscn")
+	get_tree().change_scene_to_file("res://scenes/record_room.tscn")
 	#inv.clear()
 	#$AnimatedSprite2D.play("Death")
 	#queue_free()
