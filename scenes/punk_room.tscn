@@ -130,6 +130,7 @@ collision_mask = 2
 
 [node name="Stronger" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_kvpef")
+parameters/looping = true
 
 [connection signal="daftpunkdeath" from="DaftPunk" to="player" method="_on_daft_punk_daftpunkdeath"]
 [connection signal="healthChanged" from="DaftPunk" to="DaftPunk/TextureProgressBar" method="_on_daft_punk_health_changed"]

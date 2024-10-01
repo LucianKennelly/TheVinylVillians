@@ -4,9 +4,11 @@ extends Node2D
 #@export var player : Player
 @export var kanye_scene = "res://kanye_room"
 var can_punk
+var can_maze
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	can_punk = false
+	can_maze = false
 	#record_inv = load("res://inventory/record_player_inventory.tres")
 	#punkrecord = load("res://inventory/items/punk_record.tres")
 	$Lobby1.play()
@@ -45,6 +47,7 @@ func _on_scene_transition_2_body_entered(body: Node2D) -> void:
 func _on_record_inv_ui_play() -> void:
 	#print("play")
 	$Lobby1.stop()
+	$Bach.stop()
 	$Stronger.stop()
 	$UltralightBeam.play()
 	can_punk = true
@@ -61,6 +64,7 @@ func _on_player_play_2() -> void:
 	#if record_inv.has_record(punkrecord):
 		#print("here")
 		$Lobby1.stop()
+		$Bach.stop()
 		$UltralightBeam.stop()
 		$Stronger.play()
 
@@ -68,15 +72,36 @@ func _on_player_play_2() -> void:
 func _on_record_inv_ui_secondplay() -> void:
 	#if record_inv.has_record(punkrecord):
 		$Lobby1.stop()
+		$Bach.stop()
 		$UltralightBeam.stop()
 		$Stronger.play()
-
 
 	
 
 
 func _on_flower_room_body_entered(body: Node2D) -> void:
 	if body.has_method("player_movement"):
-		#if can_punk:
+		if can_maze:
 			print("leave record room")
 			get_tree().change_scene_to_file("res://scenes/FlowerRoom.tscn")
+
+
+func _on_inv_ui_slot_3_mouse_entered() -> void:
+	pass
+
+func _on_bach_room_body_entered(body: Node2D) -> void:
+	print("here")
+	if body.has_method("player_movement"):
+		if can_punk:
+			print("leave record room")
+			get_tree().change_scene_to_file("res://scenes/bach_room.tscn")
+
+
+func _on_player_play_3() -> void:
+	$Lobby1.stop()
+	$UltralightBeam.stop()
+	$Stronger.stop()
+	$Bach.play()
+	can_maze = true
+
+	pass # Replace with function body.

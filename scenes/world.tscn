@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cvefu1l77vj3a"]
+[gd_scene load_steps=11 format=3 uid="uid://cvefu1l77vj3a"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_u8bha"]
 [ext_resource type="PackedScene" uid="uid://b80ybpwgbrhi6" path="res://scenes/record_room.tscn" id="2_cb5ld"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://djlv286tdr736" path="res://scenes/punk_room.tscn" id="6_aowiq"]
 [ext_resource type="PackedScene" uid="uid://ddibmx8l3ml02" path="res://scenes/scene_transition.tscn" id="6_dfbk4"]
 [ext_resource type="Script" path="res://scenes/punk_room.gd" id="7_xpvfu"]
+[ext_resource type="PackedScene" uid="uid://b43gvy803lie1" path="res://scenes/bach_room.tscn" id="9_cdboe"]
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -47,6 +48,8 @@ position = Vector2(0, 0)
 
 [node name="PunkRoom" parent="Menu/NinePatchRect/GridContainer" instance=ExtResource("6_aowiq")]
 script = ExtResource("7_xpvfu")
+
+[node name="BachRoom" parent="Menu/NinePatchRect/GridContainer" instance=ExtResource("9_cdboe")]
 
 [node name="Lobby1" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_cjhxo")

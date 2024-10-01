@@ -439,6 +439,7 @@ offset_top = 51.0
 offset_right = 198.0
 offset_bottom = 102.0
 value = 100.0
+allow_greater = true
 texture_under = ExtResource("12_n3in0")
 texture_progress = ExtResource("13_exw3w")
 script = ExtResource("16_boqoy")
@@ -448,13 +449,16 @@ player = NodePath("..")
 
 [connection signal="healthChanged" from="." to="TextureProgressBar" method="_on_player_health_changed"]
 [connection signal="justpunched" from="." to="PunchBox" method="_on_player_justpunched"]
+[connection signal="nux" from="." to="PunchBox" method="_on_player_nux"]
 [connection signal="body_entered" from="PunchBox" to="PunchBox" method="_on_body_entered"]
 [connection signal="body_exited" from="PunchBox" to="PunchBox" method="_on_body_exited"]
 [connection signal="firstcraft" from="Inv_UI" to="." method="_on_inv_ui_firstcraft"]
 [connection signal="play" from="Inv_UI" to="." method="_on_inv_ui_play"]
 [connection signal="play2" from="Inv_UI" to="." method="_on_inv_ui_play_2"]
+[connection signal="play3" from="Inv_UI" to="." method="_on_inv_ui_play_3"]
 [connection signal="secondcraft" from="Inv_UI" to="." method="_on_inv_ui_secondcraft"]
 [connection signal="mouse_entered" from="Inv_UI/NinePatchRect/GridContainer/inv_UI_slot2" to="Inv_UI" method="_on_inv_ui_slot_2_mouse_entered"]
+[connection signal="mouse_entered" from="Inv_UI/NinePatchRect/GridContainer/inv_UI_slot3" to="Inv_UI" method="_on_inv_ui_slot_3_mouse_entered"]
 [connection signal="body_entered" from="UltraBeamLeft" to="UltraBeamLeft" method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="body_entered" from="UltraBeamRight" to="UltraBeamRight" method="_on_body_entered"]

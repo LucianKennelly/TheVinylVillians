@@ -3,7 +3,6 @@ extends CharacterBody2D
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var target_to_chase: CharacterBody2D = $"../player"
 
-
 const SPEED = 150.0
 
 

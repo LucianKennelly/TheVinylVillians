@@ -84,6 +84,13 @@ func handle_hit():
 	recover()
 	#print("enemy was hit!")
 
+func handle_nuxhit():
+	if kanye.animation == "Idle":
+		kanye.play("Damaged")
+	print("Kanye Health: ",current_health)
+	take_damage(100)
+	await get_tree().create_timer(1.0).timeout
+	recover()
 func collect(item):
 	pass
 	#inv.insert(item)

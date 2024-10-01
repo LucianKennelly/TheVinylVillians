@@ -77,6 +77,9 @@ func handle_hit():
 	#recover()
 	#print("enemy was hit!")
 
+func handle_nuxhit():
+	print("Daft Punk Health: ",current_health)
+	take_damage(1000)
 func collect(item):
 	pass
 	#inv.insert(item)

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://brx6mfomk8d87"
+path="res://.godot/imported/J.S. Bach_ Prelude & Fugue in C Minor (Well-Tempered Clavier, Book I, No. 2) , BWV 847_ I. Prelude - Víkingur Ólafsson.mp3-b09d255f33c09518f237776a83b356e9.mp3str"
+
+[deps]
+
+source_file="res://soundtrack/J.S. Bach_ Prelude & Fugue in C Minor (Well-Tempered Clavier, Book I, No. 2) , BWV 847_ I. Prelude - Víkingur Ólafsson.mp3"
+dest_files=["res://.godot/imported/J.S. Bach_ Prelude & Fugue in C Minor (Well-Tempered Clavier, Book I, No. 2) , BWV 847_ I. Prelude - Víkingur Ólafsson.mp3-b09d255f33c09518f237776a83b356e9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

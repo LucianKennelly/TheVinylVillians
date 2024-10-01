@@ -5,6 +5,7 @@ extends Control
 @onready var inv: Inv = preload("res://inventory/player_inventory.tres")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 signal play
+signal play3
 signal play2
 signal firstcraft
 signal secondcraft
@@ -80,3 +81,7 @@ func _on_inv_ui_slot_2_mouse_entered() -> void:
 			print("craft punk sword")
 			secondcraft.emit()
 		insert = false
+
+
+func _on_inv_ui_slot_3_mouse_entered() -> void:
+	play3.emit()

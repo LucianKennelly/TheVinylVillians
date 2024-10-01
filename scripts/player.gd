@@ -14,6 +14,7 @@ var current_health: int = max_health
 @onready var kanyerecord: InvItem = load("res://inventory/items/kanye_record.tres")
 @onready var inv: Inv = preload("res://inventory/player_inventory.tres")
 @onready var record_inv: Inv = preload("res://inventory/record_player_inventory.tres")
+@onready var bachrecord: InvItem = load("res://inventory/items/bachrecord.tres")
 @onready var punkrecord: InvItem = load("res://inventory/items/punkrecord.tres")
 @onready var punksword: InvItem = preload("res://inventory/items/punk_sword.tres")
 var bullet_scene = preload("res://scenes/ultra_beam_left.tscn")
@@ -27,7 +28,9 @@ var UltraBeamLeft
 var UltraBeamRight
 var timer
 #@onready var punchboxcoord = $PunchBox/PunchHitBox.get_shape().x
+signal nux
 signal play2
+signal play3
 signal play
 signal recordplayerinsert
 signal recordplayerinsert2
@@ -97,7 +100,8 @@ func player_movement(delta):
 			#punch.attack()
 			velocity.y = 0
 			velocity.x = 0
-			
+		elif Input.is_action_pressed("Nux"):
+			nux.emit()
 		else:
 			character.play("Idle")
 			velocity.y = 0
@@ -247,3 +251,13 @@ func _on_inv_ui_secondcraft() -> void:
 		has_sword = true
 		print("punk sword crafted")
 		recordplayerinsert2.emit()
+
+
+func _on_inv_ui_slot_3_mouse_entered() -> void:
+	pass
+func _on_inv_ui_play_3() -> void:
+	play3.emit()
+
+
+func _on_bach_bachdeath() -> void:
+	inv.insert(bachrecord)

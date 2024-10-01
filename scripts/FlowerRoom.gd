@@ -5,7 +5,7 @@ func _ready() -> void:
 	print("Timer start")
 	
 	$YouAreMySunshine.play()
-	$Timer.start(10)
+	$Timer.start(35)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
