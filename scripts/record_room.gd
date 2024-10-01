@@ -77,6 +77,7 @@ func _on_record_inv_ui_secondplay() -> void:
 		$Bach.stop()
 		$UltralightBeam.stop()
 		$Stronger.play()
+		can_bach = true
 
 	
 
