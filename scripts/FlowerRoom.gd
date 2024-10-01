@@ -34,3 +34,7 @@ func _on_scene_transition_body_entered(body: Node2D) -> void:
 	if body.has_method("player_movement"):
 		print("leave maze room")
 		get_tree().change_scene_to_file("res://scenes/record_room.tscn")
+
+
+func _on_player_gameover() -> void:
+	get_tree().change_scene_to_file("res://scenes/gameover.tscn")

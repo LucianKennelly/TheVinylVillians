@@ -67,6 +67,7 @@ autoplay = true
 [node name="YouAreMySunshineDark" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_awxaw")
 
+[connection signal="gameover" from="player" to="." method="_on_player_gameover"]
 [connection signal="body_entered" from="FlowerSceneTransition" to="." method="_on_scene_transition_body_entered"]
 [connection signal="body_exited" from="FlowerSceneTransition" to="FlowerSceneTransition" method="_on_body_exited"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,7 +1,8 @@
 extends CharacterBody2D
 class_name Player
 signal healthChanged
-var has_sword = false
+@export var has_sword = false
+var has_armor = false
 var can_move = true
 var can_punch = true
 var has_bump =true
@@ -18,7 +19,6 @@ var current_health: int = max_health
 @onready var punkrecord: InvItem = load("res://inventory/items/punkrecord.tres")
 @onready var punksword: InvItem = preload("res://inventory/items/punk_sword.tres")
 var bullet_scene = preload("res://scenes/ultra_beam_left.tscn")
-var has_armor = false
 @onready var character2 = $ArmorAnimated
 @onready var playerscene = preload("res://scenes/player.tscn")
 @onready var character = $AnimatedSprite2D
@@ -27,7 +27,8 @@ var has_armor = false
 var UltraBeamLeft
 var UltraBeamRight
 var timer
-#@onready var punchboxcoord = $PunchBox/PunchHitBox.get_shape().x
+#@onready var punchboxcoord = $PunchBox/PunchHitBox.get_shape().x\
+signal gameover
 signal nux
 signal play2
 signal play3
@@ -56,7 +57,8 @@ func die() -> void:
 	character.play("Death")
 	#player_movement().paused = true
 	await get_tree().create_timer(4.0).timeout
-	get_tree().change_scene_to_file("res://scenes/gameover.tscn")
+	gameover.emit()
+	#get_tree().change_scene_to_file("res://scenes/gameover.tscn")
 	#inv.clear()
 	#$AnimatedSprite2D.play("Death")
 	#queue_free()
@@ -68,6 +70,10 @@ func _physics_process(delta):
 	
 
 func player_movement(delta):
+	if has_sword:
+		character.visible = false
+		character = get_node("ArmorAnimated")
+		character.visible = true
 	if inv.has_record(kanyeclothes):
 		has_armor = true
 		_on_armor_animated_animation_changed()
@@ -130,6 +136,7 @@ func player_movement(delta):
 			directionchanged.emit()
 		move_and_collide(velocity * delta * normal_speed)
 		if has_sword:
+			
 			get_node("PunchBox").scale.y = 2.5
 	#f#unc justpunched() -> void:
 		#if $AnimatedSprite2D.animation == "punch":
@@ -145,7 +152,6 @@ func _ready():
 	timer = get_node("Timer")
 	character2 = get_node("ArmorAnimated")
 	character2.visible =false
-	can_daft = false
 	#
 	#timer.visible = false
 	timer.start(1)

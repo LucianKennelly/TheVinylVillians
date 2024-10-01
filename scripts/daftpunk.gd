@@ -18,6 +18,7 @@ const JUMP_VELOCITY = -400.0
 @onready var kanye
 @onready var speed = 100
 @onready var beamscene = preload("res://scenes/beam.tscn")
+@export var playerstat: Player
 func _ready():
 	$Timer.start(1)
 	#test_health_system()
@@ -51,6 +52,7 @@ func die() -> void:
 	print("Daft Punk is dead!")
 	$AnimatedSprite2D.play("death")
 	await get_tree().create_timer(10.0).timeout
+	#player.has_sword = true
 	daftpunkdeath.emit()
 	queue_free()
 

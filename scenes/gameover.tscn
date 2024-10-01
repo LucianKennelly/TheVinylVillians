@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://3i50xj70jck8"]
+[gd_scene load_steps=4 format=3 uid="uid://dh2pduwd2tpdp"]
 
 [ext_resource type="Script" path="res://Scenes/gameover.gd" id="1_1e61h"]
 [ext_resource type="FontFile" uid="uid://d08swaa6swalf" path="res://fonts/LaFemmeMakita.otf" id="2_mngek"]

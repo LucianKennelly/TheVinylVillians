@@ -1,91 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://b43gvy803lie1"]
+[gd_scene load_steps=8 format=3 uid="uid://b43gvy803lie1"]
 
-[ext_resource type="Script" path="res://scripts/bach.gd" id="1_18p78"]
 [ext_resource type="Script" path="res://scripts/bach_room.gd" id="1_ealg1"]
-[ext_resource type="Texture2D" uid="uid://dgu065jbhe8xx" path="res://art/beethoven_sprite.png" id="2_worcr"]
 [ext_resource type="Texture2D" uid="uid://caldcfc1s4ni7" path="res://art/beethoven_room.png" id="3_bkjxa"]
 [ext_resource type="PackedScene" uid="uid://bg2c3nnupserd" path="res://scenes/player.tscn" id="4_bagcm"]
+[ext_resource type="PackedScene" uid="uid://v0lij5tlaydm" path="res://enemy.tscn" id="5_s0gqk"]
 [ext_resource type="AudioStream" uid="uid://brx6mfomk8d87" path="res://soundtrack/J.S. Bach_ Prelude & Fugue in C Minor (Well-Tempered Clavier, Book I, No. 2) , BWV 847_ I. Prelude - Víkingur Ólafsson.mp3" id="6_m4xgi"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hgj3u"]
-atlas = ExtResource("2_worcr")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_5efc2"]
-atlas = ExtResource("2_worcr")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_34rhu"]
-atlas = ExtResource("2_worcr")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ey0b8"]
-atlas = ExtResource("2_worcr")
-region = Rect2(96, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vief1"]
-atlas = ExtResource("2_worcr")
-region = Rect2(128, 0, 32, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_s61m3"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hgj3u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_5efc2")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_34rhu")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ey0b8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vief1")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4r7y"]
-size = Vector2(12, 24)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bqel"]
-size = Vector2(19, 30)
+[ext_resource type="Script" path="res://enemy2.gd" id="6_nspgr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iv6on"]
 size = Vector2(190, 20)
 
-[node name="BachRoom" type="Node2D"]
+[node name="BachRoom" type="Node2D" node_paths=PackedStringArray("player")]
 script = ExtResource("1_ealg1")
-
-[node name="Bach" type="CharacterBody2D" parent="."]
-position = Vector2(500, 500)
-motion_mode = 1
-script = ExtResource("1_18p78")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bach"]
-sprite_frames = SubResource("SpriteFrames_s61m3")
-autoplay = "default"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bach"]
-position = Vector2(0, -1)
-shape = SubResource("RectangleShape2D_s4r7y")
-
-[node name="Area2D" type="Area2D" parent="Bach"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bach/Area2D"]
-position = Vector2(0.5, -1)
-shape = SubResource("RectangleShape2D_2bqel")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Bach"]
-path_desired_distance = 562.8
-target_desired_distance = 771.82
+player = NodePath("player")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 z_index = -1
@@ -115,6 +42,7 @@ stream = ExtResource("6_m4xgi")
 autoplay = true
 parameters/looping = false
 
-[connection signal="bachdeath" from="Bach" to="player" method="_on_bach_bachdeath"]
-[connection signal="body_entered" from="Bach/Area2D" to="Bach" method="_on_area_2d_body_entered"]
+[node name="Enemy" parent="." instance=ExtResource("5_s0gqk")]
+script = ExtResource("6_nspgr")
+
 [connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]

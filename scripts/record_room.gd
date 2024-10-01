@@ -5,6 +5,7 @@ extends Node2D
 @export var kanye_scene = "res://kanye_room"
 var can_punk
 var can_maze
+var can_bach
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	can_punk = false
@@ -67,6 +68,7 @@ func _on_player_play_2() -> void:
 		$Bach.stop()
 		$UltralightBeam.stop()
 		$Stronger.play()
+		can_bach = true
 
 
 func _on_record_inv_ui_secondplay() -> void:
@@ -92,7 +94,7 @@ func _on_inv_ui_slot_3_mouse_entered() -> void:
 func _on_bach_room_body_entered(body: Node2D) -> void:
 	print("here")
 	if body.has_method("player_movement"):
-		if can_punk:
+		if can_bach:
 			print("leave record room")
 			get_tree().change_scene_to_file("res://scenes/bach_room.tscn")
 

@@ -90,13 +90,14 @@ texture = ExtResource("2_jh3ui")
 position = Vector2(487, 801)
 collision_mask = 29
 
-[node name="DaftPunk" type="CharacterBody2D" parent="."]
+[node name="DaftPunk" type="CharacterBody2D" parent="." node_paths=PackedStringArray("playerstat")]
 position = Vector2(536, 486)
 rotation = 1.34473
 collision_layer = 5
 collision_mask = 4
 motion_mode = 1
 script = ExtResource("4_lmgii")
+playerstat = NodePath("../player")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DaftPunk"]
 shape = SubResource("CircleShape2D_koxdx")

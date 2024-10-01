@@ -1,0 +1,104 @@
+[gd_scene load_steps=15 format=3 uid="uid://v0lij5tlaydm"]
+
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_2e4ly"]
+[ext_resource type="Script" path="res://scripts/bach.gd" id="2_8xhky"]
+[ext_resource type="Texture2D" uid="uid://dgu065jbhe8xx" path="res://art/beethoven_sprite.png" id="3_7d5sy"]
+[ext_resource type="Texture2D" uid="uid://cbtfjcmfcmfdm" path="res://Hearts/PNG/health_bar/health_bar_border.png" id="4_m5ce7"]
+[ext_resource type="Texture2D" uid="uid://bihxwke43ymhp" path="res://Hearts/PNG/health_bar/kanye_health_bar.png" id="5_i5wvd"]
+
+[sub_resource type="Curve2D" id="Curve2D_cwgsv"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 473, 492, 0, 0, 0, 0, 448, 492, 0, 0, 0, 0, 381, 487, 0, 0, 0, 0, 337, 461, 0, 0, 0, 0, 308, 442, 0, 0, 0, 0, 249, 399, 0, 0, 0, 0, 217, 348, 0, 0, 0, 0, 253, 298, 0, 0, 0, 0, 300, 266, 0, 0, 0, 0, 377, 253, 0, 0, 0, 0, 438, 273, 0, 0, 0, 0, 504, 312, 0, 0, 0, 0, 591, 312, 0, 0, 0, 0, 702, 312, 0, 0, 0, 0, 821, 300, 0, 0, 0, 0, 832, 258, 0, 0, 0, 0, 693, 236, 0, 0, 0, 0, 604, 295, 0, 0, 0, 0, 543, 347, 0, 0, 0, 0, 418, 355, 0, 0, 0, 0, 380, 351, 0, 0, 0, 0, 326, 394, 0, 0, 0, 0, 262, 421, 0, 0, 0, 0, 236, 467, 0, 0, 0, 0, 212, 555, 0, 0, 0, 0, 289, 614, 0, 0, 0, 0, 413, 588, 0, 0, 0, 0, 442, 518, 0, 0, 0, 0, 560, 464, 0, 0, 0, 0, 656, 458, 0, 0, 0, 0, 720, 506, 0, 0, 0, 0, 779, 607, 0, 0, 0, 0, 714, 701, 0, 0, 0, 0, 556, 716, 0, 0, 0, 0, 540, 643, 0, 0, 0, 0, 389, 620, 0, 0, 0, 0, 283, 677, 0, 0, 0, 0, 231, 708, 0, 0, 0, 0, 281, 756, 0, 0, 0, 0, 393, 799, 0, 0, 0, 0, 531, 794, 0, 0, 0, 0, 669, 766, 0, 0, 0, 0, 747, 770, 0, 0, 0, 0, 873, 720, 0, 0, 0, 0, 767, 593, 0, 0, 0, 0, 659, 595, 0, 0, 0, 0, 554, 533, 0, 0, 0, 0, 527, 519, 0, 0, 0, 0, 472, 495)
+}
+point_count = 49
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hgj3u"]
+atlas = ExtResource("3_7d5sy")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5efc2"]
+atlas = ExtResource("3_7d5sy")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34rhu"]
+atlas = ExtResource("3_7d5sy")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ey0b8"]
+atlas = ExtResource("3_7d5sy")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vief1"]
+atlas = ExtResource("3_7d5sy")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s61m3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hgj3u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5efc2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_34rhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ey0b8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vief1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_s4r7y"]
+size = Vector2(12, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2bqel"]
+size = Vector2(19, 30)
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_2e4ly")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_cwgsv")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(473, 492)
+rotation = 3.14159
+
+[node name="Bach" type="CharacterBody2D" parent="Path2D/PathFollow2D"]
+position = Vector2(-1, 5)
+script = ExtResource("2_8xhky")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D/Bach"]
+sprite_frames = SubResource("SpriteFrames_s61m3")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Bach"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_s4r7y")
+
+[node name="Area2D" type="Area2D" parent="Path2D/PathFollow2D/Bach"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/Bach/Area2D"]
+position = Vector2(0.5, -1)
+shape = SubResource("RectangleShape2D_2bqel")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="Path2D/PathFollow2D/Bach"]
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Path2D/PathFollow2D/Bach"]
+offset_right = 40.0
+offset_bottom = 40.0
+max_value = 500.0
+value = 500.0
+texture_under = ExtResource("4_m5ce7")
+texture_progress = ExtResource("5_i5wvd")
+
+[connection signal="body_entered" from="Path2D/PathFollow2D/Bach/Area2D" to="Path2D/PathFollow2D/Bach" method="_on_area_2d_body_entered"]
