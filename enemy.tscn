@@ -94,6 +94,7 @@ shape = SubResource("RectangleShape2D_2bqel")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Path2D/PathFollow2D/Bach"]
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="Path2D/PathFollow2D/Bach"]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 max_value = 500.0

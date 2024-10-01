@@ -12,7 +12,7 @@ func _ready():
 	
 func _on_kanye_health_changed():
 	if kanye.max_health != 0:
-		value = clamp(kanye.current_health * 200 / kanye.max_health, 0, 200)
+		value = clamp(kanye.current_health * 100 / kanye.max_health, 0, 100)
 
 func update():
-	value = kanye.current_health * 200 / kanye.max_health
+	value = kanye.current_health * 100 / kanye.max_health
