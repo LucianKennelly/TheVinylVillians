@@ -15,7 +15,6 @@
 >>>>>>> Stashed changes
 [ext_resource type="Script" path="res://scenes/ultra_beam_right.gd" id="9_c54xq"]
 [ext_resource type="Script" path="res://scenes/ultra_beam_left.gd" id="9_eorqw"]
-[ext_resource type="PackedScene" uid="uid://c2dqbihdkktk" path="res://scenes/ultra_beam_right.tscn" id="10_dosjl"]
 [ext_resource type="PackedScene" uid="uid://c2dqbihdkktk" path="res://Scenes/ultra_beam_right.tscn" id="10_dosjl"]
 [ext_resource type="Texture2D" uid="uid://cbtfjcmfcmfdm" path="res://Hearts/PNG/health_bar/health_bar_border.png" id="12_n3in0"]
 [ext_resource type="Texture2D" uid="uid://wk34ao2ttmb5" path="res://art/Kanye-Armor-Idle.png" id="12_ukbtu"]
