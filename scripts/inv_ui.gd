@@ -2,6 +2,7 @@ extends Control
 @onready var record: InvItem = preload("res://inventory/items/kanye_record.tres")
 @onready var punkrecord: InvItem = preload("res://inventory/items/punkrecord.tres")
 @onready var record_inv: Inv = preload("res://inventory/record_player_inventory.tres")
+@onready var bachrecord: InvItem = preload("res://inventory/items/bachrecord.tres")
 @onready var inv: Inv = preload("res://inventory/player_inventory.tres")
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children()
 signal play
@@ -49,7 +50,7 @@ func _process(delta: float) -> void:
 func _on_inv_ui_slot_mouse_entered() -> void:
 	#inv.update_slots()
 	#record_inv.update_slots()
-	if inv.has_record(record) or record_inv.has_record(record):
+	if inv.has_record(record):
 		#print("play")
 		play.emit()
 		if insert:
@@ -74,7 +75,7 @@ func _on_interaction_area_body_exited(body: Node2D) -> void:
 func _on_inv_ui_slot_2_mouse_entered() -> void:
 	#print("",inv.has_record(punkrecord))
 	#print("",inv.has_record(punkrecord))
-	#if inv.has_record(punkrecord) or record_inv.has_record(punkrecord):
+	if inv.has_record(punkrecord): #or record_inv.has_record(punkrecord):
 		print("play")
 		play2.emit()
 		if insert:
@@ -84,4 +85,5 @@ func _on_inv_ui_slot_2_mouse_entered() -> void:
 
 
 func _on_inv_ui_slot_3_mouse_entered() -> void:
-	play3.emit()
+	if inv.has_record(bachrecord):
+		play3.emit()

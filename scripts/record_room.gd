@@ -1,6 +1,9 @@
 extends Node2D
 @onready var record_inv = preload("res://inventory/record_player_inventory.tres")
+@onready var inv = preload("res://inventory/player_inventory.tres")
 @onready var punkrecord = preload("res://inventory/items/punk_record.tres")
+@onready var kanyerecord = preload("res://inventory/items/kanye_record.tres")
+@onready var bachrecord = preload("res://inventory/items/bachrecord.tres")
 #@export var player : Player
 @export var kanye_scene = "res://kanye_room"
 var can_punk
@@ -56,7 +59,7 @@ func _on_record_inv_ui_play() -> void:
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.has_method("player_movement"):
-		if can_punk:
+		if inv.has_record(kanyerecord) or record_inv.has_record(kanyerecord):
 			print("leave record room")
 			get_tree().change_scene_to_file("res://scenes/punk_room.tscn")
 
@@ -84,7 +87,7 @@ func _on_record_inv_ui_secondplay() -> void:
 
 func _on_flower_room_body_entered(body: Node2D) -> void:
 	if body.has_method("player_movement"):
-		if can_maze:
+		if inv.has_record(bachrecord) or record_inv.has_record(bachrecord):
 			print("leave record room")
 			get_tree().change_scene_to_file("res://scenes/FlowerRoom.tscn")
 

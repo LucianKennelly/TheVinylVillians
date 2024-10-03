@@ -199,7 +199,7 @@ func _on_enemy_kanyedeath() -> void:
 
 func _on_inv_ui_play() -> void:
 	#print("",inv.has_record(punkrecord))
-	print("",inv.has_record(punkrecord))
+	#print("",inv.has_record(punkrecord))
 	if inv.has_record(kanyerecord):
 		play.emit()
 

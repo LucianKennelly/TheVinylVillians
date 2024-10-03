@@ -43,11 +43,11 @@ func _process(delta: float) -> void:
 func _on_inv_ui_slot_mouse_entered() -> void:
 	#print("",record_inv.has_record(kanye_record))
 	if record_inv.has_record(kanye_record):
-		print("here")
+		#print("here")
 		play.emit()
-	if Input.is_action_pressed("Play"): #and has_record(kanye_record):
-		print("craft kanye armor")
-		firstcraft.emit()
+	#if Input.is_action_pressed("Play"): #and has_record(kanye_record):
+	#	print("craft kanye armor")
+	#	firstcraft.emit()
 
 func _on_player_recordplayerinsert() -> void:
 	#print("inserted")
@@ -58,7 +58,7 @@ func _on_player_recordplayerinsert() -> void:
 
 func _on_inv_ui_slot_2_mouse_entered() -> void:
 	#print("",record_inv.has_record(punkrecord))
-	#if record_inv.has_record(punkrecord):
+	if record_inv.has_record(punkrecord):
 	#print("here")
 		secondplay.emit()
 		#if Input.is_action_pressed("Play"): #and has_record(kanye_record):

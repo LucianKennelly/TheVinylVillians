@@ -21,9 +21,9 @@ func delete(item: InvItem):
 		counter += 1
 
 func has_record(record: InvItem):
+	var truth = false
 	for i in items:
 		if i != null:
 			if i == record:
-				return true
-			else:
-				return false
+				truth = true
+	return truth

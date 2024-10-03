@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://v0lij5tlaydm"]
+[gd_scene load_steps=16 format=3 uid="uid://v0lij5tlaydm"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_2e4ly"]
 [ext_resource type="Script" path="res://scripts/bach.gd" id="2_8xhky"]
 [ext_resource type="Texture2D" uid="uid://dgu065jbhe8xx" path="res://art/beethoven_sprite.png" id="3_7d5sy"]
 [ext_resource type="Texture2D" uid="uid://cbtfjcmfcmfdm" path="res://Hearts/PNG/health_bar/health_bar_border.png" id="4_m5ce7"]
 [ext_resource type="Texture2D" uid="uid://bihxwke43ymhp" path="res://Hearts/PNG/health_bar/kanye_health_bar.png" id="5_i5wvd"]
+[ext_resource type="Script" path="res://scripts/bach_health.gd" id="6_nwwnm"]
 
 [sub_resource type="Curve2D" id="Curve2D_cwgsv"]
 _data = {
@@ -93,13 +94,16 @@ shape = SubResource("RectangleShape2D_2bqel")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="Path2D/PathFollow2D/Bach"]
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Path2D/PathFollow2D/Bach"]
-visible = false
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Path2D/PathFollow2D/Bach" node_paths=PackedStringArray("bach")]
+offset_left = -75.0
+offset_top = -82.0
+offset_right = 60.0
+offset_bottom = -31.0
 max_value = 500.0
 value = 500.0
 texture_under = ExtResource("4_m5ce7")
 texture_progress = ExtResource("5_i5wvd")
+script = ExtResource("6_nwwnm")
+bach = NodePath("..")
 
 [connection signal="body_entered" from="Path2D/PathFollow2D/Bach/Area2D" to="Path2D/PathFollow2D/Bach" method="_on_area_2d_body_entered"]
