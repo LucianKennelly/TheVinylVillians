@@ -9,6 +9,8 @@ var current_health: int = max_health
 @onready var target_to_chase: CharacterBody2D = $"../player"
 @onready var navigation_agent: NavigationAgent2D = $NavigationAgent2D
 @onready var bachrecord : InvItem = preload("res://inventory/items/bachrecord.tres")
+@onready var inv: Inv = preload("res://inventory/player_inventory.tres")
+@onready var record_inv : Inv = preload("res://inventory/record_player_inventory.tres")
 signal bachdeath
 func _physics_process(delta: float) -> void:
 	#navigation_agent.target_position = target_to_chase.global_position
@@ -28,7 +30,11 @@ func heal(amount: int) -> void:
 	
 func die() -> void:
 	print("Bach is dead!")
-	bachdeath.emit()
+	if inv.has_record(bachrecord) or record_inv.has_record(bachrecord):
+		pass
+	else:
+		inv.insert(bachrecord)
+	#bachdeath.emit()
 	await get_tree().create_timer(1.0).timeout
 	queue_free()
 

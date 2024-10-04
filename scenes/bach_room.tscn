@@ -47,3 +47,5 @@ parameters/looping = false
 script = ExtResource("6_nspgr")
 
 [connection signal="body_entered" from="Exit" to="." method="_on_exit_body_entered"]
+
+[editable path="Enemy"]

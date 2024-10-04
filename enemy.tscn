@@ -106,4 +106,5 @@ texture_progress = ExtResource("5_i5wvd")
 script = ExtResource("6_nwwnm")
 bach = NodePath("..")
 
+[connection signal="bachdeath" from="Path2D/PathFollow2D/Bach" to="." method="_on_bach_bachdeath"]
 [connection signal="body_entered" from="Path2D/PathFollow2D/Bach/Area2D" to="Path2D/PathFollow2D/Bach" method="_on_area_2d_body_entered"]
